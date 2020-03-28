@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BEF96A65E247CEE1C3AEEA9 /* Pods_GMail_MUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2D01E10B972381A2E3981B /* Pods_GMail_MUITests.framework */; };
+		58184CD043F6B35AF5C72AB1 /* Pods_GMail_MUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5073208B64BB52C1E827E852 /* Pods_GMail_MUI.framework */; };
 		6105C621242FF2F9002E27E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6105C620242FF2F9002E27E7 /* AppDelegate.swift */; };
 		6105C623242FF2F9002E27E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6105C622242FF2F9002E27E7 /* SceneDelegate.swift */; };
 		6105C625242FF2F9002E27E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6105C624242FF2F9002E27E7 /* ContentView.swift */; };
@@ -27,6 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16FBDA1856965E2EE345B991 /* Pods-GMail_MUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMail_MUI.debug.xcconfig"; path = "Target Support Files/Pods-GMail_MUI/Pods-GMail_MUI.debug.xcconfig"; sourceTree = "<group>"; };
+		283F2E6C4201A134BDA9A8ED /* Pods-GMail_MUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMail_MUITests.debug.xcconfig"; path = "Target Support Files/Pods-GMail_MUITests/Pods-GMail_MUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		37A1DE35779EDF3329C305CE /* Pods-GMail_MUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMail_MUITests.release.xcconfig"; path = "Target Support Files/Pods-GMail_MUITests/Pods-GMail_MUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5073208B64BB52C1E827E852 /* Pods_GMail_MUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GMail_MUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6105C61D242FF2F9002E27E7 /* GMail_MUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GMail_MUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6105C620242FF2F9002E27E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6105C622242FF2F9002E27E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +44,8 @@
 		6105C633242FF2FB002E27E7 /* GMail_MUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GMail_MUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6105C637242FF2FB002E27E7 /* GMail_MUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMail_MUITests.swift; sourceTree = "<group>"; };
 		6105C639242FF2FB002E27E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF2D01E10B972381A2E3981B /* Pods_GMail_MUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GMail_MUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1BBCC4A6F0FBE6C362F3F89 /* Pods-GMail_MUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMail_MUI.release.xcconfig"; path = "Target Support Files/Pods-GMail_MUI/Pods-GMail_MUI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58184CD043F6B35AF5C72AB1 /* Pods_GMail_MUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +61,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BEF96A65E247CEE1C3AEEA9 /* Pods_GMail_MUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24AC24F998CFDC96CF2CE753 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5073208B64BB52C1E827E852 /* Pods_GMail_MUI.framework */,
+				AF2D01E10B972381A2E3981B /* Pods_GMail_MUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6105C614242FF2F9002E27E7 = {
 			isa = PBXGroup;
 			children = (
 				6105C61F242FF2F9002E27E7 /* GMail_MUI */,
 				6105C636242FF2FB002E27E7 /* GMail_MUITests */,
 				6105C61E242FF2F9002E27E7 /* Products */,
+				71B7FE770FDBAA12DCBA8155 /* Pods */,
+				24AC24F998CFDC96CF2CE753 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +128,18 @@
 			path = GMail_MUITests;
 			sourceTree = "<group>";
 		};
+		71B7FE770FDBAA12DCBA8155 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				16FBDA1856965E2EE345B991 /* Pods-GMail_MUI.debug.xcconfig */,
+				F1BBCC4A6F0FBE6C362F3F89 /* Pods-GMail_MUI.release.xcconfig */,
+				283F2E6C4201A134BDA9A8ED /* Pods-GMail_MUITests.debug.xcconfig */,
+				37A1DE35779EDF3329C305CE /* Pods-GMail_MUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -114,6 +147,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6105C63C242FF2FB002E27E7 /* Build configuration list for PBXNativeTarget "GMail_MUI" */;
 			buildPhases = (
+				F23C6C862D147E93CF7B041B /* [CP] Check Pods Manifest.lock */,
 				6105C619242FF2F9002E27E7 /* Sources */,
 				6105C61A242FF2F9002E27E7 /* Frameworks */,
 				6105C61B242FF2F9002E27E7 /* Resources */,
@@ -131,6 +165,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6105C63F242FF2FB002E27E7 /* Build configuration list for PBXNativeTarget "GMail_MUITests" */;
 			buildPhases = (
+				ACD824A97418CAEF6FA940FA /* [CP] Check Pods Manifest.lock */,
 				6105C62F242FF2FB002E27E7 /* Sources */,
 				6105C630242FF2FB002E27E7 /* Frameworks */,
 				6105C631242FF2FB002E27E7 /* Resources */,
@@ -202,6 +237,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ACD824A97418CAEF6FA940FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GMail_MUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F23C6C862D147E93CF7B041B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GMail_MUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6105C619242FF2F9002E27E7 /* Sources */ = {
@@ -360,6 +442,7 @@
 		};
 		6105C63D242FF2FB002E27E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16FBDA1856965E2EE345B991 /* Pods-GMail_MUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -380,6 +463,7 @@
 		};
 		6105C63E242FF2FB002E27E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1BBCC4A6F0FBE6C362F3F89 /* Pods-GMail_MUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -400,6 +484,7 @@
 		};
 		6105C640242FF2FB002E27E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 283F2E6C4201A134BDA9A8ED /* Pods-GMail_MUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -422,6 +507,7 @@
 		};
 		6105C641242FF2FB002E27E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37A1DE35779EDF3329C305CE /* Pods-GMail_MUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
