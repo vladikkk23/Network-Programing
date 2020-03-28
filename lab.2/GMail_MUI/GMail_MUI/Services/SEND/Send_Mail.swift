@@ -17,8 +17,8 @@ class Send_Mail {
     
     // Login Info
     private var hostname = "smtp.gmail.com"
-    private var username = "el.zorro.show@gmail.com"
-    private var password = "87897631rvsn5"
+    private var username = "Your Gmail Username"
+    private var password = "Your Password"
     
     // Singleton
     static let shared = Send_Mail()
@@ -54,9 +54,12 @@ class Send_Mail {
         }
 
         let builder = MCOMessageBuilder()
-        builder.header.to = [MCOAddress(displayName: "zorro", mailbox: "el.zorro.show@gmail.com")!]
-        builder.header.from = MCOAddress(displayName: "me", mailbox: "el.zorro.show@gmail.com")
-        builder.header.subject = "TEST01"
+        
+        // Insert Info
+        builder.header.to = [MCOAddress(displayName: "Receiver Name", mailbox: "Receiver E-Mail Address")!]
+        builder.header.from = MCOAddress(displayName: "Sender Name", mailbox: "Sender E-Mail Address")
+        
+        builder.header.subject = "Subject"
         builder.htmlBody = "This is a test message!"
 
         let rfc822Data = builder.data()
