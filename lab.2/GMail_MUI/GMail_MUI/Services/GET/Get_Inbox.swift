@@ -1,7 +1,6 @@
-import UIKit
 //
-//  Get_Mails.swift
-//  Gmail-MUA
+//  Get_Inbox.swift
+//  GMail_MUI
 //
 //  Created by vladikkk on 28/03/2020.
 //  Copyright © 2020 PR. All rights reserved.
@@ -10,11 +9,11 @@ import UIKit
 import Foundation
 
 /*
- A Singleton for extracting Inbox E-Mails.
- */
+    A Singleton for extracting Inbox E-Mails.
+*/
 class Get_Inbox {
     
-    // MARK: Properties
+// MARK: Properties
     
     // Login Info
     private var hostname = "imap.gmail.com"
@@ -39,7 +38,7 @@ class Get_Inbox {
         imapSession.isCheckCertificateEnabled = false
     }
     
-    // MARK: Methods
+// MARK: Methods
     
     func fetchMails()  {
         
