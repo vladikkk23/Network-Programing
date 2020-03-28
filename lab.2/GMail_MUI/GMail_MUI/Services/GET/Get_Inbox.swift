@@ -17,8 +17,8 @@ class Get_Inbox {
     
     // Login Info
     private var hostname = "imap.gmail.com"
-    private var username = "el.zorro.show@gmail.com"
-    private var password = "87897631rvsn5"
+    private var username = "Your Gmail Username"
+    private var password = "Your Password"
     
     // Singleton
     static let shared = Get_Inbox()
