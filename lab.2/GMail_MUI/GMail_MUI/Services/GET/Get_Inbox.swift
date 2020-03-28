@@ -41,25 +41,25 @@ class Get_Inbox {
 // MARK: Methods
     
     func fetchMails()  {
-        
         let requestKind: MCOIMAPMessagesRequestKind = .headers
         let folder = "INBOX"
         let uids = MCOIndexSet(range: MCORangeMake(1, UINT64_MAX))
         
         let fetchOperation = imapSession.fetchMessagesOperation(withFolder: folder, requestKind: requestKind, uids: uids)
-        
+
         fetchOperation?.start({ error, fetchedMessages, vanishedMessages in
-            //Check for an error:
+            // Check for an error:
             if error != nil {
                 if let error = error {
                     print("Error downloading message headers:\(error)")
                 }
             }
-            
-            //Print E-Mails
+
+            // Print E-Mails
             if let fetchedMessages = fetchedMessages {
-                print("The post man delivereth:\(fetchedMessages)")
+                print("The post man delivered:\n \(fetchedMessages)")
             }
+
         })
     }
 }
