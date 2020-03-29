@@ -8,6 +8,16 @@
 
 import Foundation
 
-//struct EMail: Codable {
-//    <#fields#>
-//}
+/*
+   Email Form Model.
+ */
+struct EMail: Identifiable {
+    var id = UUID()
+    
+    var sender: Sender
+    
+    var subject: String
+    var body: String
+    
+    var date: String
+}
