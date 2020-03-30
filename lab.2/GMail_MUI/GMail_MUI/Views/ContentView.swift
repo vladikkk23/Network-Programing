@@ -9,31 +9,29 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var didTapGet: Bool = false
-    @State private var didTapSend: Bool = false
-
+        
+    @ObservedObject var inbox = Get_Inbox.shared
+    
     var body: some View {
-        VStack {
-            Button(action: {
-                self.didTapGet.toggle()
-                
-                Get_Inbox.shared.fetchMails()
-            }) {
-                Text("Load E-Mails")
-                    .foregroundColor(didTapGet ? Color.green : Color.red)
+        NavigationView {
+            List(inbox.emails) { email in
+                NavigationLink(destination: Email_DetailsView(email: email)) {
+                    Email_Row(email: email)
+                }
             }
-            
-            Spacer()
-                .lineSpacing(CGFloat(exactly: 10)!)
-            
-            Button(action: {
-                self.didTapSend.toggle()
-                
-                Send_Mail.shared.send()
-            }) {
-                Text("Send E-Mail")
-                    .foregroundColor(didTapSend ? Color.green : Color.blue)
-            }
+            .navigationBarTitle("INBOX")
+            .navigationBarItems(leading:
+                Button(action: {
+                    self.inbox.updateInbox()
+                }, label: {
+                    Text("GET E-Mails")
+                        .foregroundColor(.red)
+                })
+                , trailing:
+                NavigationLink(destination: Create_EMailView()) {
+                    Text("SEND E-Mail")
+                        .foregroundColor(.blue)
+            })
         }
     }
 }

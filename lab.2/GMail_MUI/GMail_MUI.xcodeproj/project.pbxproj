@@ -16,6 +16,13 @@
 		6105C62A242FF2FB002E27E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6105C629242FF2FB002E27E7 /* Preview Assets.xcassets */; };
 		6105C62D242FF2FB002E27E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6105C62B242FF2FB002E27E7 /* LaunchScreen.storyboard */; };
 		6105C638242FF2FB002E27E7 /* GMail_MUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6105C637242FF2FB002E27E7 /* GMail_MUITests.swift */; };
+		6109D96D2430EF9C00A574A2 /* Email_Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6109D96C2430EF9C00A574A2 /* Email_Row.swift */; };
+		6109D96F2430F22D00A574A2 /* Email_DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6109D96E2430F22D00A574A2 /* Email_DetailsView.swift */; };
+		6109D9712430FC6000A574A2 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6109D9702430FC6000A574A2 /* Sender.swift */; };
+		6109D97524310B1000A574A2 /* Create_EMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6109D97424310B1000A574A2 /* Create_EMailView.swift */; };
+		6109D9772431110C00A574A2 /* MultiLine_TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6109D9762431110C00A574A2 /* MultiLine_TextFieldView.swift */; };
+		6184969B243163A0007E025A /* SubstringToHTMLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184969A243163A0007E025A /* SubstringToHTMLExtension.swift */; };
+		618E3FD4243158BA00572682 /* Content_Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E3FD3243158BA00572682 /* Content_Extractor.swift */; };
 		61FAD879242FFBF200B346A3 /* Send_Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAD878242FFBF200B346A3 /* Send_Mail.swift */; };
 		61FAD87B242FFCA400B346A3 /* Get_Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAD87A242FFCA400B346A3 /* Get_Inbox.swift */; };
 		61FAD87E242FFE4700B346A3 /* EMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAD87D242FFE4700B346A3 /* EMail.swift */; };
@@ -47,6 +54,13 @@
 		6105C633242FF2FB002E27E7 /* GMail_MUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GMail_MUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6105C637242FF2FB002E27E7 /* GMail_MUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMail_MUITests.swift; sourceTree = "<group>"; };
 		6105C639242FF2FB002E27E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6109D96C2430EF9C00A574A2 /* Email_Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email_Row.swift; sourceTree = "<group>"; };
+		6109D96E2430F22D00A574A2 /* Email_DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email_DetailsView.swift; sourceTree = "<group>"; };
+		6109D9702430FC6000A574A2 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		6109D97424310B1000A574A2 /* Create_EMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_EMailView.swift; sourceTree = "<group>"; };
+		6109D9762431110C00A574A2 /* MultiLine_TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLine_TextFieldView.swift; sourceTree = "<group>"; };
+		6184969A243163A0007E025A /* SubstringToHTMLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubstringToHTMLExtension.swift; sourceTree = "<group>"; };
+		618E3FD3243158BA00572682 /* Content_Extractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content_Extractor.swift; sourceTree = "<group>"; };
 		61C5B6E9242FF93000091895 /* GMail_MUI_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMail_MUI_bridge.h; sourceTree = "<group>"; };
 		61FAD878242FFBF200B346A3 /* Send_Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Send_Mail.swift; sourceTree = "<group>"; };
 		61FAD87A242FFCA400B346A3 /* Get_Inbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Get_Inbox.swift; sourceTree = "<group>"; };
@@ -107,6 +121,7 @@
 		6105C61F242FF2F9002E27E7 /* GMail_MUI */ = {
 			isa = PBXGroup;
 			children = (
+				6184969924316385007E025A /* Helpers */,
 				61FAD87C242FFE1900B346A3 /* Models */,
 				61C5B6EC242FF9B600091895 /* Services */,
 				61C5B6EB242FF9AC00091895 /* Delegates */,
@@ -137,10 +152,22 @@
 			path = GMail_MUITests;
 			sourceTree = "<group>";
 		};
+		6184969924316385007E025A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6184969A243163A0007E025A /* SubstringToHTMLExtension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		61C5B6EA242FF9A700091895 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				6105C624242FF2F9002E27E7 /* ContentView.swift */,
+				6109D96C2430EF9C00A574A2 /* Email_Row.swift */,
+				6109D96E2430F22D00A574A2 /* Email_DetailsView.swift */,
+				6109D97424310B1000A574A2 /* Create_EMailView.swift */,
+				6109D9762431110C00A574A2 /* MultiLine_TextFieldView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,6 +186,7 @@
 			children = (
 				61FAD877242FFBCF00B346A3 /* SEND */,
 				61FAD876242FFBC800B346A3 /* GET */,
+				618E3FD3243158BA00572682 /* Content_Extractor.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -183,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				61FAD87D242FFE4700B346A3 /* EMail.swift */,
+				6109D9702430FC6000A574A2 /* Sender.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -350,7 +379,14 @@
 			files = (
 				6105C621242FF2F9002E27E7 /* AppDelegate.swift in Sources */,
 				6105C623242FF2F9002E27E7 /* SceneDelegate.swift in Sources */,
+				6109D9772431110C00A574A2 /* MultiLine_TextFieldView.swift in Sources */,
+				6109D96F2430F22D00A574A2 /* Email_DetailsView.swift in Sources */,
+				6109D97524310B1000A574A2 /* Create_EMailView.swift in Sources */,
 				61FAD879242FFBF200B346A3 /* Send_Mail.swift in Sources */,
+				6109D9712430FC6000A574A2 /* Sender.swift in Sources */,
+				6109D96D2430EF9C00A574A2 /* Email_Row.swift in Sources */,
+				618E3FD4243158BA00572682 /* Content_Extractor.swift in Sources */,
+				6184969B243163A0007E025A /* SubstringToHTMLExtension.swift in Sources */,
 				6105C625242FF2F9002E27E7 /* ContentView.swift in Sources */,
 				61FAD87E242FFE4700B346A3 /* EMail.swift in Sources */,
 				61FAD87B242FFCA400B346A3 /* Get_Inbox.swift in Sources */,

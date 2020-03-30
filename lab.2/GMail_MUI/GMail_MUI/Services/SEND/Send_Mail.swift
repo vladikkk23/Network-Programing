@@ -17,8 +17,8 @@ class Send_Mail {
     
     // Login Info
     private var hostname = "smtp.gmail.com"
-    private var username = "Your Gmail Username"
-    private var password = "Your Password"
+    private var username = "ENTER YOUR E-MAIL"
+    private var password = "ENTER YOUR PASSWORD"
     
     // Singleton
     static let shared = Send_Mail()
@@ -41,7 +41,7 @@ class Send_Mail {
 // MARK: Methods
 
     // Send New Mail using SMTP-Session
-    func send() {
+    func send(toEmail email: String, withSubject subject: String, withBody body: String) {
 
         print(#function)
 
@@ -56,11 +56,11 @@ class Send_Mail {
         let builder = MCOMessageBuilder()
         
         // Insert Info
-        builder.header.to = [MCOAddress(displayName: "Receiver Name", mailbox: "Receiver E-Mail Address")!]
-        builder.header.from = MCOAddress(displayName: "Sender Name", mailbox: "Sender E-Mail Address")
+        builder.header.to = [MCOAddress(displayName: email, mailbox: email)!]
+        builder.header.from = MCOAddress(displayName: username, mailbox: username)
         
-        builder.header.subject = "Subject"
-        builder.htmlBody = "This is a test message!"
+        builder.header.subject = subject
+        builder.htmlBody = body
 
         let rfc822Data = builder.data()
         let sendOperation = smtpSession.sendOperation(with: rfc822Data)
@@ -68,7 +68,7 @@ class Send_Mail {
             if (error != nil) {
                 NSLog("Error sending email: \(String(describing: error))")
             } else {
-                NSLog("Successfully sent email!")
+                NSLog("Successfully sent email to \(email)!")
             }
         }
     }
