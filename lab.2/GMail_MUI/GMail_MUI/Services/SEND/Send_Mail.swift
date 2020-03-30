@@ -17,8 +17,8 @@ class Send_Mail {
     
     // Login Info
     private var hostname = "smtp.gmail.com"
-    private var username = "el.zorro.show@gmail.com"
-    private var password = "87897631rvsn5"
+    private var username = "ENTER YOUR E-MAIL"
+    private var password = "ENTER YOUR PASSWORD"
     
     // Singleton
     static let shared = Send_Mail()
