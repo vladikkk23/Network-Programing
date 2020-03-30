@@ -12,6 +12,7 @@ struct Create_EMailView: View {
     @State var receivingEmail = ""
     @State var subject = ""
     @State var content = ""
+    @State private var showingAlert = false
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -24,6 +25,8 @@ struct Create_EMailView: View {
                             .font(.callout)
                             .bold()
                         TextField("Enter an email...", text: $receivingEmail)
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }.padding()
                     
@@ -48,13 +51,23 @@ struct Create_EMailView: View {
         }
         .navigationBarItems(trailing:
             Button(action: {
-                print("SENT")
-                self.presentationMode.wrappedValue.dismiss()
-                
+                if self.receivingEmail.isEmpty || self.subject.isEmpty || self.content.isEmpty {
+                    self.showingAlert = true
+                } else {
+                    Send_Mail.shared.send(toEmail: self.receivingEmail, withSubject: self.subject, withBody: self.content)
+                    
+                    print("SENT")
+                    
+                    self.showingAlert = false
+                    self.presentationMode.wrappedValue.dismiss()
+                }
             }, label: {
                 Text("SEND")
                     .foregroundColor(.green)
-            }))
+            })
+                .alert(isPresented: self.$showingAlert) {
+                    Alert(title: Text("WARNING!"), message: Text("Please complete all fields."), dismissButton: .cancel(Text("Got it!")))
+        })
     }
 }
 

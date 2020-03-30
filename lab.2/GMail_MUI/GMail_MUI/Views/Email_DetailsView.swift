@@ -59,6 +59,6 @@ struct Email_DetailsView: View {
 
 struct Email_DetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        Email_DetailsView(email: EMail(sender: Sender(name: "Google", email: "google@gmail.com"), subject: "Test_Subject", body: "Test_Body", date:"00:00"))
+        Email_DetailsView(email: EMail(sender: Sender(name: "Google", email: "google@gmail.com"), date: "01/01/2001 00:00", subject: "TEST SUBJECT", body: "TEST BODY"))
     }
 }

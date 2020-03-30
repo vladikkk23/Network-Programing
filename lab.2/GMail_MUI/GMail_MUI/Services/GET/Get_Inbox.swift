@@ -9,24 +9,33 @@
 import Foundation
 
 /*
-    A Singleton for extracting Inbox E-Mails.
-*/
-class Get_Inbox {
+ A Singleton for extracting Inbox E-Mails.
+ */
+class Get_Inbox: ObservableObject {
     
-// MARK: Properties
+    // MARK: Properties
     
     // Login Info
     private var hostname = "imap.gmail.com"
-    private var username = "Your Gmail Username"
-    private var password = "Your Password"
+    private var username = "el.zorro.show@gmail.com"
+    private var password = "87897631rvsn5"
     
     // Singleton
     static let shared = Get_Inbox()
     
+    // E-Mails
+    @Published var emails = [EMail]()
+    
+    // Last Received E-Mail
+    var lastEmail: EMail?
+    
+    // How many emails to download
+    let count = 10
+    
     // Session
     var imapSession: MCOIMAPSession = MCOIMAPSession()
     
-    // Configure Session Details
+    // Configure Session Details && Start Fetching E-Mails
     private init() {
         imapSession.hostname = self.hostname
         imapSession.username = self.username
@@ -36,30 +45,49 @@ class Get_Inbox {
         imapSession.authType = MCOAuthType.saslPlain
         imapSession.connectionType = MCOConnectionType.TLS
         imapSession.isCheckCertificateEnabled = false
+        
+        self.fetchMails()
     }
     
-// MARK: Methods
+    // MARK: Methods
     
-    func fetchMails()  {
-        let requestKind: MCOIMAPMessagesRequestKind = .headers
+    // Fetch all E-Mails.
+    private func fetchMails()  {
         let folder = "INBOX"
-        let uids = MCOIndexSet(range: MCORangeMake(1, UINT64_MAX))
         
-        let fetchOperation = imapSession.fetchMessagesOperation(withFolder: folder, requestKind: requestKind, uids: uids)
-
-        fetchOperation?.start({ error, fetchedMessages, vanishedMessages in
-            // Check for an error:
-            if error != nil {
-                if let error = error {
-                    print("Error downloading message headers:\(error)")
+        self.emails = [EMail]()
+        
+        for number in 0...self.count {
+            let operation = imapSession.fetchMessageOperation(withFolder: folder, number: UInt32(number))
+            
+            operation?.start({ (error, data) in
+                let messageParser = MCOMessageParser(data: data)
+                
+                let msgHTMLBody = messageParser?.htmlRendering(with: nil)
+                
+                guard let messageHTML = msgHTMLBody else { return }
+                
+                let contentExtractor = Content_Extractor(contentHTML: messageHTML)
+                
+                if number == 0 {
+                    DispatchQueue.main.async {
+                        self.lastEmail = contentExtractor.email
+                    }
+                } else if number == self.count {
+                    DispatchQueue.main.async {
+                        self.emails.insert(self.lastEmail!, at: 0)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.emails.insert(contentExtractor.email!, at: 0)
+                    }
                 }
-            }
-
-            // Print E-Mails
-            if let fetchedMessages = fetchedMessages {
-                print("The post man delivered:\n \(fetchedMessages)")
-            }
-
-        })
+            })
+        }
+    }
+    
+    // Check for new E-Mails.
+    func updateInbox() {
+        self.fetchMails()
     }
 }
