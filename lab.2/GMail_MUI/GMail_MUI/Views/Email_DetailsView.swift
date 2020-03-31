@@ -21,7 +21,7 @@ struct Email_DetailsView: View {
                         .bold()
                     
                     Divider()
-
+                    
                     HStack {
                         Text("From: \(email.sender.name)")
                             .font(.headline)

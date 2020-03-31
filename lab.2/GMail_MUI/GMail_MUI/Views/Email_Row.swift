@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct Email_Row: View {
-
+    
     var email: EMail
-
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {

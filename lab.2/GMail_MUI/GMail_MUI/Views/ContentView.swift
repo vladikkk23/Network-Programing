@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-        
+    
     @ObservedObject var inbox = Get_Inbox.shared
     
     var body: some View {
@@ -24,7 +24,7 @@ struct ContentView: View {
                 Button(action: {
                     self.inbox.updateInbox()
                 }, label: {
-                    Text("GET E-Mails")
+                    Text("Update INBOX")
                         .foregroundColor(.red)
                 })
                 , trailing:

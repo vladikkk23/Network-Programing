@@ -108,7 +108,22 @@ class Content_Extractor {
         return self.contentHTML[valueRange].htmlToString
     }
     
-    private func getEmailAsPlainText() -> EMail {
+    // Check E-Mail contents
+    private func checkEmailIntegrity(ofEmail email: EMail) -> Bool {
+        
+        if email.sender.name == "LEFT RANGE ERROR" || email.sender.email == "LEFT RANGE ERROR" || email.date == "LEFT RANGE ERROR", email.subject == "LEFT RANGE ERROR" || email.body == "LEFT RANGE ERROR" {
+            return false
+        }
+        
+        if email.sender.name == "RIGHT RANGE ERROR" || email.sender.email == "RIGHT RANGE ERROR" || email.date == "RIGHT RANGE ERROR", email.subject == "RIGHT RANGE ERROR" || email.body == "RIGHT RANGE ERROR" {
+            return false
+        }
+        
+        return true
+    }
+    
+    // Perform a check of the E-Mail and return it if it's ok
+    private func getEmailAsPlainText() -> EMail? {
         let senderName = self.extractSenderNameAsText()
         let senderEmail = self.extractSenderEmailAsText()
         let date = self.extractDateAsText()
@@ -118,6 +133,10 @@ class Content_Extractor {
         let sender = Sender(name: senderName.description, email: senderEmail.description)
         let email = EMail(sender: sender, date: date.description, subject: subject.description, body: body)
         
-        return email
+        let goodEmail = self.checkEmailIntegrity(ofEmail: email)
+        
+        print(#function + " --> \(goodEmail)")
+        
+        return goodEmail ? email : nil
     }
 }

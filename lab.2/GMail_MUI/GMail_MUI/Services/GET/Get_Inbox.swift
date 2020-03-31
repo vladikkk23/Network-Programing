@@ -17,20 +17,20 @@ class Get_Inbox: ObservableObject {
     
     // Login Info
     private var hostname = "imap.gmail.com"
-    private var username = "ENTER YOUR E-MAIL"
-    private var password = "ENTER YOUR PASSWORD"
+    private var username = "YOUR USERNAME"
+    private var password = "YOUR PASSWORD"
     
     // Singleton
     static let shared = Get_Inbox()
     
-    // E-Mails
+    // Published E-Mails
     @Published var emails = [EMail]()
     
     // Last Received E-Mail
     var lastEmail: EMail?
     
     // How many emails to download
-    let count = 10
+    var count = 10
     
     // Session
     var imapSession: MCOIMAPSession = MCOIMAPSession()
@@ -46,20 +46,23 @@ class Get_Inbox: ObservableObject {
         imapSession.connectionType = MCOConnectionType.TLS
         imapSession.isCheckCertificateEnabled = false
         
-        self.fetchMails()
+        self.fetchMails(count: self.count)
     }
     
     // MARK: Methods
     
     // Fetch all E-Mails.
-    private func fetchMails()  {
+    private func fetchMails(count: Int)  {
         let folder = "INBOX"
         
-        self.emails = [EMail]()
+        var EMails = [EMail]()
         
         for number in 0...self.count {
+            
+            // Define IMAP-Fetch Operation
             let operation = imapSession.fetchMessageOperation(withFolder: folder, number: UInt32(number))
             
+            // Start IMAP-Fetch Operation
             operation?.start({ (error, data) in
                 let messageParser = MCOMessageParser(data: data)
                 
@@ -69,25 +72,48 @@ class Get_Inbox: ObservableObject {
                 
                 let contentExtractor = Content_Extractor(contentHTML: messageHTML)
                 
-                if number == 0 {
-                    DispatchQueue.main.async {
-                        self.lastEmail = contentExtractor.email
-                    }
-                } else if number == self.count {
-                    DispatchQueue.main.async {
-                        self.emails.insert(self.lastEmail!, at: 0)
-                    }
+                if number == 0 && count > 1 {
+                    
+                    guard let emailToInsert = contentExtractor.email else { return }
+                    
+                    self.lastEmail = emailToInsert
                 } else {
-                    DispatchQueue.main.async {
-                        self.emails.insert(contentExtractor.email!, at: 0)
+                    if number == count && count > 1 {
+                        DispatchQueue.main.async {
+                            print("########## UI Thread -- NUMBER: \(number)##########")
+                            
+                            EMails.insert(self.lastEmail!, at: 0)
+                            self.emails = EMails
+                        }
+                    } else if number == count && count == 1 {
+                        DispatchQueue.main.async {
+                            print("########## UI Thread -- NUMBER: \(number)##########")
+                            
+                            var temp = self.emails.reversed() as [EMail]
+                            temp.append(contentsOf: EMails.reversed())
+                            
+                            DispatchQueue.main.async {
+                                self.emails = temp.reversed() as [EMail]
+                            }
+                        }
+                    } else {
+                        print("~~~~~~~~~~MESSAGE \(number)~~~~~~~~~~")
+                        
+                        guard let emailToInsert = contentExtractor.email else { return }
+                        
+                        EMails.insert(emailToInsert, at: 0)
                     }
                 }
             })
         }
     }
     
-    // Check for new E-Mails.
+    // Update INBOX with new E-Mails.
     func updateInbox() {
-        self.fetchMails()
+        if self.emails.isEmpty {
+            self.fetchMails(count: self.count)
+        } else {
+            self.fetchMails(count: 1)
+        }
     }
 }
