@@ -8,6 +8,9 @@
 
 import Foundation
 
+/*
+ A extension to transform a HTML Substring into a Plain-Text String.
+ */
 extension Substring {
     var htmlToAttributedString: NSAttributedString? {
         guard let data = data(using: .utf8) else { return NSAttributedString() }
