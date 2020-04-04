@@ -1,0 +1,656 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6136FB7624367E8D00C6F4E6 /* User_Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6136FB7524367E8D00C6F4E6 /* User_Result.swift */; };
+		614C09E12437773F00B6A225 /* UsersRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614C09E02437773F00B6A225 /* UsersRequests.swift */; };
+		614C09E32437782200B6A225 /* Posts_Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614C09E22437782200B6A225 /* Posts_Requests.swift */; };
+		614C09E5243779E600B6A225 /* CommentsRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614C09E4243779E600B6A225 /* CommentsRequests.swift */; };
+		6196593F24354D4300B5E07C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196593E24354D4300B5E07C /* AppDelegate.swift */; };
+		6196594124354D4300B5E07C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196594024354D4300B5E07C /* SceneDelegate.swift */; };
+		6196594324354D4300B5E07C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196594224354D4300B5E07C /* ContentView.swift */; };
+		6196594524354D4500B5E07C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6196594424354D4500B5E07C /* Assets.xcassets */; };
+		6196594824354D4500B5E07C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6196594724354D4500B5E07C /* Preview Assets.xcassets */; };
+		6196594B24354D4500B5E07C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6196594924354D4500B5E07C /* LaunchScreen.storyboard */; };
+		6196595624354D4500B5E07C /* GoRestAPIwithProxyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196595524354D4500B5E07C /* GoRestAPIwithProxyTests.swift */; };
+		6196596424354DB400B5E07C /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196596324354DB400B5E07C /* WebService.swift */; };
+		619DDE172436290200CFA2D4 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DDE162436290200CFA2D4 /* General.swift */; };
+		61C9C57024377F1A004A7593 /* AlbumsRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C9C56F24377F1A004A7593 /* AlbumsRequests.swift */; };
+		61C9C57224377FEC004A7593 /* Albums_Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C9C57124377FEC004A7593 /* Albums_Result.swift */; };
+		61C9C577243781F1004A7593 /* Posts_Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C9C576243781F1004A7593 /* Posts_Result.swift */; };
+		61D7E7D9243907F300C4492E /* Comments_Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7E7D8243907F300C4492E /* Comments_Result.swift */; };
+		61D7E7DC2439105B00C4492E /* Photos_Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7E7DB2439105B00C4492E /* Photos_Result.swift */; };
+		61D7E7DE2439116F00C4492E /* PhotosRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7E7DD2439116F00C4492E /* PhotosRequests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6196595224354D4500B5E07C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6196593324354D4300B5E07C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6196593A24354D4300B5E07C;
+			remoteInfo = GoRestAPIwithProxy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6136FB7524367E8D00C6F4E6 /* User_Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User_Result.swift; sourceTree = "<group>"; };
+		614C09E02437773F00B6A225 /* UsersRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRequests.swift; sourceTree = "<group>"; };
+		614C09E22437782200B6A225 /* Posts_Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts_Requests.swift; sourceTree = "<group>"; };
+		614C09E4243779E600B6A225 /* CommentsRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsRequests.swift; sourceTree = "<group>"; };
+		6196593B24354D4300B5E07C /* GoRestAPIwithProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoRestAPIwithProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6196593E24354D4300B5E07C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6196594024354D4300B5E07C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		6196594224354D4300B5E07C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6196594424354D4500B5E07C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6196594724354D4500B5E07C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6196594A24354D4500B5E07C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6196594C24354D4500B5E07C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6196595124354D4500B5E07C /* GoRestAPIwithProxyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoRestAPIwithProxyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6196595524354D4500B5E07C /* GoRestAPIwithProxyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRestAPIwithProxyTests.swift; sourceTree = "<group>"; };
+		6196595724354D4500B5E07C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6196596324354DB400B5E07C /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		619DDE162436290200CFA2D4 /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
+		61C9C56F24377F1A004A7593 /* AlbumsRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsRequests.swift; sourceTree = "<group>"; };
+		61C9C57124377FEC004A7593 /* Albums_Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Albums_Result.swift; sourceTree = "<group>"; };
+		61C9C576243781F1004A7593 /* Posts_Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts_Result.swift; sourceTree = "<group>"; };
+		61D7E7D8243907F300C4492E /* Comments_Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments_Result.swift; sourceTree = "<group>"; };
+		61D7E7DB2439105B00C4492E /* Photos_Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos_Result.swift; sourceTree = "<group>"; };
+		61D7E7DD2439116F00C4492E /* PhotosRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRequests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6196593824354D4300B5E07C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6196594E24354D4500B5E07C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		614C09D92437768400B6A225 /* HTTP_Requests */ = {
+			isa = PBXGroup;
+			children = (
+				614C09DE243776D300B6A225 /* ALBUMS */,
+				614C09DD243776CC00B6A225 /* COMMENTS */,
+				614C09DF243776DA00B6A225 /* PHOTOS */,
+				614C09DC243776C400B6A225 /* POSTS */,
+				614C09DB243776BE00B6A225 /* USERS */,
+			);
+			path = HTTP_Requests;
+			sourceTree = "<group>";
+		};
+		614C09DA2437769800B6A225 /* Web Service */ = {
+			isa = PBXGroup;
+			children = (
+				6196596324354DB400B5E07C /* WebService.swift */,
+			);
+			path = "Web Service";
+			sourceTree = "<group>";
+		};
+		614C09DB243776BE00B6A225 /* USERS */ = {
+			isa = PBXGroup;
+			children = (
+				614C09E02437773F00B6A225 /* UsersRequests.swift */,
+			);
+			path = USERS;
+			sourceTree = "<group>";
+		};
+		614C09DC243776C400B6A225 /* POSTS */ = {
+			isa = PBXGroup;
+			children = (
+				614C09E22437782200B6A225 /* Posts_Requests.swift */,
+			);
+			path = POSTS;
+			sourceTree = "<group>";
+		};
+		614C09DD243776CC00B6A225 /* COMMENTS */ = {
+			isa = PBXGroup;
+			children = (
+				614C09E4243779E600B6A225 /* CommentsRequests.swift */,
+			);
+			path = COMMENTS;
+			sourceTree = "<group>";
+		};
+		614C09DE243776D300B6A225 /* ALBUMS */ = {
+			isa = PBXGroup;
+			children = (
+				61C9C56F24377F1A004A7593 /* AlbumsRequests.swift */,
+			);
+			path = ALBUMS;
+			sourceTree = "<group>";
+		};
+		614C09DF243776DA00B6A225 /* PHOTOS */ = {
+			isa = PBXGroup;
+			children = (
+				61D7E7DD2439116F00C4492E /* PhotosRequests.swift */,
+			);
+			path = PHOTOS;
+			sourceTree = "<group>";
+		};
+		6196593224354D4300B5E07C = {
+			isa = PBXGroup;
+			children = (
+				6196593D24354D4300B5E07C /* GoRestAPIwithProxy */,
+				6196595424354D4500B5E07C /* GoRestAPIwithProxyTests */,
+				6196593C24354D4300B5E07C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6196593C24354D4300B5E07C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6196593B24354D4300B5E07C /* GoRestAPIwithProxy.app */,
+				6196595124354D4500B5E07C /* GoRestAPIwithProxyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6196593D24354D4300B5E07C /* GoRestAPIwithProxy */ = {
+			isa = PBXGroup;
+			children = (
+				6196596224354D9400B5E07C /* Services */,
+				6196596124354D8600B5E07C /* Delegates */,
+				6196596024354D8100B5E07C /* Views */,
+				6196594424354D4500B5E07C /* Assets.xcassets */,
+				6196594924354D4500B5E07C /* LaunchScreen.storyboard */,
+				6196594C24354D4500B5E07C /* Info.plist */,
+				6196594624354D4500B5E07C /* Preview Content */,
+			);
+			path = GoRestAPIwithProxy;
+			sourceTree = "<group>";
+		};
+		6196594624354D4500B5E07C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6196594724354D4500B5E07C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6196595424354D4500B5E07C /* GoRestAPIwithProxyTests */ = {
+			isa = PBXGroup;
+			children = (
+				6196595524354D4500B5E07C /* GoRestAPIwithProxyTests.swift */,
+				6196595724354D4500B5E07C /* Info.plist */,
+			);
+			path = GoRestAPIwithProxyTests;
+			sourceTree = "<group>";
+		};
+		6196596024354D8100B5E07C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6196594224354D4300B5E07C /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6196596124354D8600B5E07C /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				6196593E24354D4300B5E07C /* AppDelegate.swift */,
+				6196594024354D4300B5E07C /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		6196596224354D9400B5E07C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6196596524355B7400B5E07C /* JSONModels */,
+				614C09DA2437769800B6A225 /* Web Service */,
+				614C09D92437768400B6A225 /* HTTP_Requests */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6196596524355B7400B5E07C /* JSONModels */ = {
+			isa = PBXGroup;
+			children = (
+				61D7E7DA2439104B00C4492E /* Photos */,
+				61D7E7D7243907DB00C4492E /* Comments */,
+				61C9C575243781DF004A7593 /* Posts */,
+				61C9C5742437805C004A7593 /* User */,
+				61C9C5732437801C004A7593 /* Albums */,
+				619DDE162436290200CFA2D4 /* General.swift */,
+			);
+			path = JSONModels;
+			sourceTree = "<group>";
+		};
+		61C9C5732437801C004A7593 /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				61C9C57124377FEC004A7593 /* Albums_Result.swift */,
+			);
+			path = Albums;
+			sourceTree = "<group>";
+		};
+		61C9C5742437805C004A7593 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				6136FB7524367E8D00C6F4E6 /* User_Result.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		61C9C575243781DF004A7593 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				61C9C576243781F1004A7593 /* Posts_Result.swift */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
+		61D7E7D7243907DB00C4492E /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				61D7E7D8243907F300C4492E /* Comments_Result.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		61D7E7DA2439104B00C4492E /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				61D7E7DB2439105B00C4492E /* Photos_Result.swift */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6196593A24354D4300B5E07C /* GoRestAPIwithProxy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6196595A24354D4500B5E07C /* Build configuration list for PBXNativeTarget "GoRestAPIwithProxy" */;
+			buildPhases = (
+				6196593724354D4300B5E07C /* Sources */,
+				6196593824354D4300B5E07C /* Frameworks */,
+				6196593924354D4300B5E07C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoRestAPIwithProxy;
+			productName = GoRestAPIwithProxy;
+			productReference = 6196593B24354D4300B5E07C /* GoRestAPIwithProxy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6196595024354D4500B5E07C /* GoRestAPIwithProxyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6196595D24354D4500B5E07C /* Build configuration list for PBXNativeTarget "GoRestAPIwithProxyTests" */;
+			buildPhases = (
+				6196594D24354D4500B5E07C /* Sources */,
+				6196594E24354D4500B5E07C /* Frameworks */,
+				6196594F24354D4500B5E07C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6196595324354D4500B5E07C /* PBXTargetDependency */,
+			);
+			name = GoRestAPIwithProxyTests;
+			productName = GoRestAPIwithProxyTests;
+			productReference = 6196595124354D4500B5E07C /* GoRestAPIwithProxyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6196593324354D4300B5E07C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = PR;
+				TargetAttributes = {
+					6196593A24354D4300B5E07C = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					6196595024354D4500B5E07C = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 6196593A24354D4300B5E07C;
+					};
+				};
+			};
+			buildConfigurationList = 6196593624354D4300B5E07C /* Build configuration list for PBXProject "GoRestAPIwithProxy" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6196593224354D4300B5E07C;
+			productRefGroup = 6196593C24354D4300B5E07C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6196593A24354D4300B5E07C /* GoRestAPIwithProxy */,
+				6196595024354D4500B5E07C /* GoRestAPIwithProxyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6196593924354D4300B5E07C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6196594B24354D4500B5E07C /* LaunchScreen.storyboard in Resources */,
+				6196594824354D4500B5E07C /* Preview Assets.xcassets in Resources */,
+				6196594524354D4500B5E07C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6196594F24354D4500B5E07C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6196593724354D4300B5E07C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6196593F24354D4300B5E07C /* AppDelegate.swift in Sources */,
+				6136FB7624367E8D00C6F4E6 /* User_Result.swift in Sources */,
+				61C9C57224377FEC004A7593 /* Albums_Result.swift in Sources */,
+				6196594124354D4300B5E07C /* SceneDelegate.swift in Sources */,
+				61C9C577243781F1004A7593 /* Posts_Result.swift in Sources */,
+				61D7E7D9243907F300C4492E /* Comments_Result.swift in Sources */,
+				614C09E32437782200B6A225 /* Posts_Requests.swift in Sources */,
+				61D7E7DC2439105B00C4492E /* Photos_Result.swift in Sources */,
+				6196596424354DB400B5E07C /* WebService.swift in Sources */,
+				614C09E12437773F00B6A225 /* UsersRequests.swift in Sources */,
+				614C09E5243779E600B6A225 /* CommentsRequests.swift in Sources */,
+				61C9C57024377F1A004A7593 /* AlbumsRequests.swift in Sources */,
+				619DDE172436290200CFA2D4 /* General.swift in Sources */,
+				61D7E7DE2439116F00C4492E /* PhotosRequests.swift in Sources */,
+				6196594324354D4300B5E07C /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6196594D24354D4500B5E07C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6196595624354D4500B5E07C /* GoRestAPIwithProxyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6196595324354D4500B5E07C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6196593A24354D4300B5E07C /* GoRestAPIwithProxy */;
+			targetProxy = 6196595224354D4500B5E07C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6196594924354D4500B5E07C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6196594A24354D4500B5E07C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6196595824354D4500B5E07C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6196595924354D4500B5E07C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6196595B24354D4500B5E07C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"GoRestAPIwithProxy/Preview Content\"";
+				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
+				ENABLE_PREVIEWS = YES;
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "$(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/* $(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/";
+				INFOPLIST_FILE = GoRestAPIwithProxy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SwiftUI.GoRestAPIwithProxy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6196595C24354D4500B5E07C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"GoRestAPIwithProxy/Preview Content\"";
+				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
+				ENABLE_PREVIEWS = YES;
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "$(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/* $(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/";
+				INFOPLIST_FILE = GoRestAPIwithProxy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SwiftUI.GoRestAPIwithProxy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6196595E24354D4500B5E07C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
+				INFOPLIST_FILE = GoRestAPIwithProxyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SwiftUI.GoRestAPIwithProxyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoRestAPIwithProxy.app/GoRestAPIwithProxy";
+			};
+			name = Debug;
+		};
+		6196595F24354D4500B5E07C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
+				INFOPLIST_FILE = GoRestAPIwithProxyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SwiftUI.GoRestAPIwithProxyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoRestAPIwithProxy.app/GoRestAPIwithProxy";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6196593624354D4300B5E07C /* Build configuration list for PBXProject "GoRestAPIwithProxy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6196595824354D4500B5E07C /* Debug */,
+				6196595924354D4500B5E07C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6196595A24354D4500B5E07C /* Build configuration list for PBXNativeTarget "GoRestAPIwithProxy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6196595B24354D4500B5E07C /* Debug */,
+				6196595C24354D4500B5E07C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6196595D24354D4500B5E07C /* Build configuration list for PBXNativeTarget "GoRestAPIwithProxyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6196595E24354D4500B5E07C /* Debug */,
+				6196595F24354D4500B5E07C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6196593324354D4300B5E07C /* Project object */;
+}
