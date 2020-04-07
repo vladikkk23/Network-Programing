@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6123A359243CBF980005DD48 /* New_Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6123A358243CBF980005DD48 /* New_Post.swift */; };
+		6123A35E243CCCBC0005DD48 /* POST_Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6123A35D243CCCBC0005DD48 /* POST_Response.swift */; };
+		6123A361243CD1730005DD48 /* New_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6123A360243CD1730005DD48 /* New_User.swift */; };
+		6123A364243CE1D80005DD48 /* Date_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6123A363243CE1D80005DD48 /* Date_Extensions.swift */; };
 		6136FB7624367E8D00C6F4E6 /* User_Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6136FB7524367E8D00C6F4E6 /* User_Result.swift */; };
 		614C09E12437773F00B6A225 /* UsersRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614C09E02437773F00B6A225 /* UsersRequests.swift */; };
 		614C09E32437782200B6A225 /* Posts_Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614C09E22437782200B6A225 /* Posts_Requests.swift */; };
@@ -39,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6123A358243CBF980005DD48 /* New_Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New_Post.swift; sourceTree = "<group>"; };
+		6123A35D243CCCBC0005DD48 /* POST_Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POST_Response.swift; sourceTree = "<group>"; };
+		6123A360243CD1730005DD48 /* New_User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New_User.swift; sourceTree = "<group>"; };
+		6123A363243CE1D80005DD48 /* Date_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date_Extensions.swift; sourceTree = "<group>"; };
 		6136FB7524367E8D00C6F4E6 /* User_Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User_Result.swift; sourceTree = "<group>"; };
 		614C09E02437773F00B6A225 /* UsersRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRequests.swift; sourceTree = "<group>"; };
 		614C09E22437782200B6A225 /* Posts_Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts_Requests.swift; sourceTree = "<group>"; };
@@ -82,6 +90,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6123A35A243CCB4C0005DD48 /* POST */ = {
+			isa = PBXGroup;
+			children = (
+				6123A35F243CD15E0005DD48 /* Users */,
+				6123A35C243CCBEF0005DD48 /* Posts */,
+				6123A35D243CCCBC0005DD48 /* POST_Response.swift */,
+			);
+			path = POST;
+			sourceTree = "<group>";
+		};
+		6123A35B243CCB540005DD48 /* GET */ = {
+			isa = PBXGroup;
+			children = (
+				61D7E7DA2439104B00C4492E /* Photos */,
+				61D7E7D7243907DB00C4492E /* Comments */,
+				61C9C575243781DF004A7593 /* Posts */,
+				61C9C5742437805C004A7593 /* User */,
+				61C9C5732437801C004A7593 /* Albums */,
+			);
+			path = GET;
+			sourceTree = "<group>";
+		};
+		6123A35C243CCBEF0005DD48 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				6123A358243CBF980005DD48 /* New_Post.swift */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
+		6123A35F243CD15E0005DD48 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				6123A360243CD1730005DD48 /* New_User.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		6123A362243CE1C20005DD48 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6123A363243CE1D80005DD48 /* Date_Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		614C09D92437768400B6A225 /* HTTP_Requests */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +217,7 @@
 		6196593D24354D4300B5E07C /* GoRestAPIwithProxy */ = {
 			isa = PBXGroup;
 			children = (
+				6123A362243CE1C20005DD48 /* Helpers */,
 				6196596224354D9400B5E07C /* Services */,
 				6196596124354D8600B5E07C /* Delegates */,
 				6196596024354D8100B5E07C /* Views */,
@@ -221,12 +276,9 @@
 		6196596524355B7400B5E07C /* JSONModels */ = {
 			isa = PBXGroup;
 			children = (
-				61D7E7DA2439104B00C4492E /* Photos */,
-				61D7E7D7243907DB00C4492E /* Comments */,
-				61C9C575243781DF004A7593 /* Posts */,
-				61C9C5742437805C004A7593 /* User */,
-				61C9C5732437801C004A7593 /* Albums */,
+				6123A35B243CCB540005DD48 /* GET */,
 				619DDE162436290200CFA2D4 /* General.swift */,
+				6123A35A243CCB4C0005DD48 /* POST */,
 			);
 			path = JSONModels;
 			sourceTree = "<group>";
@@ -372,6 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6123A364243CE1D80005DD48 /* Date_Extensions.swift in Sources */,
 				6196593F24354D4300B5E07C /* AppDelegate.swift in Sources */,
 				6136FB7624367E8D00C6F4E6 /* User_Result.swift in Sources */,
 				61C9C57224377FEC004A7593 /* Albums_Result.swift in Sources */,
@@ -380,13 +433,16 @@
 				61D7E7D9243907F300C4492E /* Comments_Result.swift in Sources */,
 				614C09E32437782200B6A225 /* Posts_Requests.swift in Sources */,
 				61D7E7DC2439105B00C4492E /* Photos_Result.swift in Sources */,
+				6123A359243CBF980005DD48 /* New_Post.swift in Sources */,
 				6196596424354DB400B5E07C /* WebService.swift in Sources */,
 				614C09E12437773F00B6A225 /* UsersRequests.swift in Sources */,
 				614C09E5243779E600B6A225 /* CommentsRequests.swift in Sources */,
 				61C9C57024377F1A004A7593 /* AlbumsRequests.swift in Sources */,
 				619DDE172436290200CFA2D4 /* General.swift in Sources */,
 				61D7E7DE2439116F00C4492E /* PhotosRequests.swift in Sources */,
+				6123A361243CD1730005DD48 /* New_User.swift in Sources */,
 				6196594324354D4300B5E07C /* ContentView.swift in Sources */,
+				6123A35E243CCCBC0005DD48 /* POST_Response.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,7 +598,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GoRestAPIwithProxy/Preview Content\"";
 				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
 				ENABLE_PREVIEWS = YES;
-				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "$(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/* $(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/";
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "$(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/ $(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/POST/* $(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/GET/*";
 				INFOPLIST_FILE = GoRestAPIwithProxy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -563,7 +619,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GoRestAPIwithProxy/Preview Content\"";
 				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
 				ENABLE_PREVIEWS = YES;
-				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "$(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/* $(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/";
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "$(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/ $(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/POST/* $(SRCROOT)/GoRestAPIwithProxy/Services/JSONModels/GET/*";
 				INFOPLIST_FILE = GoRestAPIwithProxy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

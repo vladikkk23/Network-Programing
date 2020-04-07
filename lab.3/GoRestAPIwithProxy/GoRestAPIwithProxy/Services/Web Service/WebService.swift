@@ -106,23 +106,10 @@ class WebService {
                 completion(nil)
                 return
             }
-            
-            //            let encodingName = response?.textEncodingName != nil ? response?.textEncodingName : "utf-8"
-            //
-            //            let encoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding(encodingName as CFString?))
-            //            let stringData = String(data: data!, encoding: String.Encoding(rawValue: UInt(encoding)))
-            
             session.invalidateAndCancel()
             completion(data)
         }.resume()
     }
-    
-    // MARK: Methods -> GET (PHOTOS)
-    
-    // MARK: Methods -> POST (PHOTOS)
-    
-    
-    
     // MARK: Methods -> HEAD
     
     

@@ -16,10 +16,12 @@ struct ContentView: View {
                     //                    UsersRequests.shared.GET_ALL_USERS()
                     //                    PostsRequests.shared.GET_ALL_POSTS()
                     //                    CommentsRequests.shared.GET_ALL_COMMENTS()
-//                    AlbumsRequests.shared.GET_ALL_ALBUMS()
-                    PhotosRequests.shared.GET_ALL_PHOTOS()
+                    //                    AlbumsRequests.shared.GET_ALL_ALBUMS()
+                    //                    PhotosRequests.shared.GET_ALL_PHOTOS()
+                    let newUser = New_User(email: "example02@mail.com", first_name: "lexy", last_name: "butch", gender: .female, dob: .init(timeIntervalSinceNow: .init(integerLiteral: -662256000)), phone: "00112233445", website: .init(href: "https://bit.ly/IqT6zt"), address: "Platform 3/4 end of rainbow street", status: .active)
+                    UsersRequests.shared.POST_NEW_User(withData: newUser)
                 }) {
-                    Text("GET ALL POSTS")
+                    Text("POST NEW USER")
                         .foregroundColor(.red)
                 }
                 
@@ -27,7 +29,7 @@ struct ContentView: View {
                     //                    UsersRequests.shared.GET_USER_BY_ID(id: 632)
                     //                    PostsRequests.shared.GET_POSTS_FOR_USER(withID: 632)
                     //                    CommentsRequests.shared.GET_COMMENT_BY_ID(id: 4)
-//                    AlbumsRequests.shared.GET_ALBUMS_FOR_USER(withID: 1642)
+                    //                    AlbumsRequests.shared.GET_ALBUMS_FOR_USER(withID: 1642)
                     PhotosRequests.shared.GET_PHOTOS_FROM_ALBUM(withID: 1007)
                 }) {
                     Text("GET POSTS FOR USER WITH ID 632")
@@ -37,8 +39,8 @@ struct ContentView: View {
                 Button(action: {
                     //                    UsersRequests.shared.GET_USER_BY_FIRST_NAME(name: "john")
                     //                    PostsRequests.shared.GET_POSTS_WITH_TITLE(containing: "Veritatis sed soluta omnis.")
-//                    CommentsRequests.shared.GET_COMMENTS_FOR_POST(withID: 3218)
-//                    AlbumsRequests.shared.GET_ALBUMS_WITH_TITLE(containing: "Enim est quis veniam reprehenderit dicta.")
+                    //                    CommentsRequests.shared.GET_COMMENTS_FOR_POST(withID: 3218)
+                    //                    AlbumsRequests.shared.GET_ALBUMS_WITH_TITLE(containing: "Enim est quis veniam reprehenderit dicta.")
                     PhotosRequests.shared.GET_PHOTOS_WITH_TITLE(containing: "Aut ad veniam facilis aliquam voluptatum eum. Rerum distinctio sint consequatur et ut nihil.")
                 }) {
                     Text("GET ALL POSTS WITH TITLE: \"Veritatis sed soluta\" ")
@@ -47,8 +49,8 @@ struct ContentView: View {
                 
                 Button(action: {
                     //                    PostsRequests.shared.GET_POST_BY_ID(id: 173)
-//                    CommentsRequests.shared.GET_COMMENTS_FOR_USER(withName: "Anderson Jaskolski")
-//                    AlbumsRequests.shared.GET_ALBUM_BY_ID(id: 1)
+                    //                    CommentsRequests.shared.GET_COMMENTS_FOR_USER(withName: "Anderson Jaskolski")
+                    //                    AlbumsRequests.shared.GET_ALBUM_BY_ID(id: 1)
                     PhotosRequests.shared.GET_PHOTO_BY_ID(id: 2)
                 }) {
                     Text("GET POST BY ID")

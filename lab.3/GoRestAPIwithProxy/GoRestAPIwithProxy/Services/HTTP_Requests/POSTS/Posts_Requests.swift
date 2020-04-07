@@ -78,23 +78,23 @@ class PostsRequests {
     }
     
     // Return the posts wich containt '$content' in body
-//    func GET_POSTS_WITH_BODY(containing content: String) {
-//        var urlString = "http://localhost:8011/posts"
-//        let verb = "body=\(content)"
-//
-//        self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: verb) { (data) in
-//            print(#function)
-//            print(data ?? "EMPTY")
-//
-//            guard let jsonData = data else { return }
-//
-//            guard let postsResult = try? JSONDecoder().decode(Posts_Result.self, from: jsonData) else { return }
-//
-//            for post in postsResult.posts {
-//                print(post)
-//            }
-//        }
-//    }
+    //    func GET_POSTS_WITH_BODY(containing content: String) {
+    //        var urlString = "http://localhost:8011/posts"
+    //        let verb = "body=\(content)"
+    //
+    //        self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: verb) { (data) in
+    //            print(#function)
+    //            print(data ?? "EMPTY")
+    //
+    //            guard let jsonData = data else { return }
+    //
+    //            guard let postsResult = try? JSONDecoder().decode(Posts_Result.self, from: jsonData) else { return }
+    //
+    //            for post in postsResult.posts {
+    //                print(post)
+    //            }
+    //        }
+    //    }
     
     // MARK: Methods -> GET (POST)
     

@@ -22,7 +22,7 @@ struct Single_Meta: Codable {
     let success: Bool
     let code: Int
     let message: String
-    let rateLimit: RateLimit
+    let rateLimit: RateLimit?
 }
 
 // MARK: - RateLimit
