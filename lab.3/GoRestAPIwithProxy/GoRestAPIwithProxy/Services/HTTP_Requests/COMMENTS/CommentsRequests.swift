@@ -116,4 +116,51 @@ class CommentsRequests {
     
     // MARK: Methods -> POST (COMMENTS)
     
+    // Add a new comment with data = '$comment'
+    func POST_NEW_COMMENT(withData comment: New_Comment) {
+        let urlString = "http://localhost:8011/comments?access-token=\(self.webService.token)"
+        
+        guard let url = URL(string: urlString) else { return }
+                
+        let body = ["post_id": comment.postID, "name": comment.name, "email": comment.email, "body": comment.body]
+        
+        let jsonString = body.reduce("") { "\($0)\($1.0)=\($1.1)&" }
+        
+        let jsonData = jsonString.data(using: .utf8, allowLossyConversion: false)!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(NSLocalizedString("lang", comment: ""), forHTTPHeaderField:"Accept-Language")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let err = error {
+                fatalError("An error ocurred: \(err)")
+            }
+            
+            guard let _ = response as? HTTPURLResponse else { return }
+            
+            guard let data = data else { return }
+            
+            if let _ = try? JSONDecoder().decode(POST_Response.self, from: data) {
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                print("New Comment Added Successfuly!")
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                print(comment)
+            } else {
+                guard let resData = try? JSONDecoder().decode(POST_Resp.self, from: data) else { return }
+                print(resData.meta.success)
+                print(resData.meta.code)
+                print(resData.meta.message)
+                print(resData.meta.rateLimit ?? "NO Rate Limit")
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                for field in resData.result {
+                    print(field.field)
+                    print(field.message)
+                }
+            }
+        }.resume()
+    }
 }

@@ -96,4 +96,52 @@ class AlbumsRequests {
     }
     
     // MARK: Methods -> POST (ALBUMS)
+    
+    // Add a new comment with data = '$album'
+    func POST_NEW_ALBUM(withData album: New_Album) {
+        let urlString = "http://localhost:8011/albums?access-token=\(self.webService.token)"
+        
+        guard let url = URL(string: urlString) else { return }
+                
+        let body = ["user_id": album.userID, "title": album.title]
+        
+        let jsonString = body.reduce("") { "\($0)\($1.0)=\($1.1)&" }
+        
+        let jsonData = jsonString.data(using: .utf8, allowLossyConversion: false)!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(NSLocalizedString("lang", comment: ""), forHTTPHeaderField:"Accept-Language")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let err = error {
+                fatalError("An error ocurred: \(err)")
+            }
+            
+            guard let _ = response as? HTTPURLResponse else { return }
+            
+            guard let data = data else { return }
+            
+            if let _ = try? JSONDecoder().decode(POST_Response.self, from: data) {
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                print("New Album Added Successfuly!")
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                print(album)
+            } else {
+                guard let resData = try? JSONDecoder().decode(POST_Resp.self, from: data) else { return }
+                print(resData.meta.success)
+                print(resData.meta.code)
+                print(resData.meta.message)
+                print(resData.meta.rateLimit ?? "NO Rate Limit")
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                for field in resData.result {
+                    print(field.field)
+                    print(field.message)
+                }
+            }
+        }.resume()
+    }
 }

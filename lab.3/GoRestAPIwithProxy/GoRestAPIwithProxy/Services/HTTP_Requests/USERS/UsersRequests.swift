@@ -77,7 +77,7 @@ class UsersRequests {
     // MARK: Methods -> POST (USER)
     
     // Add a new user with data = '$user'
-    func POST_NEW_User(withData user: New_User) {
+    func POST_NEW_USER(withData user: New_User) {
         let urlString = "http://localhost:8011/users?access-token=\(self.webService.token)"
         
         guard let url = URL(string: urlString) else { return }

@@ -96,4 +96,52 @@ class PhotosRequests {
     }
     
     // MARK: Methods -> POST (PHOTO)
+    
+    // Add a new photo with data = '$photo'
+    func POST_NEW_ALBUM(withData photo: New_Photo) {
+        let urlString = "http://localhost:8011/photos?access-token=\(self.webService.token)"
+        
+        guard let url = URL(string: urlString) else { return }
+                
+        let body = ["album_id": photo.albumID, "title": photo.title, "url": photo.url, "thumbnail": photo.thumb]
+        
+        let jsonString = body.reduce("") { "\($0)\($1.0)=\($1.1)&" }
+        
+        let jsonData = jsonString.data(using: .utf8, allowLossyConversion: false)!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(NSLocalizedString("lang", comment: ""), forHTTPHeaderField:"Accept-Language")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let err = error {
+                fatalError("An error ocurred: \(err)")
+            }
+            
+            guard let _ = response as? HTTPURLResponse else { return }
+            
+            guard let data = data else { return }
+            
+            if let _ = try? JSONDecoder().decode(POST_Response.self, from: data) {
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                print("New Photo Added Successfuly!")
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                print(photo)
+            } else {
+                guard let resData = try? JSONDecoder().decode(POST_Resp.self, from: data) else { return }
+                print(resData.meta.success)
+                print(resData.meta.code)
+                print(resData.meta.message)
+                print(resData.meta.rateLimit ?? "NO Rate Limit")
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                for field in resData.result {
+                    print(field.field)
+                    print(field.message)
+                }
+            }
+        }.resume()
+    }
 }
