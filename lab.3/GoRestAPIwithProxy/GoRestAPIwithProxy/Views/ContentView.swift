@@ -16,10 +16,10 @@ struct ContentView: View {
                     //                    UsersRequests.shared.GET_ALL_USERS()
                     //                    PostsRequests.shared.GET_ALL_POSTS()
                     //                    CommentsRequests.shared.GET_ALL_COMMENTS()
-                    //                    AlbumsRequests.shared.GET_ALL_ALBUMS()
+                    AlbumsRequests.shared.GET_ALL_ALBUMS()
                     //                    PhotosRequests.shared.GET_ALL_PHOTOS()
-                    let newUser = New_User(email: "example02@mail.com", first_name: "lexy", last_name: "butch", gender: .female, dob: .init(timeIntervalSinceNow: .init(integerLiteral: -662256000)), phone: "00112233445", website: .init(href: "https://bit.ly/IqT6zt"), address: "Platform 3/4 end of rainbow street", status: .active)
-                    UsersRequests.shared.POST_NEW_USER(withData: newUser)
+                    //                    let newUser = New_User(email: "example02@mail.com", first_name: "lexy", last_name: "butch", gender: .female, dob: .init(timeIntervalSinceNow: .init(integerLiteral: -662256000)), phone: "00112233445", website: .init(href: "https://bit.ly/IqT6zt"), address: "Platform 3/4 end of rainbow street", status: .active)
+                    //                    UsersRequests.shared.POST_NEW_USER(withData: newUser)
                 }) {
                     Text("POST NEW USER")
                         .foregroundColor(.red)
@@ -27,12 +27,12 @@ struct ContentView: View {
                 
                 Button(action: {
                     //                    UsersRequests.shared.GET_USER_BY_ID(id: 632)
-                    //                    PostsRequests.shared.GET_POSTS_FOR_USER(withID: 632)
+                                        PostsRequests.shared.GET_POSTS_FOR_USER(withID: 632)
                     //                    CommentsRequests.shared.GET_COMMENT_BY_ID(id: 4)
                     //                    AlbumsRequests.shared.GET_ALBUMS_FOR_USER(withID: 1642)
                     //                    PhotosRequests.shared.GET_PHOTOS_FROM_ALBUM(withID: 1007)
-                    let newPost = New_Post(userID: "1717", title: "Test Title", body: "Test Body")
-                    PostsRequests.shared.POST_NEW_POST(withData: newPost)
+//                    let newPost = New_Post(userID: "1717", title: "Test Title", body: "Test Body")
+//                    PostsRequests.shared.POST_NEW_POST(withData: newPost)
                 }) {
                     Text("POST NEW POST")
                         .foregroundColor(.yellow)

@@ -16,6 +16,8 @@ class AlbumsRequests {
     
     private let webService = WebService.shared
     
+    var albums = [Album]()
+    
     // Init
     private init() {}
     
@@ -25,16 +27,20 @@ class AlbumsRequests {
     func GET_ALL_ALBUMS() {
         var urlString = "http://localhost:8011/albums"
         
-        self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: nil) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
-            guard let jsonData = data else { return }
-            
-            guard let albumsResult = try? JSONDecoder().decode(Albums_Result.self, from: jsonData) else { return }
-            
-            for album in albumsResult.albums {
-                print(album)
+        for page in stride(from: 179, to: 2, by: -1) {
+            self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: "page=\(page)") { (data) in
+                print(#function)
+                print(data ?? "EMPTY")
+                
+                guard let jsonData = data else { return }
+                
+                guard let albumsResult = try? JSONDecoder().decode(Albums_Result.self, from: jsonData) else { return }
+                
+                self.albums.append(contentsOf: albumsResult.albums)
+                
+                AlbumsData.shared.albums = self.albums.sorted(by: { (album1, album2) -> Bool in
+                    return album1.id > album2.id
+                })
             }
         }
     }
@@ -68,7 +74,7 @@ class AlbumsRequests {
             print(data ?? "EMPTY")
             
             guard let jsonData = data else { return }
-                        
+            
             guard let albumsResult = try? JSONDecoder().decode(Albums_Result.self, from: jsonData) else { return }
             
             for album in albumsResult.albums {
@@ -102,7 +108,7 @@ class AlbumsRequests {
         let urlString = "http://localhost:8011/albums?access-token=\(self.webService.token)"
         
         guard let url = URL(string: urlString) else { return }
-                
+        
         let body = ["user_id": album.userID, "title": album.title]
         
         let jsonString = body.reduce("") { "\($0)\($1.0)=\($1.1)&" }

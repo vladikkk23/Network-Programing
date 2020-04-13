@@ -31,7 +31,7 @@ struct Album_Result: Codable {
 }
 
 // MARK: - Album Model
-struct Album: Codable {
+struct Album: Codable, Identifiable {
     let id, userID, title: String
     let links: Post_Links
 
