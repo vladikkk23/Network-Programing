@@ -4,4 +4,4 @@
     - Indicațiile Metodice
     - Aplicația Realizată
     - Raportul
-    - Înregistrarea video cu lucrul aplicației
+    - Înregistrarea video
