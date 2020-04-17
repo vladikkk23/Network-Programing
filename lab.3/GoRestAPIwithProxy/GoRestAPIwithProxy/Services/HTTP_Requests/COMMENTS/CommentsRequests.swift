@@ -15,6 +15,7 @@ class CommentsRequests {
     static let shared = CommentsRequests()
     
     private let webService = WebService.shared
+    private var urlString = "http://localhost:8011/comments"
     
     // Init
     private init() {}
@@ -23,12 +24,7 @@ class CommentsRequests {
     
     // List all comments
     func GET_ALL_COMMENTS() {
-        var urlString = "http://localhost:8011/comments"
-        
-        self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: nil) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
+        self.webService.makeRequestViaUrlSessionProxy(withURL: &self.urlString, verb: nil) { (data) in
             guard let jsonData = data else { return }
             
             guard let commentsResult = try? JSONDecoder().decode(Comments_Result.self, from: jsonData) else { return }
@@ -41,13 +37,9 @@ class CommentsRequests {
     
     // Return the comments of the post with post_id == '$postID'
     func GET_COMMENTS_FOR_POST(withID postID: Int) {
-        var urlString = "http://localhost:8011/comments"
         let verb = "post_id=\(postID)"
         
-        self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: verb) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
+        self.webService.makeRequestViaUrlSessionProxy(withURL: &self.urlString, verb: verb) { (data) in
             guard let jsonData = data else { return }
             
             guard let commentsResult = try? JSONDecoder().decode(Comments_Result.self, from: jsonData) else { return }
@@ -60,13 +52,9 @@ class CommentsRequests {
     
     // Return the comments of the user with Full Name == '$name'
     func GET_COMMENTS_FOR_USER(withName name: String) {
-        var urlString = "http://localhost:8011/comments"
         let verb = "name=\(name)"
         
-        self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: verb) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
+        self.webService.makeRequestViaUrlSessionProxy(withURL: &self.urlString, verb: verb) { (data) in
             guard let jsonData = data else { return }
             
             guard let commentsResult = try? JSONDecoder().decode(Comments_Result.self, from: jsonData) else { return }
@@ -79,13 +67,9 @@ class CommentsRequests {
     
     // Return the comments of the user with Email == '$email'
     func GET_COMMENTS_FOR_USER(withEmail email: String) {
-        var urlString = "http://localhost:8011/comments"
         let verb = "email=\(email)"
         
-        self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: verb) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
+        self.webService.makeRequestViaUrlSessionProxy(withURL: &self.urlString, verb: verb) { (data) in
             guard let jsonData = data else { return }
             
             guard let commentsResult = try? JSONDecoder().decode(Comments_Result.self, from: jsonData) else { return }
@@ -100,12 +84,9 @@ class CommentsRequests {
     
     // Return the details of the comment with id == '$id'
     func GET_COMMENT_BY_ID(id: Int) {
-        var urlString = "http://localhost:8011/comments/\(id)"
+        var urlString = "\(self.urlString)/\(id)"
         
         self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: nil) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
             guard let jsonData = data else { return }
             
             guard let commentResult = try? JSONDecoder().decode(Comment_Result.self, from: jsonData) else { return }
@@ -118,10 +99,10 @@ class CommentsRequests {
     
     // Add a new comment with data = '$comment'
     func POST_NEW_COMMENT(withData comment: New_Comment) {
-        let urlString = "http://localhost:8011/comments?access-token=\(self.webService.token)"
+        let urlString = "\(self.urlString)?access-token=\(self.webService.token)"
         
         guard let url = URL(string: urlString) else { return }
-                
+        
         let body = ["post_id": comment.postID, "name": comment.name, "email": comment.email, "body": comment.body]
         
         let jsonString = body.reduce("") { "\($0)\($1.0)=\($1.1)&" }
@@ -145,21 +126,15 @@ class CommentsRequests {
             guard let data = data else { return }
             
             if let _ = try? JSONDecoder().decode(POST_Response.self, from: data) {
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                print("New Comment Added Successfuly!")
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                print(comment)
+                NSLog("New Comment Added Successfuly!")
             } else {
                 guard let resData = try? JSONDecoder().decode(POST_Resp.self, from: data) else { return }
-                print(resData.meta.success)
-                print(resData.meta.code)
-                print(resData.meta.message)
-                print(resData.meta.rateLimit ?? "NO Rate Limit")
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                for field in resData.result {
-                    print(field.field)
-                    print(field.message)
-                }
+                
+                NSLog("Failed to Add New Comment")
+                NSLog(resData.meta.code.description)
+                NSLog(resData.meta.message)
+                NSLog(resData.result[0].field)
+                NSLog(resData.result[0].message)
             }
         }.resume()
     }

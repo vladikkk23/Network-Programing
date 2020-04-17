@@ -66,7 +66,7 @@ class WebService {
             components?.queryItems = [queryItemToken]
         }
         
-        print("urlString: \(urlString)")
+        NSLog("urlString: \(urlString + (verb ?? ""))")
         
         var request = URLRequest(url: (components?.url)!)
         request.httpMethod = "GET"
@@ -115,14 +115,11 @@ class WebService {
     
     // MARK: Methods -> OPTIONS
     
-    // Return available general options (PER -> users/posts/comments/albums/photos)
+    // Return available general options (FOR -> users/posts/comments/albums/photos)
     func OPTIONS_GENERAL() {
         var urlString = "http://localhost:8011/users"
         
         self.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: nil) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
             guard let jsonData = data else { return }
             
             guard let userResult = try? JSONDecoder().decode(User_Result.self, from: jsonData) else { return }
@@ -131,14 +128,11 @@ class WebService {
         }
     }
     
-    // Return available detail options (PER -> user/post/comment/album/photo)
+    // Return available detail options (FOR -> user/post/comment/album/photo)
     func OPTIONS_DETAILS(byID id: Int) {
         var urlString = "http://localhost:8011/users/\(id)"
         
         self.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: nil) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
             guard let jsonData = data else { return }
             
             guard let userResult = try? JSONDecoder().decode(User_Result.self, from: jsonData) else { return }

@@ -26,7 +26,10 @@ struct AlbumListView: View {
                     let newAlbum = New_Album(userID: "1717", title: "Test Album")
                     AlbumsRequests.shared.POST_NEW_ALBUM(withData: newAlbum)
                     
-                    self.albumsData.fetchAlbums()
+                    let delay = DispatchTime.now() + .seconds(2)
+                    DispatchQueue.main.asyncAfter(deadline: delay) {
+                        self.albumsData.fetchAlbums()
+                    }
                 }, label: {
                     Text("Update ALBUMS")
                         .foregroundColor(.red)

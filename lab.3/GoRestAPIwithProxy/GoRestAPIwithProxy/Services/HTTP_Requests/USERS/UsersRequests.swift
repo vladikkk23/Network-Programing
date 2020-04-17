@@ -15,6 +15,7 @@ class UsersRequests {
     static let shared = UsersRequests()
     
     private let webService = WebService.shared
+    private var urlString = "http://localhost:8011/posts"
     
     // Init
     private init() {}
@@ -22,13 +23,8 @@ class UsersRequests {
     // MARK: Methods -> GET (USER)
     
     // List all users
-    func GET_ALL_USERS() {
-        var urlString = "http://localhost:8011/users"
-        
-        self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: nil) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
+    func GET_ALL_USERS() {        
+        self.webService.makeRequestViaUrlSessionProxy(withURL: &self.urlString, verb: nil) { (data) in
             guard let jsonData = data else { return }
             
             guard let userResult = try? JSONDecoder().decode(Users_Result.self, from: jsonData) else { return }
@@ -41,13 +37,9 @@ class UsersRequests {
     
     // List all users where first_name contains '$name'
     func GET_USER_BY_FIRST_NAME(name: String) {
-        var urlString = "http://localhost:8011/users"
         let verb = "first_name=\(name)"
         
-        self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: verb) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
+        self.webService.makeRequestViaUrlSessionProxy(withURL: &self.urlString, verb: verb) { (data) in
             guard let jsonData = data else { return }
             
             guard let userResult = try? JSONDecoder().decode(Users_Result.self, from: jsonData) else { return }
@@ -60,12 +52,9 @@ class UsersRequests {
     
     // Return the details of the user with id == '$id'
     func GET_USER_BY_ID(id: Int) {
-        var urlString = "http://localhost:8011/users/\(id)"
+        var urlString = "\(self.urlString)/\(id)"
         
         self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: nil) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
             guard let jsonData = data else { return }
             
             guard let userResult = try? JSONDecoder().decode(User_Result.self, from: jsonData) else { return }
@@ -78,7 +67,7 @@ class UsersRequests {
     
     // Add a new user with data = '$user'
     func POST_NEW_USER(withData user: New_User) {
-        let urlString = "http://localhost:8011/users?access-token=\(self.webService.token)"
+        let urlString = "\(self.urlString)?access-token=\(self.webService.token)"
         
         guard let url = URL(string: urlString) else { return }
         
@@ -107,24 +96,16 @@ class UsersRequests {
             guard let data = data else { return }
             
             if let _ = try? JSONDecoder().decode(POST_Response.self, from: data) {
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                print("New User Added Successfuly!")
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                print(user)
+                NSLog("New User Added Successfuly!")
             } else {
                 guard let resData = try? JSONDecoder().decode(POST_Resp.self, from: data) else { return }
-                print(resData.meta.success)
-                print(resData.meta.code)
-                print(resData.meta.message)
-                print(resData.meta.rateLimit ?? "NO Rate Limit")
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                for field in resData.result {
-                    print(field.field)
-                    print(field.message)
-                }
-            }
-            
-            
+                
+                NSLog("Failed to Add New User")
+                NSLog(resData.meta.code.description)
+                NSLog(resData.meta.message)
+                NSLog(resData.result[0].field)
+                NSLog(resData.result[0].message)
+            }            
         }.resume()
     }
 }

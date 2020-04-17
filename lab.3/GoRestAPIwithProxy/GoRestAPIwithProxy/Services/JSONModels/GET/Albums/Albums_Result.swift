@@ -31,9 +31,13 @@ struct Album_Result: Codable {
 }
 
 // MARK: - Album Model
-struct Album: Codable, Identifiable {
+struct Album: Codable, Identifiable, Hashable {
     let id, userID, title: String
     let links: Post_Links
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 
     enum CodingKeys: String, CodingKey {
         case id

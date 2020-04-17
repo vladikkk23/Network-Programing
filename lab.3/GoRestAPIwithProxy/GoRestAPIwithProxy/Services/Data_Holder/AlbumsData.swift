@@ -25,7 +25,7 @@ class AlbumsData: ObservableObject {
     
     var timer: Timer?
     
-    var currentPages = [178, 153]
+    var currentPages = [175, 150]
     
     private init() {
         self.fetchAlbums()
@@ -37,24 +37,21 @@ class AlbumsData: ObservableObject {
     @objc
     func fetchAlbums() {
         self.startTimer()
-        print("~~~~~~~~~~~~~~~~~~~~")
-        print("~~~~~~~~~~~~~~~~~~~~")
-        print(self.currentPages)
-        print("~~~~~~~~~~~~~~~~~~~~")
-        print("~~~~~~~~~~~~~~~~~~~~")
         
-        let delay = DispatchTime.now() + .seconds(2)
+        NSLog("Fetching Requests")
+        
+        let delay = DispatchTime.now() + .seconds(5)
         self.requests.GET_ALL_ALBUMS(fromPage: self.currentPages[0], toPage: self.currentPages[1])
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
             self.albums = self.sortAlbums(albums: self.requests.albums)
         }
         
-        self.currentPages[0] = self.currentPages[1]
+        self.currentPages[0] = self.currentPages[1] - 1
         
-        if self.currentPages[1] > 3 {
+        if self.currentPages[1] > 25 {
             self.currentPages[1] -= 25
-        } else if self.currentPages[1] == 3 {
+        } else if self.currentPages[1] == 25 {
             self.currentPages[1] = 0
         } else {
             self.currentPages = [178, 153]
@@ -80,25 +77,30 @@ class AlbumsData: ObservableObject {
         }
     }
     
-    private func sortAlbums(albums: [Album]) -> [Album] {
-        
+    private func removeEmptyAlbums(fromArray albums: [Album]) -> [Album] {
         var sortedAlbums = albums
         var count = 0
-        var albumsRemoved = 0
-                
+        var emptyAlbumsRemoved = 0
+        
         for album in albums {
             count += 1
-            
             if album.id.isEmpty {
                 sortedAlbums.remove(at: count)
-                albumsRemoved += 1
+                emptyAlbumsRemoved += 1
             }
         }
         
-        sortedAlbums = sortedAlbums.sorted(by: { (album1, album2) -> Bool in
+        return sortedAlbums
+    }
+    
+    private func sortAlbums(albums: [Album]) -> [Album] {
+        let sortedAlbums = self.removeEmptyAlbums(fromArray: albums)
+        var uniqueAlbums = sortedAlbums.removingDuplicates()
+        
+        uniqueAlbums = uniqueAlbums.sorted(by: { (album1, album2) -> Bool in
             Int(album1.id)! > Int(album2.id)!
         })
         
-        return sortedAlbums
+        return uniqueAlbums
     }
 }
