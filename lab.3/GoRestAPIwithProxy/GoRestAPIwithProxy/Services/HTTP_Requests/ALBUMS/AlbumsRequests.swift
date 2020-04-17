@@ -24,23 +24,16 @@ class AlbumsRequests {
     // MARK: Methods -> GET (ALBUMS)
     
     // List all albums
-    func GET_ALL_ALBUMS() {
+    func GET_ALL_ALBUMS(fromPage: Int, toPage: Int) {
         var urlString = "http://localhost:8011/albums"
         
-        for page in stride(from: 179, to: 2, by: -1) {
+        for page in stride(from: fromPage, to: toPage, by: -1) {
             self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: "page=\(page)") { (data) in
-                print(#function)
-                print(data ?? "EMPTY")
-                
                 guard let jsonData = data else { return }
                 
                 guard let albumsResult = try? JSONDecoder().decode(Albums_Result.self, from: jsonData) else { return }
                 
                 self.albums.append(contentsOf: albumsResult.albums)
-                
-                AlbumsData.shared.albums = self.albums.sorted(by: { (album1, album2) -> Bool in
-                    return album1.id > album2.id
-                })
             }
         }
     }

@@ -16,7 +16,7 @@ struct ContentView: View {
                     //                    UsersRequests.shared.GET_ALL_USERS()
                     //                    PostsRequests.shared.GET_ALL_POSTS()
                     //                    CommentsRequests.shared.GET_ALL_COMMENTS()
-                    AlbumsRequests.shared.GET_ALL_ALBUMS()
+                    AlbumsRequests.shared.GET_ALL_ALBUMS(fromPage: 1, toPage: 50)
                     //                    PhotosRequests.shared.GET_ALL_PHOTOS()
                     //                    let newUser = New_User(email: "example02@mail.com", first_name: "lexy", last_name: "butch", gender: .female, dob: .init(timeIntervalSinceNow: .init(integerLiteral: -662256000)), phone: "00112233445", website: .init(href: "https://bit.ly/IqT6zt"), address: "Platform 3/4 end of rainbow street", status: .active)
                     //                    UsersRequests.shared.POST_NEW_USER(withData: newUser)

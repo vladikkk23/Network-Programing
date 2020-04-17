@@ -19,9 +19,13 @@ struct AlbumListView: View {
                     AlbumRow(album: album)
                 }
             }
-            .navigationBarTitle("ALBUMS")
+            .navigationBarTitle("ALBUMS (\(self.albumsData.albums.count))")
             .navigationBarItems(leading:
                 Button(action: {
+                    
+                    let newAlbum = New_Album(userID: "1717", title: "Test Album")
+                    AlbumsRequests.shared.POST_NEW_ALBUM(withData: newAlbum)
+                    
                     self.albumsData.fetchAlbums()
                 }, label: {
                     Text("Update ALBUMS")

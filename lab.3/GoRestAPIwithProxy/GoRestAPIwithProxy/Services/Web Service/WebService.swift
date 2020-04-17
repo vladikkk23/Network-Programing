@@ -36,7 +36,7 @@ class WebService {
             kCFNetworkProxiesHTTPPort: "8011",
         ]
         
-        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.current)
+        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: .main)
         
         self.session = session
     }
@@ -67,7 +67,6 @@ class WebService {
         }
         
         print("urlString: \(urlString)")
-        print(components?.url?.absoluteURL ?? "NONE")
         
         var request = URLRequest(url: (components?.url)!)
         request.httpMethod = "GET"
