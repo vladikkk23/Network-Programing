@@ -17,6 +17,7 @@ class AlbumsRequests {
     private let webService = WebService.shared
     
     var albums = [Album]()
+    private var urlString = "http://localhost:8011/albums"
     
     // Init
     private init() {}
@@ -25,10 +26,8 @@ class AlbumsRequests {
     
     // List all albums
     func GET_ALL_ALBUMS(fromPage: Int, toPage: Int) {
-        var urlString = "http://localhost:8011/albums"
-        
         for page in stride(from: fromPage, to: toPage, by: -1) {
-            self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: "page=\(page)") { (data) in
+            self.webService.makeRequestViaUrlSessionProxy(withURL: &self.urlString, verb: "page=\(page)") { (data) in
                 guard let jsonData = data else { return }
                 
                 guard let albumsResult = try? JSONDecoder().decode(Albums_Result.self, from: jsonData) else { return }
@@ -40,13 +39,9 @@ class AlbumsRequests {
     
     // Return the albums of the user with userID == '$id'
     func GET_ALBUMS_FOR_USER(withID id: Int) {
-        var urlString = "http://localhost:8011/albums"
         let verb = "user_id=\(id)"
         
-        self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: verb) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
+        self.webService.makeRequestViaUrlSessionProxy(withURL: &self.urlString, verb: verb) { (data) in
             guard let jsonData = data else { return }
             
             guard let albumsResult = try? JSONDecoder().decode(Albums_Result.self, from: jsonData) else { return }
@@ -59,13 +54,9 @@ class AlbumsRequests {
     
     // Return the posts wich containt '$content' in title
     func GET_ALBUMS_WITH_TITLE(containing content: String) {
-        var urlString = "http://localhost:8011/albums"
         let verb = "title=\(content)"
         
-        self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: verb) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
+        self.webService.makeRequestViaUrlSessionProxy(withURL: &self.urlString, verb: verb) { (data) in
             guard let jsonData = data else { return }
             
             guard let albumsResult = try? JSONDecoder().decode(Albums_Result.self, from: jsonData) else { return }
@@ -80,12 +71,9 @@ class AlbumsRequests {
     
     // Return the details of the album with id == '$id'
     func GET_ALBUM_BY_ID(id: Int) {
-        var urlString = "http://localhost:8011/albums/\(id)"
+        var urlString = "\(self.urlString)/\(id)"
         
         self.webService.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: nil) { (data) in
-            print(#function)
-            print(data ?? "EMPTY")
-            
             guard let jsonData = data else { return }
             
             guard let albumResult = try? JSONDecoder().decode(Album_Result.self, from: jsonData) else { return }
@@ -98,7 +86,7 @@ class AlbumsRequests {
     
     // Add a new comment with data = '$album'
     func POST_NEW_ALBUM(withData album: New_Album) {
-        let urlString = "http://localhost:8011/albums?access-token=\(self.webService.token)"
+        let urlString = "\(self.urlString)?access-token=\(self.webService.token)"
         
         guard let url = URL(string: urlString) else { return }
         
@@ -125,21 +113,15 @@ class AlbumsRequests {
             guard let data = data else { return }
             
             if let _ = try? JSONDecoder().decode(POST_Response.self, from: data) {
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                print("New Album Added Successfuly!")
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                print(album)
+                NSLog("New Album Added Successfuly!")
             } else {
                 guard let resData = try? JSONDecoder().decode(POST_Resp.self, from: data) else { return }
-                print(resData.meta.success)
-                print(resData.meta.code)
-                print(resData.meta.message)
-                print(resData.meta.rateLimit ?? "NO Rate Limit")
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                for field in resData.result {
-                    print(field.field)
-                    print(field.message)
-                }
+                
+                NSLog("Failed to Add New Album")
+                NSLog(resData.meta.code.description)
+                NSLog(resData.meta.message)
+                NSLog(resData.result[0].field)
+                NSLog(resData.result[0].message)
             }
         }.resume()
     }

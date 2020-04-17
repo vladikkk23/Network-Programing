@@ -41,9 +41,13 @@ struct Links: Codable {
 }
 
 // MARK: - Links
-struct Post_Links: Codable {
+struct Post_Links: Codable, Hashable {
     let linksSelf, edit: Href
 
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(linksSelf)
+    }
+    
     enum CodingKeys: String, CodingKey {
         case linksSelf = "self"
         case edit
@@ -51,7 +55,7 @@ struct Post_Links: Codable {
 }
 
 // MARK: - Avatar
-struct Href: Codable {
+struct Href: Codable, Hashable {
     let href: String
 }
 
