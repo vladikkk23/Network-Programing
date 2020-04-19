@@ -83,7 +83,7 @@ class PhotosRequests {
     // MARK: Methods -> POST (PHOTO)
     
     // Add a new photo with data = '$photo'
-    func POST_NEW_ALBUM(withData photo: New_Photo) {
+    func POST_NEW_PHOTO(withData photo: New_Photo) {
         let urlString = "\(self.urlString)?access-token=\(self.webService.token)"
         
         guard let url = URL(string: urlString) else { return }
