@@ -15,8 +15,8 @@ class UsersRequests {
     static let shared = UsersRequests()
     
     private let webService = WebService.shared
-    private var urlString = "http://localhost:8011/posts"
-    
+    private var urlString = "http://localhost:8011/users"
+        
     // Init
     private init() {}
     
@@ -59,7 +59,9 @@ class UsersRequests {
             
             guard let userResult = try? JSONDecoder().decode(User_Result.self, from: jsonData) else { return }
             
-            print(userResult.user)
+            let userInfo = UserInfo(firstName: userResult.user.firstName, lastName: userResult.user.lastName)
+            
+            print(userInfo)
         }
     }
     

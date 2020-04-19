@@ -11,39 +11,52 @@ import SwiftUI
 struct AlbumsListTopBarView: View {
     
     @ObservedObject var albumsData = AlbumsData.shared
-    
+        
     var body: some View {
-        GeometryReader { geometry in
-            VStack{
-                HStack(spacing: 90) {
-                    Button(action: {}){
-                        Image(systemName: "arrow.2.circlepath")
-                            .resizable()
-                            .frame(width: 40, height: 35)
-                            .foregroundColor(.blue)
-                    }
-                    
+        VStack {
+            HStack {
+                Button(action: {
+                    print("Update")
+                }){
+                    Image(systemName: "arrow.2.circlepath")
+                        .resizable()
+                        .frame(width: 40, height: 35)
+                        .foregroundColor(.blue)
+                }
+                
+                HStack {
                     Text("ALBUMS")
                         .font(.largeTitle)
                         .foregroundColor(.blue)
                         .fontWeight(.semibold)
                     
-                    Button(action: {}){
-                        Image(systemName: "plus.circle.fill")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                    }
-                    
-                }.frame(width: 410, height: 50)
+                    Text("\(albumsData.albums.count)")
+                        .font(.largeTitle)
+                        .foregroundColor(.blue)
+                        .fontWeight(.semibold)
+                }.frame(width: 310)
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: .center, spacing: 15) {
-                        ForEach(self.albumsData.topAlbums) { album in
+                Button(action: {
+                    print("Add")
+                }) {
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                }
+                
+            }.frame(width: 410, height: 50)
+            
+            Divider()
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .center, spacing: 15) {
+                    ForEach(self.albumsData.topAlbums) { album in
+                        NavigationLink(destination: AlbumDetailsView(album: album)) {
                             TopAlbumsPreview(album: album)
                                 .foregroundColor(.gray)
                         }
-                    }.frame(height: 90)
-                }.frame(width: 410)
+                    }
+                }.frame(height: 90)
             }
         }
     }

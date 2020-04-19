@@ -16,8 +16,19 @@ struct AlbumListView: View {
         NavigationView {
             VStack {
                 AlbumsListTopBarView()
-                BottomView()
+                
+                Divider()
+                
+                List {
+                    ForEach(self.albumsData.albums) { album in
+                        NavigationLink(destination: AlbumDetailsView(album: album)) {
+                            AlbumRow(album: album)
+                        }
+                    }
+                }.offset(x: -10)
             }
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         }
     }
 }
@@ -27,9 +38,3 @@ struct AlbumListView_Previews: PreviewProvider {
         AlbumListView()
     }
 }
-
-//List(self.albumsData.topAlbums) { album in
-//    NavigationLink(destination: AlbumDetailsView(album: album)) {
-//        AlbumRow(album: album)
-//    }
-//}

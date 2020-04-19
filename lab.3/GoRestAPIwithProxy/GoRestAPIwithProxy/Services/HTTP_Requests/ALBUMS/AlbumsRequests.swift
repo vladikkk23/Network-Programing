@@ -15,6 +15,7 @@ class AlbumsRequests {
     static let shared = AlbumsRequests()
     
     private let webService = WebService.shared
+    private let usersRequests = UsersRequests.shared
     
     var albums = [Album]()
     private var urlString = "http://localhost:8011/albums"
@@ -32,7 +33,7 @@ class AlbumsRequests {
                 
                 guard let albumsResult = try? JSONDecoder().decode(Albums_Result.self, from: jsonData) else { return }
                 
-                self.albums.append(contentsOf: albumsResult.albums)
+                 self.albums.append(contentsOf: albumsResult.albums)
             }
         }
     }

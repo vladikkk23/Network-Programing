@@ -34,6 +34,7 @@ struct Album_Result: Codable {
 struct Album: Codable, Identifiable, Hashable {
     let id, userID, title: String
     let links: Post_Links
+    var userInfo: UserInfo?
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -45,4 +46,9 @@ struct Album: Codable, Identifiable, Hashable {
         case title
         case links = "_links"
     }
+}
+
+struct UserInfo: Hashable {
+    let firstName: String
+    let lastName: String
 }

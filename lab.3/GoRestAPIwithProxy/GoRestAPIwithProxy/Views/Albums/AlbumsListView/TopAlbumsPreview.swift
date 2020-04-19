@@ -23,8 +23,10 @@ struct TopAlbumsPreview: View {
                     .shadow(radius: 3)
                     .overlay(Circle().stroke(Color.orange, lineWidth: 3))
                 
-                Text(self.album.userID)
+                HStack {
+                    Text("User ID: \(album.userID)")
                     .font(.caption)
+                }
             }
         }
     }
@@ -32,6 +34,6 @@ struct TopAlbumsPreview: View {
 
 struct TopAlbumsPreview_Previews: PreviewProvider {
     static var previews: some View {
-        TopAlbumsPreview(album: Album(id: "1", userID: "1", title: "Test", links: Post_Links(linksSelf: Href(href: "LINK"), edit: Href(href: "LINK"))))
+        TopAlbumsPreview(album: Album(id: "1", userID: "10", title: "Test", links: Post_Links(linksSelf: Href(href: "LINK"), edit: Href(href: "LINK"))))
     }
 }

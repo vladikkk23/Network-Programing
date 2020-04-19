@@ -22,7 +22,7 @@ class AlbumsData: ObservableObject {
     @Published var albums = [Album]()
     
     // Store last 10 albums
-    @Published var topAlbums = [Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: "")))]
+    @Published var topAlbums = [Album(id: "1", userID: "1234", title: "Test", links: Post_Links(linksSelf: Href(href: "LINK"), edit: Href(href: "LINK")))]
     var published = false
     
     private let requests = AlbumsRequests.shared
@@ -32,7 +32,7 @@ class AlbumsData: ObservableObject {
     var currentPages = [180, 165]
     
     private init() {
-//        self.fetchAlbums()
+        self.fetchAlbums()
     }
     
     // MARK: Methods

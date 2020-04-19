@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct AlbumDetailsView: View {
-    
+        
     var album: Album
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(album.title)
     }
 }
 
