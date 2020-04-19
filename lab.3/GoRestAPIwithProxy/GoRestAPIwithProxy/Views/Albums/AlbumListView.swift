@@ -22,13 +22,12 @@ struct AlbumListView: View {
             .navigationBarTitle("ALBUMS (\(self.albumsData.albums.count))")
             .navigationBarItems(leading:
                 Button(action: {
-                    
+
                     let newAlbum = New_Album(userID: "1717", title: "Test Album")
                     AlbumsRequests.shared.POST_NEW_ALBUM(withData: newAlbum)
-                    
-                    let delay = DispatchTime.now() + .seconds(2)
-                    DispatchQueue.main.asyncAfter(deadline: delay) {
-                        self.albumsData.fetchAlbums()
+
+                    DispatchQueue.main.async {
+                        self.albumsData.updateAlbums()
                     }
                 }, label: {
                     Text("Update ALBUMS")

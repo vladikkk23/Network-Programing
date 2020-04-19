@@ -25,7 +25,7 @@ class AlbumsData: ObservableObject {
     
     var timer: Timer?
     
-    var currentPages = [175, 150]
+    var currentPages = [180, 165]
     
     private init() {
         self.fetchAlbums()
@@ -33,14 +33,28 @@ class AlbumsData: ObservableObject {
     
     // MARK: Methods
     
+    // Updating albums with newly added
+    func updateAlbums() {
+        NSLog("Updating Albums")
+        
+        let delay = DispatchTime.now() + .seconds(2)
+        
+        // Check last 5 pages for new Albums
+        self.requests.GET_ALL_ALBUMS(fromPage: self.currentPages[0], toPage: self.currentPages[0] - 5)
+        
+        DispatchQueue.main.asyncAfter(deadline: delay) {
+            self.albums = self.sortAlbums(albums: self.requests.albums)
+        }
+    }
+    
     // Fetching all albums
     @objc
     func fetchAlbums() {
         self.startTimer()
         
-        NSLog("Fetching Requests")
+        NSLog("Fetching Albums")
         
-        let delay = DispatchTime.now() + .seconds(5)
+        let delay = DispatchTime.now() + .seconds(4)
         self.requests.GET_ALL_ALBUMS(fromPage: self.currentPages[0], toPage: self.currentPages[1])
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
@@ -49,12 +63,12 @@ class AlbumsData: ObservableObject {
         
         self.currentPages[0] = self.currentPages[1] - 1
         
-        if self.currentPages[1] > 25 {
-            self.currentPages[1] -= 25
-        } else if self.currentPages[1] == 25 {
-            self.currentPages[1] = 0
+        if self.currentPages[1] > 15 {
+            self.currentPages[1] -= 15
+        } else if self.currentPages[1] == 15 {
+            self.currentPages[1] = 1
         } else {
-            self.currentPages = [178, 153]
+            self.currentPages = [180, 165]
             self.stopTimer()
         }
     }
@@ -62,7 +76,7 @@ class AlbumsData: ObservableObject {
     // Setup and Start timer
     private func startTimer() {
         if self.timer == nil {
-            self.timer = Timer.scheduledTimer(timeInterval: 31, target: self, selector: #selector(self.fetchAlbums), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.fetchAlbums), userInfo: nil, repeats: true)
             NSLog("Timer Started.")
         }
     }
@@ -72,7 +86,6 @@ class AlbumsData: ObservableObject {
         if self.timer != nil {
             self.timer!.invalidate()
             self.timer = nil
-            
             NSLog("Timer Stopped.")
         }
     }
