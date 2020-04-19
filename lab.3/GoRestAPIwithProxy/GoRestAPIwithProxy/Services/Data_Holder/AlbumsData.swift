@@ -21,6 +21,10 @@ class AlbumsData: ObservableObject {
     // Published Albums
     @Published var albums = [Album]()
     
+    // Store last 10 albums
+    @Published var topAlbums = [Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: ""))), Album(id: "", userID: "", title: "", links: Post_Links(linksSelf: Href(href: ""), edit: Href(href: "")))]
+    var published = false
+    
     private let requests = AlbumsRequests.shared
     
     var timer: Timer?
@@ -28,10 +32,24 @@ class AlbumsData: ObservableObject {
     var currentPages = [180, 165]
     
     private init() {
-        self.fetchAlbums()
+//        self.fetchAlbums()
     }
     
     // MARK: Methods
+    
+    // Fetching top 10 albums
+    func fetchTopAlbums() {
+        NSLog("Fetching Top 10 Albums")
+        var topAlbums = [Album]()
+        
+        for it in 0..<10 {
+            topAlbums.append(self.albums[it])
+        }
+        
+        DispatchQueue.main.async {
+            self.topAlbums = topAlbums
+        }
+    }
     
     // Updating albums with newly added
     func updateAlbums() {
@@ -44,6 +62,7 @@ class AlbumsData: ObservableObject {
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
             self.albums = self.sortAlbums(albums: self.requests.albums)
+            self.fetchTopAlbums()
         }
     }
     
@@ -59,6 +78,11 @@ class AlbumsData: ObservableObject {
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
             self.albums = self.sortAlbums(albums: self.requests.albums)
+            
+            if !self.published {
+                self.fetchTopAlbums()
+                self.published.toggle()
+            }
         }
         
         self.currentPages[0] = self.currentPages[1] - 1
