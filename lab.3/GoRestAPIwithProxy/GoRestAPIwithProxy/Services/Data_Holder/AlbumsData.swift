@@ -32,17 +32,21 @@ class AlbumsData: ObservableObject {
     var currentPages = [180, 165]
     
     private init() {
-        self.fetchAlbums()
+        //        self.fetchAlbums()
     }
     
     // MARK: Methods
     
-    // Fetching top 10 albums
-    func fetchTopAlbums() {
+    func addNewAlbum(withData album: Album) {
+        
+    }
+    
+    // Fetching top '$albumsCount' albums
+    private func fetchTopAlbums(albumsCount: Int) {
         NSLog("Fetching Top 10 Albums")
         var topAlbums = [Album]()
         
-        for it in 0..<10 {
+        for it in 0..<albumsCount {
             topAlbums.append(self.albums[it])
         }
         
@@ -62,7 +66,12 @@ class AlbumsData: ObservableObject {
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
             self.albums = self.sortAlbums(albums: self.requests.albums)
-            self.fetchTopAlbums()
+            
+            if self.albums.count > 10 {
+                self.fetchTopAlbums(albumsCount: 10)
+            } else {
+                self.fetchTopAlbums(albumsCount: self.albums.count)
+            }
         }
     }
     
@@ -80,7 +89,7 @@ class AlbumsData: ObservableObject {
             self.albums = self.sortAlbums(albums: self.requests.albums)
             
             if !self.published {
-                self.fetchTopAlbums()
+                self.fetchTopAlbums(albumsCount: 10)
                 self.published.toggle()
             }
         }
