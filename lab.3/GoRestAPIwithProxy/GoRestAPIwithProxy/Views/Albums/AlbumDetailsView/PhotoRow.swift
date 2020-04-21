@@ -14,14 +14,19 @@ struct PhotoRow: View {
     var body: some View {
         VStack(alignment: .center) {
             
-            Text(self.photo.title)
+            HStack {
+                Text(self.photo.title)
                 .font(Font(UIFont(name: "times new roman", size: 20)!).bold().italic())
                 .foregroundColor(.blue)
+            }
+            .frame(width: 400, height: 100, alignment: .leading)
+            .offset(x: 10)
             
             Image("landscape")
                 .frame(width: 415, height: 415, alignment: .center)
                 .clipped()
                 .aspectRatio(contentMode: .fit)
+                .offset(x: 14)
             
             HStack {
                 Text("Photo ID: \(self.photo.id)")
@@ -33,7 +38,7 @@ struct PhotoRow: View {
                 Text("Album ID: \(self.photo.albumID)").foregroundColor(Color.gray)
                     .font(.subheadline)
             }.padding(.horizontal, 30)
-        }
+        }.offset(x: -15)
     }
 }
 

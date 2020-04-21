@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AlbumInfoView: View {
     var album: Album
+    var user: UserInfo
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -55,18 +56,17 @@ struct AlbumInfoView: View {
                 Spacer()
                 
                 VStack {
-                    Text("\(self.album.userInfo?.firstName ?? "FirstName") \(self.album.userInfo?.lastName ?? "LastName")")
+                    Text("\(self.user.firstName) \(self.user.lastName)")
                         .font(Font(UIFont(name: "Times New Roman", size: 15)!)).bold()
                         .foregroundColor(.orange)
                 }
             }.frame(height: 20)
-            
         }.frame(width: 400)
     }
 }
 
 struct AlbumInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumInfoView(album: Album(id: "9999", userID: "99999", title: "Voluptatibus quasi doloremque sapiente. Enim labore facilis optio incidunt reiciendis.", links: Post_Links(linksSelf: Href(href: "LINK"), edit: Href(href: "LINK"))))
+        AlbumInfoView(album: Album(id: "9999", userID: "99999", title: "Voluptatibus quasi doloremque sapiente. Enim labore facilis optio incidunt reiciendis.", links: Post_Links(linksSelf: Href(href: "LINK"), edit: Href(href: "LINK"))), user: UserInfo(firstName: "TEST", lastName: "USER"))
     }
 }

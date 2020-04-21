@@ -14,7 +14,7 @@ struct CreateNewAlbumView: View {
     
     var body: some View {
         VStack {
-            Spacer()
+            NewAlbumForm()
             
             CreateAlbumBottomView(presentationMode: self.presentationMode)
         }

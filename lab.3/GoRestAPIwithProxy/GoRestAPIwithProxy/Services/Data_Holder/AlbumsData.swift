@@ -32,7 +32,7 @@ class AlbumsData: ObservableObject {
     var currentPages = [180, 165]
     
     private init() {
-        //        self.fetchAlbums()
+        self.fetchAlbums()
     }
     
     // MARK: Methods
@@ -65,7 +65,7 @@ class AlbumsData: ObservableObject {
         let delay = DispatchTime.now() + .seconds(2)
         
         // Check last 5 pages for new Albums
-        self.albumRequests.GET_ALL_ALBUMS(fromPage: self.currentPages[0], toPage: self.currentPages[0] - 5)
+        self.albumRequests.GET_ALL_ALBUMS(fromPage: self.currentPages[0], toPage: self.currentPages[0] - 15)
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
             self.albums = self.sortAlbums(albums: self.albumRequests.albums)

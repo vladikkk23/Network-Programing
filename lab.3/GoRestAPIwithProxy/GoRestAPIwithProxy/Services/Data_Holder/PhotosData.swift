@@ -33,10 +33,10 @@ class PhotosData: ObservableObject {
     // Fetching all Photos for '$album'
     func fetchAlbumPhotos(album: Album) {
         let albumID = Int(album.id)!
-        let delay = DispatchTime.now() + .seconds(2)
+        let delay = DispatchTime.now() + .milliseconds(1500)
         
         self.photoRequests.GET_PHOTOS_FROM_ALBUM(withID: albumID)
-        
+
         DispatchQueue.main.asyncAfter(deadline: delay) {
             self.photos = self.photoRequests.photos
         }

@@ -11,12 +11,15 @@ import SwiftUI
 struct AlbumListView: View {
     
     var photoData = PhotosData.shared
+    
     @ObservedObject var albumsData = AlbumsData.shared
+    @State var hideTopBar = false
     
     var body: some View {
         NavigationView {
             VStack {
                 AlbumsListTopBarView()
+                    .opacity(self.hideTopBar ? 0 : 1)
                 
                 Divider()
                 

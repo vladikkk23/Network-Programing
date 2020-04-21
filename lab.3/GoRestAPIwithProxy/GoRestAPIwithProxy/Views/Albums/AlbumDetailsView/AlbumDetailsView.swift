@@ -9,33 +9,46 @@
 import SwiftUI
 
 struct AlbumDetailsView: View {
+    
     var photoData = PhotosData.shared
+    var userData = UsersData.shared
     var album: Album
     
     @State var showPhotos = false
     
     var body: some View {
-        NavigationView {
+        ZStack {
             VStack {
-                AlbumInfoView(album: self.album)
+                AlbumInfoView(album: self.album, user: self.userData.userInfo)
                 
                 Divider()
                 
-                List(self.photoData.photos) { photo in
-                    PhotoRow(photo: photo)
+                ZStack {
+                    List(self.photoData.photos) { photo in
+                        PhotoRow(photo: photo)
+                    }
+                    .opacity(self.showPhotos ? 1 : 0)
+                    .offset(x: -10)
                 }
-                .offset(x: -10)
-                .opacity(self.showPhotos ? 1 : 0)
-            }
-            .navigationBarTitle(Text(self.album.title), displayMode: .inline)
+            }.opacity(self.showPhotos ? 1 : 0)
+            
+            ProgressBarView()
+                .opacity(self.showPhotos ? 0 : 1)
+                .frame(width: 200, height: 200, alignment: .center)
+                .navigationBarTitle(Text(self.album.title), displayMode: .inline)
         }
         .onAppear {
             self.photoData.fetchAlbumPhotos(album: self.album)
+            self.userData.fetchUserInfo(forAlbum: self.album)
             
-            let delay = DispatchTime.now() + .seconds(2)
+            let delay = DispatchTime.now() + .seconds(3)
             
             DispatchQueue.main.asyncAfter(deadline: delay) {
-                self.showPhotos.toggle()
+                if !self.photoData.photos.isEmpty {
+                    self.showPhotos.toggle()
+                } else {
+                    NSLog("THIS ALBUM HAS NO PHOTOS!")
+                }
             }
         }
     }
