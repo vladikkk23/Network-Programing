@@ -32,7 +32,7 @@ class AlbumsData: ObservableObject {
     var currentPages = [180, 165]
     
     private init() {
-        self.fetchAlbums()
+        //        self.fetchAlbums()
     }
     
     // MARK: Methods
@@ -151,15 +151,5 @@ class AlbumsData: ObservableObject {
         })
         
         return uniqueAlbums
-    }
-    
-    private func findAlbum(withID id: String) -> Int? {
-        if let index = self.albums.firstIndex(where: { (album) -> Bool in
-            album.id == id
-        }) {
-            return index
-        } else {
-            return nil
-        }
     }
 }

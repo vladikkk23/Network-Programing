@@ -7,10 +7,9 @@
 //  https://ibb.co/album/m0bynS
 
 import Foundation
-import SwiftUI
 
 /*
- A Singleton for extracting Albums.
+ A Singleton for extracting Photos.
  */
 class PhotosData: ObservableObject {
     
@@ -21,17 +20,17 @@ class PhotosData: ObservableObject {
     
     private let albumsData = AlbumsData.shared
     
-    // Published Albums
+    // Published Photos
     @Published var photos = [Photo]()
     
     private let albumRequests = AlbumsRequests.shared
     private let photoRequests = PhotosRequests.shared
-            
+    
     private init() {}
     
     // MARK: Methods
     
-    // Fetching all photos for '$album'
+    // Fetching all Photos for '$album'
     func fetchAlbumPhotos(album: Album) {
         let albumID = Int(album.id)!
         let delay = DispatchTime.now() + .seconds(2)

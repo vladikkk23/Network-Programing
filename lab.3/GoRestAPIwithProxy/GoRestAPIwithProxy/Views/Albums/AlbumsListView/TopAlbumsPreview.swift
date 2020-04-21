@@ -25,7 +25,7 @@ struct TopAlbumsPreview: View {
                 
                 HStack {
                     Text("User ID: \(album.userID)")
-                    .font(.caption)
+                        .font(.caption)
                 }
             }
         }

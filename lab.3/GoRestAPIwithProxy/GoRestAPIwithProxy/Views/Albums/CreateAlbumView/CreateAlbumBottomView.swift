@@ -28,7 +28,7 @@ struct CreateAlbumBottomView: View {
                     .background(Color.blue)
                     .cornerRadius(25)
             }
-                        
+            
             Button(action: {
                 self.presentationMode.dismiss()
             }) {
