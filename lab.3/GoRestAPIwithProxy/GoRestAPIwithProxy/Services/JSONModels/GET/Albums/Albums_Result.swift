@@ -35,6 +35,7 @@ struct Album: Codable, Identifiable, Hashable {
     let id, userID, title: String
     let links: Post_Links
     var userInfo: UserInfo?
+    var photos: [Photo]?
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)

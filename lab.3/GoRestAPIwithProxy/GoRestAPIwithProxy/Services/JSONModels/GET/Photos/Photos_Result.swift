@@ -31,10 +31,14 @@ struct Photo_Result: Codable {
 }
 
 // MARK: - Photo Model
-struct Photo: Codable {
+struct Photo: Codable,Identifiable, Hashable {
     let id, albumID, title: String
     let url, thumbnail: String
     let links: Post_Links
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 
     enum CodingKeys: String, CodingKey {
         case id

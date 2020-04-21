@@ -15,6 +15,8 @@ class PhotosRequests {
     static let shared = PhotosRequests()
     
     private let webService = WebService.shared
+    
+    var photos = [Photo]()
     private var urlString = "http://localhost:8011/photos"
     
     // Init
@@ -44,9 +46,7 @@ class PhotosRequests {
             
             guard let photosResult = try? JSONDecoder().decode(Photos_Result.self, from: jsonData) else { return }
             
-            for photo in photosResult.photos {
-                print(photo)
-            }
+            self.photos = photosResult.photos
         }
     }
     

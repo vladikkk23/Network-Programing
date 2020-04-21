@@ -33,7 +33,7 @@ class AlbumsRequests {
                 
                 guard let albumsResult = try? JSONDecoder().decode(Albums_Result.self, from: jsonData) else { return }
                 
-                 self.albums.append(contentsOf: albumsResult.albums)
+                self.albums.append(contentsOf: albumsResult.albums)
             }
         }
     }

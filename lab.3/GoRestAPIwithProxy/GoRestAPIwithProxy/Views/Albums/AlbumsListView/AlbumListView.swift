@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AlbumListView: View {
     
+    var photoData = PhotosData.shared
     @ObservedObject var albumsData = AlbumsData.shared
     
     var body: some View {

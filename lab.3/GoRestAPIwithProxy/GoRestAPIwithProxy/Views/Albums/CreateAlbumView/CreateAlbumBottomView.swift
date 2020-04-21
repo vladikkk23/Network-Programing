@@ -18,11 +18,7 @@ struct CreateAlbumBottomView: View {
                 let newAlbum = New_Album(userID: "1717", title: "Test Album")
                 AlbumsRequests.shared.POST_NEW_ALBUM(withData: newAlbum)
                 
-                let delay = DispatchTime.now() + .seconds(2)
-                
-                DispatchQueue.main.asyncAfter(deadline: delay) {
-                    self.presentationMode.dismiss()
-                }
+                self.presentationMode.dismiss()
             }) {
                 Text("POST")
                     .font(.system(size: 25)).bold()
