@@ -27,13 +27,13 @@ class AlbumsRequests {
     
     // List all albums
     func GET_ALL_ALBUMS(fromPage: Int, toPage: Int) {
-        for page in stride(from: fromPage, to: toPage, by: -1) {
+        for page in stride(from: fromPage, to: toPage - 1, by: -1) {
             self.webService.makeRequestViaUrlSessionProxy(withURL: &self.urlString, verb: "page=\(page)") { (data) in
                 guard let jsonData = data else { return }
                 
                 guard let albumsResult = try? JSONDecoder().decode(Albums_Result.self, from: jsonData) else { return }
                 
-                 self.albums.append(contentsOf: albumsResult.albums)
+                self.albums.append(contentsOf: albumsResult.albums)
             }
         }
     }

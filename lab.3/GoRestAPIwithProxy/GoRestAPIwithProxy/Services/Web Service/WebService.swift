@@ -66,8 +66,6 @@ class WebService {
             components?.queryItems = [queryItemToken]
         }
         
-        NSLog("urlString: \(urlString + (verb ?? ""))")
-        
         var request = URLRequest(url: (components?.url)!)
         request.httpMethod = "GET"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -83,6 +81,8 @@ class WebService {
         config.connectionProxyDictionary?[kCFStreamPropertyHTTPSProxyPort as String] = 8011
         
         let session = URLSession.init(configuration: config, delegate: nil, delegateQueue: OperationQueue.current)
+        
+        NSLog("\(request.httpMethod ?? "UNKNOWN"): \(request.url?.absoluteString ?? "NONE")")
         
         session.dataTask(with: request) {
             (data: Data?, response: URLResponse?, error: Error?) in

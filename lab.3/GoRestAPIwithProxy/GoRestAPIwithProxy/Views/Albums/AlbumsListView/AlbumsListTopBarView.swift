@@ -11,12 +11,12 @@ import SwiftUI
 struct AlbumsListTopBarView: View {
     
     @ObservedObject var albumsData = AlbumsData.shared
-        
+    
     var body: some View {
         VStack {
             HStack {
                 Button(action: {
-                    print("Update")
+                    self.albumsData.updateAlbums()
                 }){
                     Image(systemName: "arrow.2.circlepath")
                         .resizable()
@@ -24,24 +24,24 @@ struct AlbumsListTopBarView: View {
                         .foregroundColor(.blue)
                 }
                 
-                HStack {
+                HStack(alignment: .bottom) {
                     Text("ALBUMS")
                         .font(.largeTitle)
                         .foregroundColor(.blue)
                         .fontWeight(.semibold)
                     
-                    Text("\(albumsData.albums.count)")
-                        .font(.largeTitle)
+                    Text("(\(albumsData.albums.count))")
+                        .font(.system(size: 20))
                         .foregroundColor(.blue)
                         .fontWeight(.semibold)
+                        .padding(.bottom, 2)
                 }.frame(width: 310)
                 
-                Button(action: {
-                    print("Add")
-                }) {
+                NavigationLink(destination: CreateNewAlbumView()) {
                     Image(systemName: "plus.circle.fill")
                         .resizable()
                         .frame(width: 40, height: 40)
+                        .foregroundColor(.blue)
                 }
                 
             }.frame(width: 410, height: 50)

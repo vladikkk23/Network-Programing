@@ -22,10 +22,10 @@ class AlbumsData: ObservableObject {
     @Published var albums = [Album]()
     
     // Store last 10 albums
-    @Published var topAlbums = [Album(id: "1", userID: "1234", title: "Test", links: Post_Links(linksSelf: Href(href: "LINK"), edit: Href(href: "LINK")))]
+    @Published var topAlbums = [Album(id: "5354", userID: "1717", title: "Test Album", links: Post_Links(linksSelf: Href(href: "LINK"), edit: Href(href: "LINK")))]
     var published = false
     
-    private let requests = AlbumsRequests.shared
+    private let albumRequests = AlbumsRequests.shared
     
     var timer: Timer?
     
@@ -37,12 +37,19 @@ class AlbumsData: ObservableObject {
     
     // MARK: Methods
     
-    // Fetching top 10 albums
-    func fetchTopAlbums() {
+    // Add new album
+    func addNewAlbum(withData album: Album) {
+        let newAlbum = New_Album(userID: album.userID, title: album.title)
+        
+        self.albumRequests.POST_NEW_ALBUM(withData: newAlbum)
+    }
+    
+    // Fetching top '$albumsCount' albums
+    private func fetchTopAlbums(albumsCount: Int) {
         NSLog("Fetching Top 10 Albums")
         var topAlbums = [Album]()
         
-        for it in 0..<10 {
+        for it in 0..<albumsCount {
             topAlbums.append(self.albums[it])
         }
         
@@ -58,11 +65,16 @@ class AlbumsData: ObservableObject {
         let delay = DispatchTime.now() + .seconds(2)
         
         // Check last 5 pages for new Albums
-        self.requests.GET_ALL_ALBUMS(fromPage: self.currentPages[0], toPage: self.currentPages[0] - 5)
+        self.albumRequests.GET_ALL_ALBUMS(fromPage: self.currentPages[0], toPage: self.currentPages[0] - 15)
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
-            self.albums = self.sortAlbums(albums: self.requests.albums)
-            self.fetchTopAlbums()
+            self.albums = self.sortAlbums(albums: self.albumRequests.albums)
+            
+            if self.albums.count > 10 {
+                self.fetchTopAlbums(albumsCount: 10)
+            } else {
+                self.fetchTopAlbums(albumsCount: self.albums.count)
+            }
         }
     }
     
@@ -74,13 +86,13 @@ class AlbumsData: ObservableObject {
         NSLog("Fetching Albums")
         
         let delay = DispatchTime.now() + .seconds(4)
-        self.requests.GET_ALL_ALBUMS(fromPage: self.currentPages[0], toPage: self.currentPages[1])
+        self.albumRequests.GET_ALL_ALBUMS(fromPage: self.currentPages[0], toPage: self.currentPages[1])
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
-            self.albums = self.sortAlbums(albums: self.requests.albums)
+            self.albums = self.sortAlbums(albums: self.albumRequests.albums)
             
             if !self.published {
-                self.fetchTopAlbums()
+                self.fetchTopAlbums(albumsCount: 10)
                 self.published.toggle()
             }
         }
