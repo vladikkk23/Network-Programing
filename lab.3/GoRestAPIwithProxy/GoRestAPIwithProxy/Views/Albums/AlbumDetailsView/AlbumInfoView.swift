@@ -17,7 +17,7 @@ struct AlbumInfoView: View {
             HStack {
                 VStack {
                     Text("Album ID: ")
-                        .font(Font(UIFont(name: "Times New Roman", size: 15)!)).bold()
+                        .font(Font(UIFont(name: "Times New Roman", size: 18)!)).bold()
                         .foregroundColor(.blue)
                 }
                 
@@ -25,15 +25,15 @@ struct AlbumInfoView: View {
                 
                 VStack {
                     Text(self.album.id)
-                        .font(Font(UIFont(name: "Times New Roman", size: 15)!)).bold()
+                        .font(Font(UIFont(name: "Times New Roman", size: 18)!)).bold()
                         .foregroundColor(.orange)
                 }
-            }.frame(height: 30)
+            }.frame(height: 20)
             
             HStack {
                 VStack {
                     Text("User ID:")
-                        .font(Font(UIFont(name: "Times New Roman", size: 15)!)).bold()
+                        .font(Font(UIFont(name: "Times New Roman", size: 18)!)).bold()
                         .foregroundColor(.blue)
                 }
                 
@@ -41,7 +41,7 @@ struct AlbumInfoView: View {
                 
                 VStack {
                     Text(self.album.userID)
-                        .font(Font(UIFont(name: "Times New Roman", size: 15)!)).bold()
+                        .font(Font(UIFont(name: "Times New Roman", size: 18)!)).bold()
                         .foregroundColor(.orange)
                 }
             }.frame(height: 20)
@@ -49,7 +49,7 @@ struct AlbumInfoView: View {
             HStack {
                 VStack {
                     Text("User Name:")
-                        .font(Font(UIFont(name: "Times New Roman", size: 15)!)).bold()
+                        .font(Font(UIFont(name: "Times New Roman", size: 18)!)).bold()
                         .foregroundColor(.blue)
                 }
                 
@@ -57,7 +57,7 @@ struct AlbumInfoView: View {
                 
                 VStack {
                     Text("\(self.user.firstName) \(self.user.lastName)")
-                        .font(Font(UIFont(name: "Times New Roman", size: 15)!)).bold()
+                        .font(Font(UIFont(name: "Times New Roman", size: 18)!)).bold()
                         .foregroundColor(.orange)
                 }
             }.frame(height: 20)

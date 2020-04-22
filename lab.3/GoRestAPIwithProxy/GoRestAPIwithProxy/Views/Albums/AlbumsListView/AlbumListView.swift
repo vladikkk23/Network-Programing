@@ -24,7 +24,7 @@ struct AlbumListView: View {
                 Divider()
                 
                 List {
-                    ForEach(self.albumsData.albums) { album in
+                    ForEach(self.albumsData.topAlbums) { album in
                         NavigationLink(destination: AlbumDetailsView(album: album)) {
                             AlbumRow(album: album)
                         }

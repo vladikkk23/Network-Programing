@@ -22,7 +22,7 @@ class AlbumsData: ObservableObject {
     @Published var albums = [Album]()
     
     // Store last 10 albums
-    @Published var topAlbums = [Album(id: "5354", userID: "1717", title: "Test Album", links: Post_Links(linksSelf: Href(href: "LINK"), edit: Href(href: "LINK")))]
+    @Published var topAlbums = [Album(id: "5357", userID: "1717", title: "Test Album", links: Post_Links(linksSelf: Href(href: "LINK"), edit: Href(href: "LINK")))]
     var published = false
     
     private let albumRequests = AlbumsRequests.shared
@@ -32,7 +32,7 @@ class AlbumsData: ObservableObject {
     var currentPages = [180, 165]
     
     private init() {
-        self.fetchAlbums()
+        //        self.fetchAlbums()
     }
     
     // MARK: Methods
@@ -46,7 +46,6 @@ class AlbumsData: ObservableObject {
     
     // Fetching top '$albumsCount' albums
     private func fetchTopAlbums(albumsCount: Int) {
-        NSLog("Fetching Top 10 Albums")
         var topAlbums = [Album]()
         
         for it in 0..<albumsCount {
@@ -60,8 +59,6 @@ class AlbumsData: ObservableObject {
     
     // Updating albums with newly added
     func updateAlbums() {
-        NSLog("Updating Albums")
-        
         let delay = DispatchTime.now() + .seconds(2)
         
         // Check last 5 pages for new Albums
@@ -82,8 +79,6 @@ class AlbumsData: ObservableObject {
     @objc
     func fetchAlbums() {
         self.startTimer()
-        
-        NSLog("Fetching Albums")
         
         let delay = DispatchTime.now() + .seconds(4)
         self.albumRequests.GET_ALL_ALBUMS(fromPage: self.currentPages[0], toPage: self.currentPages[1])

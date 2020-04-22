@@ -13,19 +13,22 @@ struct AlbumDetailsView: View {
     var photoData = PhotosData.shared
     var userData = UsersData.shared
     var album: Album
+    @State var count = [Int]()
     
     @State var showPhotos = false
     
     var body: some View {
         ZStack {
             VStack {
+                Spacer()
+                
                 AlbumInfoView(album: self.album, user: self.userData.userInfo)
                 
                 Divider()
                 
                 ZStack {
-                    List(self.photoData.photos) { photo in
-                        PhotoRow(photo: photo)
+                    List(self.count, id: \.self) { it in
+                        PhotoRow(photo: self.photoData.photos[it], image: self.photoData.images[it])
                     }
                     .opacity(self.showPhotos ? 1 : 0)
                     .offset(x: -10)
@@ -41,15 +44,22 @@ struct AlbumDetailsView: View {
             self.photoData.fetchAlbumPhotos(album: self.album)
             self.userData.fetchUserInfo(forAlbum: self.album)
             
-            let delay = DispatchTime.now() + .seconds(3)
+            let delay = DispatchTime.now() + .milliseconds(3600)
             
             DispatchQueue.main.asyncAfter(deadline: delay) {
                 if !self.photoData.photos.isEmpty {
                     self.showPhotos.toggle()
+                    self.countPhotos()
                 } else {
                     NSLog("THIS ALBUM HAS NO PHOTOS!")
                 }
             }
+        }
+    }
+    
+    private func countPhotos() {
+        for it in 0..<self.photoData.photos.count {
+            self.count.append(it)
         }
     }
 }
