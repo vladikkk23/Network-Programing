@@ -12,11 +12,38 @@ struct CreateNewAlbumView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    @State var showCaptureImageView: Bool = false
+    @State var images: [Image?] = [
+        Image(systemName: "photo"), Image(systemName: "photo"),
+        Image(systemName: "photo"), Image(systemName: "photo"),
+        Image(systemName: "photo"), Image(systemName: "photo")
+    ]
+    
     var body: some View {
-        VStack {
-            NewAlbumForm()
+        ZStack {
+            VStack {
+                NewAlbumForm()
+                
+                Spacer()
+                
+                Divider()
+                
+                AddPhotosView(showCaptureImageView: self.$showCaptureImageView, images: self.$images)
+                
+                Spacer()
+                
+                Divider()
+                
+                CreateAlbumBottomView(presentationMode: self.presentationMode)
+            }
             
-            CreateAlbumBottomView(presentationMode: self.presentationMode)
+            if (showCaptureImageView) {
+                CaptureImageView(isShown: self.$showCaptureImageView, images: self.$images)
+                    .offset(y: 30)
+            }
+        }
+        .onDisappear {
+            CaptureImageView.self.index = -1
         }
     }
 }

@@ -16,6 +16,8 @@ struct AlbumDetailsView: View {
     @State var count = [Int]()
     
     @State var showPhotos = false
+    @State var showEmptyPhotos = false
+    @State var showAlbumInfo = false
     
     var body: some View {
         ZStack {
@@ -32,11 +34,15 @@ struct AlbumDetailsView: View {
                     }
                     .opacity(self.showPhotos ? 1 : 0)
                     .offset(x: -10)
+                    
+                    EmptyAlbumView()
+                        .opacity(self.showEmptyPhotos ? 1 : 0)
+                        .frame(width: 410, height: 200, alignment: .center)
                 }
-            }.opacity(self.showPhotos ? 1 : 0)
+            }.opacity(self.showAlbumInfo ? 1 : 0)
             
             ProgressBarView()
-                .opacity(self.showPhotos ? 0 : 1)
+                .opacity(self.showAlbumInfo ? 0 : 1)
                 .frame(width: 200, height: 200, alignment: .center)
                 .navigationBarTitle(Text(self.album.title), displayMode: .inline)
         }
@@ -52,7 +58,9 @@ struct AlbumDetailsView: View {
                     self.countPhotos()
                 } else {
                     NSLog("THIS ALBUM HAS NO PHOTOS!")
+                    self.showEmptyPhotos.toggle()
                 }
+                self.showAlbumInfo.toggle()
             }
         }
     }

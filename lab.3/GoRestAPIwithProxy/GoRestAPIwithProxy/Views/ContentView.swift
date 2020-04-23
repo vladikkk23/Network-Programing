@@ -20,7 +20,7 @@ struct ContentView: View {
             SplashView()
                 .opacity(showSplash ? 1 : 0)
                 .onAppear {
-                    self.showSplashScreen(time: 4)
+                    self.showSplashScreen(time: 1)
             }
         }
     }

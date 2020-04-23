@@ -29,10 +29,10 @@ class AlbumsData: ObservableObject {
     
     var timer: Timer?
     
-    var currentPages = [180, 165]
+    var currentPages = [170, 150]
     
     private init() {
-        //        self.fetchAlbums()
+        self.fetchAlbums()
     }
     
     // MARK: Methods
@@ -48,8 +48,14 @@ class AlbumsData: ObservableObject {
     private func fetchTopAlbums(albumsCount: Int) {
         var topAlbums = [Album]()
         
-        for it in 0..<albumsCount {
-            topAlbums.append(self.albums[it])
+        if self.albums.count < albumsCount {
+            for it in 0..<self.albums.count {
+                topAlbums.append(self.albums[it])
+            }
+        } else {
+            for it in 0..<albumsCount {
+                topAlbums.append(self.albums[it])
+            }
         }
         
         DispatchQueue.main.async {
@@ -94,12 +100,12 @@ class AlbumsData: ObservableObject {
         
         self.currentPages[0] = self.currentPages[1] - 1
         
-        if self.currentPages[1] > 15 {
-            self.currentPages[1] -= 15
-        } else if self.currentPages[1] == 15 {
+        if self.currentPages[1] > 20 {
+            self.currentPages[1] -= 20
+        } else if self.currentPages[1] <= 20 {
             self.currentPages[1] = 1
         } else {
-            self.currentPages = [180, 165]
+            self.currentPages = [170, 150]
             self.stopTimer()
         }
     }
@@ -107,7 +113,7 @@ class AlbumsData: ObservableObject {
     // Setup and Start timer
     private func startTimer() {
         if self.timer == nil {
-            self.timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.fetchAlbums), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 40, target: self, selector: #selector(self.fetchAlbums), userInfo: nil, repeats: true)
             NSLog("Timer Started.")
         }
     }
