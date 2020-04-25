@@ -19,10 +19,10 @@ class UsersData: ObservableObject {
     
     // Singleton
     static let shared = UsersData()
-        
+    
     // Published Photos
     @Published var userInfo = UserInfo(firstName: "", lastName: "")
-
+    
     private let userRequests = UsersRequests.shared
     
     private init() {}
@@ -35,7 +35,7 @@ class UsersData: ObservableObject {
         let delay = DispatchTime.now() + .milliseconds(1500)
         
         self.userRequests.GET_USER_BY_ID(id: userID)
-
+        
         DispatchQueue.main.asyncAfter(deadline: delay) {
             self.userInfo = self.userRequests.userInfo
         }

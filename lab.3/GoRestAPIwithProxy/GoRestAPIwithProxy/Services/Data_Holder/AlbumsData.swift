@@ -6,7 +6,7 @@
 //  Copyright © 2020 PR. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /*
  A Singleton for extracting Albums.
@@ -22,14 +22,16 @@ class AlbumsData: ObservableObject {
     @Published var albums = [Album]()
     
     // Store last 10 albums
-    @Published var topAlbums = [Album(id: "5354", userID: "1717", title: "Test Album", links: Post_Links(linksSelf: Href(href: "LINK"), edit: Href(href: "LINK")))]
+    @Published var topAlbums = [Album(id: "5357", userID: "1717", title: "Test Album", links: Post_Links(linksSelf: Href(href: "LINK"), edit: Href(href: "LINK")))]
     var published = false
     
     private let albumRequests = AlbumsRequests.shared
+    private let photoRequests = PhotosRequests.shared
+    private var albumID = ""
     
     var timer: Timer?
     
-    var currentPages = [180, 165]
+    var currentPages = [180, 160]
     
     private init() {
         self.fetchAlbums()
@@ -38,19 +40,40 @@ class AlbumsData: ObservableObject {
     // MARK: Methods
     
     // Add new album
-    func addNewAlbum(withData album: Album) {
-        let newAlbum = New_Album(userID: album.userID, title: album.title)
+    func addNewAlbum(withAlbumData newAlbum: New_Album, withPhotoData newPhotos: [UIImage?], withPhotoTitles photoTitles: [String]) {
+        let delay = DispatchTime.now() + .seconds(8)
         
         self.albumRequests.POST_NEW_ALBUM(withData: newAlbum)
+        self.albumID = String(Int(self.albumID)! + 1)
+        
+        PhotosData.shared.uploadAlbumPhotos(images: newPhotos)
+        
+        self.updateAlbums()
+        
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: delay) {
+            let photoUrls = PhotosData.shared.imgurUrls
+            let thumbUrls = PhotosData.shared.thmbUrls
+            
+            for it in 0..<photoUrls.count {
+                let newPhoto = New_Photo(albumID: self.albumID, title: photoTitles[it], url: photoUrls[it], thumb: thumbUrls[it])
+                
+                self.photoRequests.POST_NEW_PHOTO(withData: newPhoto)
+            }
+        }
     }
     
     // Fetching top '$albumsCount' albums
     private func fetchTopAlbums(albumsCount: Int) {
-        NSLog("Fetching Top 10 Albums")
         var topAlbums = [Album]()
         
-        for it in 0..<albumsCount {
-            topAlbums.append(self.albums[it])
+        if self.albums.count < albumsCount {
+            for it in 0..<self.albums.count {
+                topAlbums.append(self.albums[it])
+            }
+        } else {
+            for it in 0..<albumsCount {
+                topAlbums.append(self.albums[it])
+            }
         }
         
         DispatchQueue.main.async {
@@ -60,8 +83,6 @@ class AlbumsData: ObservableObject {
     
     // Updating albums with newly added
     func updateAlbums() {
-        NSLog("Updating Albums")
-        
         let delay = DispatchTime.now() + .seconds(2)
         
         // Check last 5 pages for new Albums
@@ -69,6 +90,7 @@ class AlbumsData: ObservableObject {
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
             self.albums = self.sortAlbums(albums: self.albumRequests.albums)
+            self.albumID = self.albums.first!.id
             
             if self.albums.count > 10 {
                 self.fetchTopAlbums(albumsCount: 10)
@@ -83,13 +105,12 @@ class AlbumsData: ObservableObject {
     func fetchAlbums() {
         self.startTimer()
         
-        NSLog("Fetching Albums")
-        
         let delay = DispatchTime.now() + .seconds(4)
         self.albumRequests.GET_ALL_ALBUMS(fromPage: self.currentPages[0], toPage: self.currentPages[1])
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
             self.albums = self.sortAlbums(albums: self.albumRequests.albums)
+            self.albumID = self.albums.last!.id
             
             if !self.published {
                 self.fetchTopAlbums(albumsCount: 10)
@@ -99,12 +120,12 @@ class AlbumsData: ObservableObject {
         
         self.currentPages[0] = self.currentPages[1] - 1
         
-        if self.currentPages[1] > 15 {
-            self.currentPages[1] -= 15
-        } else if self.currentPages[1] == 15 {
+        if self.currentPages[1] > 20 {
+            self.currentPages[1] -= 20
+        } else if self.currentPages[1] == 20 {
             self.currentPages[1] = 1
         } else {
-            self.currentPages = [180, 165]
+            self.currentPages = [180, 160]
             self.stopTimer()
         }
     }
@@ -112,7 +133,7 @@ class AlbumsData: ObservableObject {
     // Setup and Start timer
     private func startTimer() {
         if self.timer == nil {
-            self.timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.fetchAlbums), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 40, target: self, selector: #selector(self.fetchAlbums), userInfo: nil, repeats: true)
             NSLog("Timer Started.")
         }
     }

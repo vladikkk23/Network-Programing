@@ -109,10 +109,9 @@ class WebService {
             completion(data)
         }.resume()
     }
+    
     // MARK: Methods -> HEAD
-    
-    
-    
+
     // MARK: Methods -> OPTIONS
     
     // Return available general options (FOR -> users/posts/comments/albums/photos)

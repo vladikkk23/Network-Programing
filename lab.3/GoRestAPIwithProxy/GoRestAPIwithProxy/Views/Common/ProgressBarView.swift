@@ -35,7 +35,7 @@ struct ProgressBarView: View {
     }
     
     func loading() {
-        Timer.scheduledTimer(withTimeInterval: 0.24, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 0.32, repeats: true) { timer in
             self.progress += 0.1
             if (self.progress >= 0.9) {
                 timer.invalidate()

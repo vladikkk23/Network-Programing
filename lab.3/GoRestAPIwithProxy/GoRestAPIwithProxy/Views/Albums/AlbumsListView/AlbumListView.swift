@@ -27,7 +27,7 @@ struct AlbumListView: View {
                     ForEach(self.albumsData.albums) { album in
                         NavigationLink(destination: AlbumDetailsView(album: album)) {
                             AlbumRow(album: album)
-                        }
+                        }.padding(.vertical)
                     }
                 }.offset(x: -10)
             }

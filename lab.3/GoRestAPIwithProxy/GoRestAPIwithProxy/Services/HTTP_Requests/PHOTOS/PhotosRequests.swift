@@ -46,7 +46,9 @@ class PhotosRequests {
             
             guard let photosResult = try? JSONDecoder().decode(Photos_Result.self, from: jsonData) else { return }
             
-            self.photos = photosResult.photos
+            self.photos = photosResult.photos.reversed() as [Photo]
+            
+            ContentLoader.shared.loadAlbumPhotos(photos: self.photos)
         }
     }
     

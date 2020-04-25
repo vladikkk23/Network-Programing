@@ -6,7 +6,7 @@
 //  Copyright © 2020 PR. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - Photos_Result used when Result is an Array of Photos
 struct Photos_Result: Codable {
@@ -35,6 +35,8 @@ struct Photo: Codable,Identifiable, Hashable {
     let id, albumID, title: String
     let url, thumbnail: String
     let links: Post_Links
+    
+    var image: UIImage?
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
