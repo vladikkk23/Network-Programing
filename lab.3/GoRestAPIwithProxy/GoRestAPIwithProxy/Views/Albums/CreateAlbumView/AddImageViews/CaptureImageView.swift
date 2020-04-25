@@ -11,7 +11,7 @@ import SwiftUI
 struct CaptureImageView: View {
     // MARK: - Properties
     @Binding var isShown: Bool
-    @Binding var images: [Image?]
+    @Binding var images: [UIImage?]
     
     static var index = -1
     

@@ -82,7 +82,7 @@ class WebService {
         
         let session = URLSession.init(configuration: config, delegate: nil, delegateQueue: OperationQueue.current)
         
-//        NSLog("\(request.httpMethod ?? "UNKNOWN"): \(request.url?.absoluteString ?? "NONE")")
+        NSLog("\(request.httpMethod ?? "UNKNOWN"): \(request.url?.absoluteString ?? "NONE")")
         
         session.dataTask(with: request) {
             (data: Data?, response: URLResponse?, error: Error?) in
@@ -109,10 +109,9 @@ class WebService {
             completion(data)
         }.resume()
     }
+    
     // MARK: Methods -> HEAD
-    
-    
-    
+
     // MARK: Methods -> OPTIONS
     
     // Return available general options (FOR -> users/posts/comments/albums/photos)

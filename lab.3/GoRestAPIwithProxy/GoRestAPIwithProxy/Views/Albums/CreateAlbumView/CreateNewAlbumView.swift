@@ -12,34 +12,34 @@ struct CreateNewAlbumView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    @State var userID = ""
+    @State var albumTitle = ""
     @State var showCaptureImageView: Bool = false
-    @State var images: [Image?] = [
-        Image(systemName: "photo"), Image(systemName: "photo"),
-        Image(systemName: "photo"), Image(systemName: "photo"),
-        Image(systemName: "photo"), Image(systemName: "photo")
+    @State var images: [UIImage?] = [
+        UIImage(systemName: "photo"), UIImage(systemName: "photo"),
+        UIImage(systemName: "photo"), UIImage(systemName: "photo"),
+        UIImage(systemName: "photo"), UIImage(systemName: "photo")
     ]
+    @State var photoTitles = ["", "", "", "", "", ""]
     
     var body: some View {
         ZStack {
             VStack {
-                NewAlbumForm()
-                
-                Spacer()
+                NewAlbumForm(userID: self.$userID, AlbumTitle: self.$albumTitle)
                 
                 Divider()
                 
-                AddPhotosView(showCaptureImageView: self.$showCaptureImageView, images: self.$images)
-                
-                Spacer()
+                AddPhotosView(showCaptureImageView: self.$showCaptureImageView, images: self.$images, photoTitles: self.$photoTitles)
+                    .frame(width: 400)
                 
                 Divider()
                 
-                CreateAlbumBottomView(presentationMode: self.presentationMode)
+                CreateAlbumBottomView(presentationMode: self.presentationMode, userID: self.$userID, albumTitle: self.$albumTitle, images: self.$images, imageTitles: self.$photoTitles)
             }
             
             if (showCaptureImageView) {
                 CaptureImageView(isShown: self.$showCaptureImageView, images: self.$images)
-                    .offset(y: 30)
+                    .offset(y: 50)
             }
         }
         .onDisappear {

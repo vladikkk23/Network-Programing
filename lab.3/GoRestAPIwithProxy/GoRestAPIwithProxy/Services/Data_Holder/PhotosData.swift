@@ -20,6 +20,7 @@ class PhotosData: ObservableObject {
     
     private let albumsData = AlbumsData.shared
     private let contentLoader = ContentLoader.shared
+    let contentUploader = ContentUploader.shared
     
     // Published Photos
     @Published var photos = [Photo]()
@@ -27,6 +28,9 @@ class PhotosData: ObservableObject {
     
     private let albumRequests = AlbumsRequests.shared
     private let photoRequests = PhotosRequests.shared
+    
+    var imgurUrls = [String]()
+    var thmbUrls = [String]()
     
     private init() {}
     
@@ -47,6 +51,35 @@ class PhotosData: ObservableObject {
             
             while self.images.count < self.photos.count {
                 self.images.append(UIImage(named: "NoImage")!)
+            }
+        }
+    }
+    
+    func uploadAlbumPhotos(images: [UIImage?]) {
+        var sortedImages = images as! [UIImage]
+        let imagesCount = CaptureImageView.index
+        
+        sortedImages = sortedImages.removingDuplicates()
+        
+        if imagesCount > -1 {
+            if imagesCount == 0 {
+                self.contentUploader.uploadImageToImgur(image: sortedImages[imagesCount])
+                self.contentUploader.uploaThumbnail(image: sortedImages[imagesCount])
+            } else {
+                for it in 0...imagesCount {
+                    self.contentUploader.uploadImageToImgur(image: sortedImages[it])
+                    self.contentUploader.uploaThumbnail(image: sortedImages[it])
+                }
+            }
+            
+            let delay = DispatchTime.now() + .seconds(7)
+            
+            DispatchQueue.global(qos: .background).asyncAfter(deadline: delay) {
+                self.imgurUrls = self.contentUploader.imgurUrls
+                self.thmbUrls = self.contentUploader.thmbUrls
+                
+                self.contentUploader.imgurUrls = []
+                self.contentUploader.thmbUrls = []
             }
         }
     }

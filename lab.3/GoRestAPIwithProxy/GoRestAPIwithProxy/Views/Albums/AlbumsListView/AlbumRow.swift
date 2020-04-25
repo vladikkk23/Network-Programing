@@ -41,13 +41,8 @@ struct AlbumRow: View {
                 
                 Text("User ID: \(album.userID)").foregroundColor(Color.gray)
                     .font(.subheadline)
-                    .padding(.horizontal, 30)
+                    .padding(.horizontal, 10)
             }
-            
-            Image("landscape")
-                .frame(width: 415, height: 415, alignment: .center)
-                .clipped()
-                .aspectRatio(contentMode: .fit)
         }
     }
 }

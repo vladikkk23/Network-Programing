@@ -10,13 +10,19 @@ import SwiftUI
 
 struct CreateAlbumBottomView: View {
     
+    var albumData = AlbumsData.shared
+    
     @Binding var presentationMode: PresentationMode
+    @Binding var userID: String
+    @Binding var albumTitle: String
+    @Binding var images: [UIImage?]
+    @Binding var imageTitles: [String]
     
     var body: some View {
         HStack(spacing: 20) {
             Button(action: {
-                let newAlbum = New_Album(userID: "1717", title: "Test Album")
-                AlbumsRequests.shared.POST_NEW_ALBUM(withData: newAlbum)
+                let newAlbum = New_Album(userID: self.userID, title: self.albumTitle)
+                self.albumData.addNewAlbum(withAlbumData: newAlbum, withPhotoData: self.images, withPhotoTitles: self.imageTitles)
                 
                 self.presentationMode.dismiss()
             }) {

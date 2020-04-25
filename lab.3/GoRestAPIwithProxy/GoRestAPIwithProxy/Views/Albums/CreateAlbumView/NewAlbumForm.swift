@@ -10,11 +10,11 @@ import SwiftUI
 
 struct NewAlbumForm: View {
     
-    @State var userID = ""
-    @State var AlbumTitle = ""
+    @Binding var userID: String
+    @Binding var AlbumTitle: String
     
     var body: some View {
-        VStack(spacing: 30) {
+        VStack(spacing: 20) {
             Text("Album Info")
                 .font(Font(UIFont(name: "Avenir", size: 30)!)).bold()
                 .foregroundColor(.blue)
@@ -34,6 +34,6 @@ struct NewAlbumForm: View {
 
 struct NewAlbumForm_Previews: PreviewProvider {
     static var previews: some View {
-        NewAlbumForm()
+        NewAlbumForm(userID: .constant(""), AlbumTitle: .constant(""))
     }
 }

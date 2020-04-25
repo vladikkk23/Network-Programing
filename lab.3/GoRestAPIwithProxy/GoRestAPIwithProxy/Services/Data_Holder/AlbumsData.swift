@@ -6,7 +6,7 @@
 //  Copyright © 2020 PR. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /*
  A Singleton for extracting Albums.
@@ -26,10 +26,12 @@ class AlbumsData: ObservableObject {
     var published = false
     
     private let albumRequests = AlbumsRequests.shared
+    private let photoRequests = PhotosRequests.shared
+    private var albumID = ""
     
     var timer: Timer?
     
-    var currentPages = [170, 150]
+    var currentPages = [180, 160]
     
     private init() {
         self.fetchAlbums()
@@ -38,10 +40,26 @@ class AlbumsData: ObservableObject {
     // MARK: Methods
     
     // Add new album
-    func addNewAlbum(withData album: Album) {
-        let newAlbum = New_Album(userID: album.userID, title: album.title)
+    func addNewAlbum(withAlbumData newAlbum: New_Album, withPhotoData newPhotos: [UIImage?], withPhotoTitles photoTitles: [String]) {
+        let delay = DispatchTime.now() + .seconds(8)
         
         self.albumRequests.POST_NEW_ALBUM(withData: newAlbum)
+        self.albumID = String(Int(self.albumID)! + 1)
+        
+        PhotosData.shared.uploadAlbumPhotos(images: newPhotos)
+        
+        self.updateAlbums()
+        
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: delay) {
+            let photoUrls = PhotosData.shared.imgurUrls
+            let thumbUrls = PhotosData.shared.thmbUrls
+            
+            for it in 0..<photoUrls.count {
+                let newPhoto = New_Photo(albumID: self.albumID, title: photoTitles[it], url: photoUrls[it], thumb: thumbUrls[it])
+                
+                self.photoRequests.POST_NEW_PHOTO(withData: newPhoto)
+            }
+        }
     }
     
     // Fetching top '$albumsCount' albums
@@ -72,6 +90,7 @@ class AlbumsData: ObservableObject {
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
             self.albums = self.sortAlbums(albums: self.albumRequests.albums)
+            self.albumID = self.albums.first!.id
             
             if self.albums.count > 10 {
                 self.fetchTopAlbums(albumsCount: 10)
@@ -91,6 +110,7 @@ class AlbumsData: ObservableObject {
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
             self.albums = self.sortAlbums(albums: self.albumRequests.albums)
+            self.albumID = self.albums.last!.id
             
             if !self.published {
                 self.fetchTopAlbums(albumsCount: 10)
@@ -102,10 +122,10 @@ class AlbumsData: ObservableObject {
         
         if self.currentPages[1] > 20 {
             self.currentPages[1] -= 20
-        } else if self.currentPages[1] <= 20 {
+        } else if self.currentPages[1] == 20 {
             self.currentPages[1] = 1
         } else {
-            self.currentPages = [170, 150]
+            self.currentPages = [180, 160]
             self.stopTimer()
         }
     }

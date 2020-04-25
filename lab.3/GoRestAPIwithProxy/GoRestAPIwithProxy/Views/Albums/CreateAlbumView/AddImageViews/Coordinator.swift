@@ -12,9 +12,9 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
     
     // MARK: Properties
     @Binding var isCoordinatorShown: Bool
-    @Binding var imageInCoordinator: Image?
+    @Binding var imageInCoordinator: UIImage?
     
-    init(isShown: Binding<Bool>, image: Binding<Image?>) {
+    init(isShown: Binding<Bool>, image: Binding<UIImage?>) {
         _isCoordinatorShown = isShown
         _imageInCoordinator = image
     }
@@ -24,7 +24,7 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let unwrapImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
-        imageInCoordinator = Image(uiImage: unwrapImage)
+        imageInCoordinator = unwrapImage
         isCoordinatorShown = false
     }
     
