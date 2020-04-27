@@ -15,6 +15,8 @@ class PhotosRequests {
     static let shared = PhotosRequests()
     
     private let webService = WebService.shared
+    
+    var photos = [Photo]()
     private var urlString = "http://localhost:8011/photos"
     
     // Init
@@ -44,9 +46,9 @@ class PhotosRequests {
             
             guard let photosResult = try? JSONDecoder().decode(Photos_Result.self, from: jsonData) else { return }
             
-            for photo in photosResult.photos {
-                print(photo)
-            }
+            self.photos = photosResult.photos.reversed() as [Photo]
+            
+            ContentLoader.shared.loadAlbumPhotos(photos: self.photos)
         }
     }
     
@@ -83,7 +85,7 @@ class PhotosRequests {
     // MARK: Methods -> POST (PHOTO)
     
     // Add a new photo with data = '$photo'
-    func POST_NEW_ALBUM(withData photo: New_Photo) {
+    func POST_NEW_PHOTO(withData photo: New_Photo) {
         let urlString = "\(self.urlString)?access-token=\(self.webService.token)"
         
         guard let url = URL(string: urlString) else { return }

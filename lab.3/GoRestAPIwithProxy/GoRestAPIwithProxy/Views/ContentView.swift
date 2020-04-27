@@ -27,7 +27,6 @@ struct ContentView: View {
     
     private func showSplashScreen(time: Double) {
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(time)) {
-            NSLog("\(self.showSplash.description)")
             self.showSplash = false
         }
     }

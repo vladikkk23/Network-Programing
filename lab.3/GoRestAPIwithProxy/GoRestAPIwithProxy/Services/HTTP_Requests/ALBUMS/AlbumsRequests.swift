@@ -15,6 +15,7 @@ class AlbumsRequests {
     static let shared = AlbumsRequests()
     
     private let webService = WebService.shared
+    private let usersRequests = UsersRequests.shared
     
     var albums = [Album]()
     private var urlString = "http://localhost:8011/albums"
@@ -26,7 +27,7 @@ class AlbumsRequests {
     
     // List all albums
     func GET_ALL_ALBUMS(fromPage: Int, toPage: Int) {
-        for page in stride(from: fromPage, to: toPage, by: -1) {
+        for page in stride(from: fromPage, to: toPage - 1, by: -1) {
             self.webService.makeRequestViaUrlSessionProxy(withURL: &self.urlString, verb: "page=\(page)") { (data) in
                 guard let jsonData = data else { return }
                 
