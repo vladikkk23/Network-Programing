@@ -30,7 +30,7 @@ class Get_Inbox: ObservableObject {
     var lastEmail: EMail?
     
     // How many emails to download
-    var count = 10
+    var count = 50
     
     // Session
     var imapSession: MCOIMAPSession = MCOIMAPSession()
@@ -89,11 +89,19 @@ class Get_Inbox: ObservableObject {
                         DispatchQueue.main.async {
                             print("########## UI Thread -- NUMBER: \(number)##########")
                             
-                            var temp = self.emails.reversed() as [EMail]
-                            temp.append(contentsOf: EMails.reversed())
-                            
-                            DispatchQueue.main.async {
-                                self.emails = temp.reversed() as [EMail]
+                            for EMail in EMails {
+                                if self.emails.contains(where: { (email) -> Bool in
+                                    email.subject == EMail.subject
+                                }) {
+                                    continue
+                                } else {
+                                    var temp = self.emails.reversed() as [EMail]
+                                    temp.append(contentsOf: EMails.reversed())
+                                    
+                                    DispatchQueue.main.async {
+                                        self.emails = temp.reversed() as [EMail]
+                                    }
+                                }
                             }
                         }
                     } else {

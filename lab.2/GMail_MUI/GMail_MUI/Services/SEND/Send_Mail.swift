@@ -16,7 +16,7 @@ class Send_Mail {
     // MARK: Properties
     
     // Login Info
-    private var hostname = "imap.gmail.com"
+    private var hostname = "smtp.gmail.com"
     private var username = "YOUR USERNAME"
     private var password = "YOUR PASSWORD"
     
