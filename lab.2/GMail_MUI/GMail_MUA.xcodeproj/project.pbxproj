@@ -1,0 +1,687 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4BEF96A65E247CEE1C3AEEA9 /* Pods_GMail_MUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2D01E10B972381A2E3981B /* Pods_GMail_MUITests.framework */; };
+		58184CD043F6B35AF5C72AB1 /* Pods_GMail_MUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5073208B64BB52C1E827E852 /* Pods_GMail_MUI.framework */; };
+		6105C621242FF2F9002E27E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6105C620242FF2F9002E27E7 /* AppDelegate.swift */; };
+		6105C623242FF2F9002E27E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6105C622242FF2F9002E27E7 /* SceneDelegate.swift */; };
+		6105C625242FF2F9002E27E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6105C624242FF2F9002E27E7 /* ContentView.swift */; };
+		6105C627242FF2FB002E27E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6105C626242FF2FB002E27E7 /* Assets.xcassets */; };
+		6105C62A242FF2FB002E27E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6105C629242FF2FB002E27E7 /* Preview Assets.xcassets */; };
+		6105C62D242FF2FB002E27E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6105C62B242FF2FB002E27E7 /* LaunchScreen.storyboard */; };
+		6105C638242FF2FB002E27E7 /* GMail_MUATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6105C637242FF2FB002E27E7 /* GMail_MUATests.swift */; };
+		6109D96D2430EF9C00A574A2 /* Email_Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6109D96C2430EF9C00A574A2 /* Email_Row.swift */; };
+		6109D96F2430F22D00A574A2 /* Email_DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6109D96E2430F22D00A574A2 /* Email_DetailsView.swift */; };
+		6109D9712430FC6000A574A2 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6109D9702430FC6000A574A2 /* Sender.swift */; };
+		6109D97524310B1000A574A2 /* Create_EMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6109D97424310B1000A574A2 /* Create_EMailView.swift */; };
+		6109D9772431110C00A574A2 /* MultiLine_TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6109D9762431110C00A574A2 /* MultiLine_TextFieldView.swift */; };
+		6184969B243163A0007E025A /* SubstringToHTMLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184969A243163A0007E025A /* SubstringToHTMLExtension.swift */; };
+		618E3FD4243158BA00572682 /* Content_Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E3FD3243158BA00572682 /* Content_Extractor.swift */; };
+		61FAD879242FFBF200B346A3 /* Send_Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAD878242FFBF200B346A3 /* Send_Mail.swift */; };
+		61FAD87B242FFCA400B346A3 /* Get_Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAD87A242FFCA400B346A3 /* Get_Inbox.swift */; };
+		61FAD87E242FFE4700B346A3 /* EMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAD87D242FFE4700B346A3 /* EMail.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6105C634242FF2FB002E27E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6105C615242FF2F9002E27E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6105C61C242FF2F9002E27E7;
+			remoteInfo = GMail_MUI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		16FBDA1856965E2EE345B991 /* Pods-GMail_MUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMail_MUI.debug.xcconfig"; path = "Target Support Files/Pods-GMail_MUI/Pods-GMail_MUI.debug.xcconfig"; sourceTree = "<group>"; };
+		283F2E6C4201A134BDA9A8ED /* Pods-GMail_MUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMail_MUITests.debug.xcconfig"; path = "Target Support Files/Pods-GMail_MUITests/Pods-GMail_MUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		37A1DE35779EDF3329C305CE /* Pods-GMail_MUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMail_MUITests.release.xcconfig"; path = "Target Support Files/Pods-GMail_MUITests/Pods-GMail_MUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5073208B64BB52C1E827E852 /* Pods_GMail_MUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GMail_MUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6105C61D242FF2F9002E27E7 /* GMail_MUA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GMail_MUA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6105C620242FF2F9002E27E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6105C622242FF2F9002E27E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		6105C624242FF2F9002E27E7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6105C626242FF2FB002E27E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6105C629242FF2FB002E27E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6105C62C242FF2FB002E27E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6105C62E242FF2FB002E27E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6105C633242FF2FB002E27E7 /* GMail_MUATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GMail_MUATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6105C637242FF2FB002E27E7 /* GMail_MUATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMail_MUATests.swift; sourceTree = "<group>"; };
+		6105C639242FF2FB002E27E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6109D96C2430EF9C00A574A2 /* Email_Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email_Row.swift; sourceTree = "<group>"; };
+		6109D96E2430F22D00A574A2 /* Email_DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email_DetailsView.swift; sourceTree = "<group>"; };
+		6109D9702430FC6000A574A2 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		6109D97424310B1000A574A2 /* Create_EMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_EMailView.swift; sourceTree = "<group>"; };
+		6109D9762431110C00A574A2 /* MultiLine_TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLine_TextFieldView.swift; sourceTree = "<group>"; };
+		6184969A243163A0007E025A /* SubstringToHTMLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubstringToHTMLExtension.swift; sourceTree = "<group>"; };
+		618E3FD3243158BA00572682 /* Content_Extractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content_Extractor.swift; sourceTree = "<group>"; };
+		61C5B6E9242FF93000091895 /* GMail_MUI_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMail_MUI_bridge.h; sourceTree = "<group>"; };
+		61FAD878242FFBF200B346A3 /* Send_Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Send_Mail.swift; sourceTree = "<group>"; };
+		61FAD87A242FFCA400B346A3 /* Get_Inbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Get_Inbox.swift; sourceTree = "<group>"; };
+		61FAD87D242FFE4700B346A3 /* EMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMail.swift; sourceTree = "<group>"; };
+		AF2D01E10B972381A2E3981B /* Pods_GMail_MUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GMail_MUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1BBCC4A6F0FBE6C362F3F89 /* Pods-GMail_MUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMail_MUI.release.xcconfig"; path = "Target Support Files/Pods-GMail_MUI/Pods-GMail_MUI.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6105C61A242FF2F9002E27E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58184CD043F6B35AF5C72AB1 /* Pods_GMail_MUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6105C630242FF2FB002E27E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BEF96A65E247CEE1C3AEEA9 /* Pods_GMail_MUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		24AC24F998CFDC96CF2CE753 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5073208B64BB52C1E827E852 /* Pods_GMail_MUI.framework */,
+				AF2D01E10B972381A2E3981B /* Pods_GMail_MUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6105C614242FF2F9002E27E7 = {
+			isa = PBXGroup;
+			children = (
+				6105C61F242FF2F9002E27E7 /* GMail_MUA */,
+				6105C636242FF2FB002E27E7 /* GMail_MUATests */,
+				6105C61E242FF2F9002E27E7 /* Products */,
+				71B7FE770FDBAA12DCBA8155 /* Pods */,
+				24AC24F998CFDC96CF2CE753 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6105C61E242FF2F9002E27E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6105C61D242FF2F9002E27E7 /* GMail_MUA.app */,
+				6105C633242FF2FB002E27E7 /* GMail_MUATests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6105C61F242FF2F9002E27E7 /* GMail_MUA */ = {
+			isa = PBXGroup;
+			children = (
+				6184969924316385007E025A /* Helpers */,
+				61FAD87C242FFE1900B346A3 /* Models */,
+				61C5B6EC242FF9B600091895 /* Services */,
+				61C5B6EB242FF9AC00091895 /* Delegates */,
+				61C5B6EA242FF9A700091895 /* Views */,
+				6105C626242FF2FB002E27E7 /* Assets.xcassets */,
+				6105C62B242FF2FB002E27E7 /* LaunchScreen.storyboard */,
+				6105C62E242FF2FB002E27E7 /* Info.plist */,
+				6105C628242FF2FB002E27E7 /* Preview Content */,
+				61C5B6E9242FF93000091895 /* GMail_MUI_bridge.h */,
+			);
+			path = GMail_MUA;
+			sourceTree = "<group>";
+		};
+		6105C628242FF2FB002E27E7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6105C629242FF2FB002E27E7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6105C636242FF2FB002E27E7 /* GMail_MUATests */ = {
+			isa = PBXGroup;
+			children = (
+				6105C637242FF2FB002E27E7 /* GMail_MUATests.swift */,
+				6105C639242FF2FB002E27E7 /* Info.plist */,
+			);
+			path = GMail_MUATests;
+			sourceTree = "<group>";
+		};
+		6184969924316385007E025A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6184969A243163A0007E025A /* SubstringToHTMLExtension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		61C5B6EA242FF9A700091895 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6105C624242FF2F9002E27E7 /* ContentView.swift */,
+				6109D96C2430EF9C00A574A2 /* Email_Row.swift */,
+				6109D96E2430F22D00A574A2 /* Email_DetailsView.swift */,
+				6109D97424310B1000A574A2 /* Create_EMailView.swift */,
+				6109D9762431110C00A574A2 /* MultiLine_TextFieldView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		61C5B6EB242FF9AC00091895 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				6105C620242FF2F9002E27E7 /* AppDelegate.swift */,
+				6105C622242FF2F9002E27E7 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		61C5B6EC242FF9B600091895 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				61FAD877242FFBCF00B346A3 /* SEND */,
+				61FAD876242FFBC800B346A3 /* GET */,
+				618E3FD3243158BA00572682 /* Content_Extractor.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		61FAD876242FFBC800B346A3 /* GET */ = {
+			isa = PBXGroup;
+			children = (
+				61FAD87A242FFCA400B346A3 /* Get_Inbox.swift */,
+			);
+			path = GET;
+			sourceTree = "<group>";
+		};
+		61FAD877242FFBCF00B346A3 /* SEND */ = {
+			isa = PBXGroup;
+			children = (
+				61FAD878242FFBF200B346A3 /* Send_Mail.swift */,
+			);
+			path = SEND;
+			sourceTree = "<group>";
+		};
+		61FAD87C242FFE1900B346A3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				61FAD87D242FFE4700B346A3 /* EMail.swift */,
+				6109D9702430FC6000A574A2 /* Sender.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		71B7FE770FDBAA12DCBA8155 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				16FBDA1856965E2EE345B991 /* Pods-GMail_MUI.debug.xcconfig */,
+				F1BBCC4A6F0FBE6C362F3F89 /* Pods-GMail_MUI.release.xcconfig */,
+				283F2E6C4201A134BDA9A8ED /* Pods-GMail_MUITests.debug.xcconfig */,
+				37A1DE35779EDF3329C305CE /* Pods-GMail_MUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6105C61C242FF2F9002E27E7 /* GMail_MUA */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6105C63C242FF2FB002E27E7 /* Build configuration list for PBXNativeTarget "GMail_MUA" */;
+			buildPhases = (
+				F23C6C862D147E93CF7B041B /* [CP] Check Pods Manifest.lock */,
+				6105C619242FF2F9002E27E7 /* Sources */,
+				6105C61A242FF2F9002E27E7 /* Frameworks */,
+				6105C61B242FF2F9002E27E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GMail_MUA;
+			productName = GMail_MUI;
+			productReference = 6105C61D242FF2F9002E27E7 /* GMail_MUA.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6105C632242FF2FB002E27E7 /* GMail_MUATests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6105C63F242FF2FB002E27E7 /* Build configuration list for PBXNativeTarget "GMail_MUATests" */;
+			buildPhases = (
+				ACD824A97418CAEF6FA940FA /* [CP] Check Pods Manifest.lock */,
+				6105C62F242FF2FB002E27E7 /* Sources */,
+				6105C630242FF2FB002E27E7 /* Frameworks */,
+				6105C631242FF2FB002E27E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6105C635242FF2FB002E27E7 /* PBXTargetDependency */,
+			);
+			name = GMail_MUATests;
+			productName = GMail_MUITests;
+			productReference = 6105C633242FF2FB002E27E7 /* GMail_MUATests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6105C615242FF2F9002E27E7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = PR;
+				TargetAttributes = {
+					6105C61C242FF2F9002E27E7 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					6105C632242FF2FB002E27E7 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 6105C61C242FF2F9002E27E7;
+					};
+				};
+			};
+			buildConfigurationList = 6105C618242FF2F9002E27E7 /* Build configuration list for PBXProject "GMail_MUA" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6105C614242FF2F9002E27E7;
+			productRefGroup = 6105C61E242FF2F9002E27E7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6105C61C242FF2F9002E27E7 /* GMail_MUA */,
+				6105C632242FF2FB002E27E7 /* GMail_MUATests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6105C61B242FF2F9002E27E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6105C62D242FF2FB002E27E7 /* LaunchScreen.storyboard in Resources */,
+				6105C62A242FF2FB002E27E7 /* Preview Assets.xcassets in Resources */,
+				6105C627242FF2FB002E27E7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6105C631242FF2FB002E27E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ACD824A97418CAEF6FA940FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GMail_MUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F23C6C862D147E93CF7B041B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GMail_MUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6105C619242FF2F9002E27E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6105C621242FF2F9002E27E7 /* AppDelegate.swift in Sources */,
+				6105C623242FF2F9002E27E7 /* SceneDelegate.swift in Sources */,
+				6109D9772431110C00A574A2 /* MultiLine_TextFieldView.swift in Sources */,
+				6109D96F2430F22D00A574A2 /* Email_DetailsView.swift in Sources */,
+				6109D97524310B1000A574A2 /* Create_EMailView.swift in Sources */,
+				61FAD879242FFBF200B346A3 /* Send_Mail.swift in Sources */,
+				6109D9712430FC6000A574A2 /* Sender.swift in Sources */,
+				6109D96D2430EF9C00A574A2 /* Email_Row.swift in Sources */,
+				618E3FD4243158BA00572682 /* Content_Extractor.swift in Sources */,
+				6184969B243163A0007E025A /* SubstringToHTMLExtension.swift in Sources */,
+				6105C625242FF2F9002E27E7 /* ContentView.swift in Sources */,
+				61FAD87E242FFE4700B346A3 /* EMail.swift in Sources */,
+				61FAD87B242FFCA400B346A3 /* Get_Inbox.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6105C62F242FF2FB002E27E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6105C638242FF2FB002E27E7 /* GMail_MUATests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6105C635242FF2FB002E27E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6105C61C242FF2F9002E27E7 /* GMail_MUA */;
+			targetProxy = 6105C634242FF2FB002E27E7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6105C62B242FF2FB002E27E7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6105C62C242FF2FB002E27E7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6105C63A242FF2FB002E27E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6105C63B242FF2FB002E27E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6105C63D242FF2FB002E27E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16FBDA1856965E2EE345B991 /* Pods-GMail_MUI.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"GMail_MUI/Preview Content\"";
+				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
+				ENABLE_PREVIEWS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/mailcore2-ios\"",
+					"\"${PODS_ROOT}/Headers/Public/mailcore2-ios/MailCore\"",
+				);
+				INFOPLIST_FILE = GMail_MUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "SwiftUI.GMail-MUA";
+				PRODUCT_NAME = GMail_MUA;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/GMail_MUI/GMail_MUI_bridge.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6105C63E242FF2FB002E27E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1BBCC4A6F0FBE6C362F3F89 /* Pods-GMail_MUI.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"GMail_MUI/Preview Content\"";
+				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
+				ENABLE_PREVIEWS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/mailcore2-ios\"",
+					"\"${PODS_ROOT}/Headers/Public/mailcore2-ios/MailCore\"",
+				);
+				INFOPLIST_FILE = GMail_MUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "SwiftUI.GMail-MUA";
+				PRODUCT_NAME = GMail_MUA;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/GMail_MUI/GMail_MUI_bridge.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6105C640242FF2FB002E27E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 283F2E6C4201A134BDA9A8ED /* Pods-GMail_MUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/mailcore2-ios\"",
+				);
+				INFOPLIST_FILE = GMail_MUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "SwiftUI.GMail-MUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GMail_MUA.app/GMail_MUA";
+			};
+			name = Debug;
+		};
+		6105C641242FF2FB002E27E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37A1DE35779EDF3329C305CE /* Pods-GMail_MUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/mailcore2-ios\"",
+				);
+				INFOPLIST_FILE = GMail_MUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "SwiftUI.GMail-MUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GMail_MUA.app/GMail_MUA";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6105C618242FF2F9002E27E7 /* Build configuration list for PBXProject "GMail_MUA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6105C63A242FF2FB002E27E7 /* Debug */,
+				6105C63B242FF2FB002E27E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6105C63C242FF2FB002E27E7 /* Build configuration list for PBXNativeTarget "GMail_MUA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6105C63D242FF2FB002E27E7 /* Debug */,
+				6105C63E242FF2FB002E27E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6105C63F242FF2FB002E27E7 /* Build configuration list for PBXNativeTarget "GMail_MUATests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6105C640242FF2FB002E27E7 /* Debug */,
+				6105C641242FF2FB002E27E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6105C615242FF2F9002E27E7 /* Project object */;
+}
