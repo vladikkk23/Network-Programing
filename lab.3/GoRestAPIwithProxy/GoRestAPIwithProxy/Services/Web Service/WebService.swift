@@ -24,7 +24,7 @@ class WebService {
     static let shared = WebService()
     
     // Login Token
-    let token = "Dq5C30kiL3KKcAH-nlGMMp1Eg05yvARGThIs"
+    let token = "YOUR-TOKEN"
     
     // Configure session details
     private init() {
