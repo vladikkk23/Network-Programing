@@ -10,7 +10,7 @@ import Foundation
 
 /*
  A singleton for making HTTP(S) Requests throw Proxy.
- Maximum number of requests per minute is set to 30.
+ Maximum number of requests per minute is set to 50.
  */
 
 class WebService {
@@ -43,6 +43,7 @@ class WebService {
     
     // MARK: Methods
     
+    // Perfome a GET request with URL='$urlString' && query parameters='$verb'
     func makeRequestViaUrlSessionProxy(withURL urlString: inout String, verb: String?, completion: @escaping (_ result: Data?) -> ()) {
         
         guard let url = URL(string: urlString) else { return }
@@ -111,7 +112,33 @@ class WebService {
     }
     
     // MARK: Methods -> HEAD
-
+    
+    // Check if any content is present (FOR -> users/posts/comments/albums/photos)
+    func HEAD_GENERAL() {
+        var urlString = "http://localhost:8011/users"
+        
+        self.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: nil) { (data) in
+            guard let jsonData = data else { return }
+            
+            guard let userResult = try? JSONDecoder().decode(User_Result.self, from: jsonData) else { return }
+            
+            print(userResult.user)
+        }
+    }
+    
+    // Check if any details content is present (FOR -> user_withID/post_withID/comment_withID/album_withID/photo_withID)
+    func HEAD_DETAILS(byID id: Int) {
+        var urlString = "http://localhost:8011/users/\(id)"
+        
+        self.makeRequestViaUrlSessionProxy(withURL: &urlString, verb: nil) { (data) in
+            guard let jsonData = data else { return }
+            
+            guard let userResult = try? JSONDecoder().decode(User_Result.self, from: jsonData) else { return }
+            
+            print(userResult.user)
+        }
+    }
+    
     // MARK: Methods -> OPTIONS
     
     // Return available general options (FOR -> users/posts/comments/albums/photos)
