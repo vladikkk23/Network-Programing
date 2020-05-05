@@ -6,11 +6,12 @@
 //  Copyright © 2020 PR. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct User: Hashable {
     var name: String
-    var avatar: String
+    var avatar: UIImage?
+    var avatarLink = ""
     var isCurrentUser: Bool = false
     
     func hash(into hasher: inout Hasher) {

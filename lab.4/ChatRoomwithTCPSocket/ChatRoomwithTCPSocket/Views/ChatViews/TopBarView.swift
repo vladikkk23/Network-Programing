@@ -15,6 +15,7 @@ struct TopBarView: View {
     var body: some View {
         HStack(spacing: 50) {
             Button(action: {
+                self.typingMessage = ""
                 self.presentationMode.dismiss()
             }) {
                 Text("QUIT")
@@ -46,6 +47,9 @@ struct TopBarView: View {
     
     
     private func sendMessage() {
+        let msg = self.typingMessage
+        ChatRoom.shared.sendMessage(message: msg)
+        
         self.typingMessage = ""
     }
 }

@@ -1,19 +1,19 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"log"
 	"net"
 	"os"
 	"strings"
 	"sync"
-  "bytes"
 )
 
 //UGHHHHH ...
 var (
 	CHOST = "127.0.0.1"
-	CPORT = "80"
+	CPORT = "8080"
 	CNET  = "tcp"
 )
 
@@ -79,16 +79,16 @@ func (c *Conns) broadcast(messages chan *MSG) {
 		msg := <-messages
 		//If user left, remove from conn pool
 		if msg.isLast {
-		  c.Delete(msg.conn.RemoteAddr().String())
-      continue
+			c.Delete(msg.conn.RemoteAddr().String())
+			continue
 		}
 
 		for _, conn := range c.conns {
 			//Write user message to group
-      fmt.Println(msg.msg + "\n")
+			fmt.Println(msg.msg + "\n")
 			_, err := conn.Write([]byte(msg.msg))
 			if err != nil {
-        c.Delete(msg.conn.RemoteAddr().String())
+				c.Delete(msg.conn.RemoteAddr().String())
 			}
 		}
 	}
@@ -103,7 +103,7 @@ func initUser(conn *net.TCPConn) *User {
 		return nil
 	}
 
-  buf = bytes.Trim(buf, "\x00")
+	buf = bytes.Trim(buf, "\x00")
 
 	data := string(buf)
 	if data == "" {
@@ -138,7 +138,7 @@ func main() {
 
 	fmt.Println("Listening on " + CHOST + ":" + CPORT)
 	for {
-				// Listen for an incoming connection.
+		// Listen for an incoming connection.
 		conn, err := tcpListener.AcceptTCP()
 		handleError(err)
 		c.New(conn.RemoteAddr().String(), conn)
@@ -174,18 +174,18 @@ func handleRequest(conn *net.TCPConn, messages chan *MSG) {
 		if err != nil {
 			fmt.Println("Error reading:", err.Error())
 			//Client closed, alert other users
-      msg := &MSG{
-    		username: user.Username,
-    		msg:      "",
-    		conn:     conn,
-    		isLast:   true,
-    	}
-	    messages <- msg
+			msg := &MSG{
+				username: user.Username,
+				msg:      "",
+				conn:     conn,
+				isLast:   true,
+			}
+			messages <- msg
 
 			return
 		}
 
-    buf = bytes.Trim(buf, "\x00")
+		buf = bytes.Trim(buf, "\x00")
 
 		//Check if msg string has content and that it is a msg type
 		content := string(buf)
@@ -200,11 +200,10 @@ func handleRequest(conn *net.TCPConn, messages chan *MSG) {
 
 		msg := &MSG{
 			username: user.Username,
-      msg:      user.Username + ":" + info[1],
+			msg:      user.Username + ":" + info[1],
 			conn:     conn,
 
-
-			isLast:   false,
+			isLast: false,
 		}
 		messages <- msg
 	}
