@@ -12,7 +12,7 @@ struct CaptureImageView {
     
     // MARK: - Properties
     @Binding var isShown: Bool
-    @Binding var image: Image?
+    @Binding var image: UIImage?
     
     // MARK: - Methods
     func makeCoordinator() -> Coordinator {
@@ -24,6 +24,7 @@ extension CaptureImageView: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<CaptureImageView>) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
+        
         return picker
     }
     

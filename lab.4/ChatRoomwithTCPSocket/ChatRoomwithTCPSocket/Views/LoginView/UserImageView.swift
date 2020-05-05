@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct UserImageView : View {
-    @Binding var image: Image?
+    @Binding var image: UIImage?
     @Binding var showCaptureImageView: Bool
     
     var body: some View {
         VStack {
             if self.image != nil {
-                image!
+                Image(uiImage: self.image!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250, height: 200)
@@ -43,6 +43,6 @@ struct UserImageView : View {
 
 struct UserImageView_Previews: PreviewProvider {
     static var previews: some View {
-        UserImageView(image: .constant(Image("Cat-Avatar")), showCaptureImageView: .constant(false))
+        UserImageView(image: .constant(UIImage(named: "Cat")), showCaptureImageView: .constant(false))
     }
 }

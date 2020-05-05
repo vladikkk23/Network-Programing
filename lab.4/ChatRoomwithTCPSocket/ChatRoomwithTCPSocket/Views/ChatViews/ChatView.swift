@@ -9,11 +9,10 @@
 import SwiftUI
 
 struct ChatView: View {
-    var messages = [Message]()
-        
     @State var typingMessage = ""
     @Environment(\.presentationMode) var presentationMode
-    @Binding var username: String
+    @EnvironmentObject var dataHolder: Data_Holder
+    @Binding var user: User?
     
     let chatRoom = ChatRoom.shared
     
@@ -25,7 +24,7 @@ struct ChatView: View {
                 .offset(y: -20)
             
             List {
-                ForEach(self.messages, id: \.self) { message in
+                ForEach(self.dataHolder.messages, id: \.self) { message in
                     MessageView(currentMessage: message)
                 }
             }
@@ -34,14 +33,22 @@ struct ChatView: View {
             
             BottomBarView(typingMessage: self.$typingMessage)
         }
+        .keyboardAdaptive() 
         .navigationBarTitle("")
         .navigationBarHidden(true)
-        .keyboardAdaptive()
+        .onAppear {
+            ChatRoom.shared.setupNetworkConnection()
+            // Join ChatRoom
+            ChatRoom.shared.joinChat(user: self.user!)
+        }
+        .onDisappear {
+            self.chatRoom.stopChatSession()
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView(username: .constant("Cat"))
+        ChatView(user: .constant(User(name: "Cat")))
     }
 }

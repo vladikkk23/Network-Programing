@@ -12,18 +12,20 @@ struct LoginView: View {
     
     let textLabelColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
     
+    @EnvironmentObject var dataHolder: Data_Holder
+    
     @State var username = ""
-    @State var password = ""
     @State var showChatRoom = false
     @State var showCaptureImageView = false
     @State var showingAlert = false
-    @State var image: Image?
+    @State var image: UIImage?
+    @State var user: User?
     
     var body: some View {
         NavigationView {
             ZStack {
                 VStack {
-                    NavigationLink(destination: ChatView(username: self.$username), isActive: $showChatRoom) {
+                    NavigationLink(destination: ChatView(user: self.$user), isActive: $showChatRoom) {
                         EmptyView()
                     }
                     
@@ -43,6 +45,8 @@ struct LoginView: View {
                     Button(action: {
                         // Show chat room if access is granted.
                         if !self.username.isEmpty {
+                            self.user = User(name: self.username, avatar: self.image, isCurrentUser: true)
+                            
                             self.showChatRoom.toggle()
                         } else {
                             self.showingAlert.toggle()
