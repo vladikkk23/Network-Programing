@@ -9,11 +9,8 @@
 import SwiftUI
 
 struct ChatView: View {
-    let messages = [Message(content: "Hello, Dog!", user: User(name: "Cat", avatar: "Cat-Avatar", isCurrentUser: true)),
-                    Message(content: "What, do u want Cat?", user: User(name: "Dog", avatar: "Dog-Avatar", isCurrentUser: false))]
-    
-    let chatRoom = ChatRoom()
-    
+    var messages = [Message]()
+        
     @State var typingMessage = ""
     @Environment(\.presentationMode) var presentationMode
     @Binding var username: String
@@ -23,6 +20,7 @@ struct ChatView: View {
             TopBarView(presentationMode: self.presentationMode, typingMessage: self.$typingMessage)
             
             Divider()
+                .offset(y: -20)
             
             List {
                 ForEach(self.messages, id: \.self) { message in
@@ -37,10 +35,6 @@ struct ChatView: View {
         .navigationBarTitle("")
         .navigationBarHidden(true)
         .keyboardAdaptive()
-        .onAppear {
-            self.chatRoom.setupNetworkCommunication()
-            self.chatRoom.joinChat(username: self.username)
-        }
     }
 }
 

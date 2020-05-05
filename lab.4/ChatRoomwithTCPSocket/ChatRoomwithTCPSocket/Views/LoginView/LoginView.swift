@@ -41,7 +41,7 @@ struct LoginView: View {
                         .frame(height: 50)
                     
                     Button(action: {
-                        // show chat room if access is granted.
+                        // Show chat room if access is granted.
                         if !self.username.isEmpty {
                             self.showChatRoom.toggle()
                         } else {
@@ -51,7 +51,7 @@ struct LoginView: View {
                         LoginButtonView()
                     }
                     .alert(isPresented: self.$showingAlert) {
-                        Alert(title: Text("Don't be an animal!"), message: Text("Please enter a username."), dismissButton: .default(Text("Got it!")))
+                        Alert(title: Text("Don't be an animal!"), message: Text("Enter your username."), dismissButton: .default(Text("Got it!")))
                     }
                 }
                 .padding()

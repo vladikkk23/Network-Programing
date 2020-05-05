@@ -10,9 +10,16 @@ import SwiftUI
 
 struct WelcomeTextView : View {
     var body: some View {
-        Text("Welcome to Animal Chat!")
+        VStack {
+            Text("Welcome to Animal Chat!")
             .font(Font(UIFont(name: "AvenirNext-DemiBold", size: 30)!))
             .padding(.bottom, 20)
+            
+            Text("Unleash your inner animal!")
+                .font(Font(UIFont(name: "AvenirNext-DemiBold", size: 15)!))
+                .padding(.bottom, 20)
+                .foregroundColor(.gray)
+        }
     }
 }
 

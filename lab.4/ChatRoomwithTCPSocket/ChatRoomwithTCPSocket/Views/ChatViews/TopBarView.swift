@@ -18,7 +18,7 @@ struct TopBarView: View {
                 self.presentationMode.dismiss()
             }) {
                 Text("QUIT")
-                    .font(Font(UIFont(name: "AvenirNext-DemiBold", size: 15)!))
+                    .font(Font(UIFont(name: "AvenirNext-DemiBold", size: 20)!))
                     .frame(width: 60, height: 40)
                     .foregroundColor(.white)
                     .background(Color.red)
@@ -27,12 +27,12 @@ struct TopBarView: View {
             }
             .padding(.vertical)
             
-            Text("Animals Chatroom")
+            Text("Animals Chat Room")
                 .font(Font(UIFont(name: "AvenirNext-DemiBold", size: 20)!))
             
             Button(action: sendMessage) {
                 Text("SEND")
-                    .font(Font(UIFont(name: "AvenirNext-DemiBold", size: 15)!))
+                    .font(Font(UIFont(name: "AvenirNext-DemiBold", size: 20)!))
                     .frame(width: 60, height: 40)
                     .foregroundColor(.white)
                     .background(Color.blue)
