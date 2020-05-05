@@ -15,6 +15,8 @@ struct ChatView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var username: String
     
+    let chatRoom = ChatRoom.shared
+    
     var body: some View {
         VStack {
             TopBarView(presentationMode: self.presentationMode, typingMessage: self.$typingMessage)
