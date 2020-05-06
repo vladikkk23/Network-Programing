@@ -16,6 +16,13 @@ struct ChatView: View {
     
     let chatRoom = ChatRoom.shared
     
+    var mockMessages = [
+        Message(content: "Cat has joined", user: User(name: "Cat", avatar: UIImage(named: "Cat"), avatarLink: "", isCurrentUser: false)),
+        Message(content: "Pug has joined", user: User(name: "Pug", avatar: UIImage(named: "Pug"), avatarLink: "", isCurrentUser: true)),
+        Message(content: "I want работать в Yandex!", user: User(name: "Cat", avatar: UIImage(named: "Cat"), avatarLink: "", isCurrentUser: false)),
+        Message(content: "Go нахуй, Cat!", user: User(name: "Dog", avatar: UIImage(named: "Pug"), avatarLink: "", isCurrentUser: true))
+    ]
+    
     var body: some View {
         VStack {
             TopBarView(presentationMode: self.presentationMode, typingMessage: self.$typingMessage)
@@ -23,7 +30,7 @@ struct ChatView: View {
             Divider()
                 .offset(y: -20)
             
-            List {
+            CustomScrollView(scrollToEnd: true) {
                 ForEach(self.dataHolder.messages, id: \.self) { message in
                     MessageView(currentMessage: message)
                 }
@@ -50,5 +57,13 @@ struct ChatView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ChatView(user: .constant(User(name: "Cat")))
+    }
+}
+
+extension View {
+    public func flip() -> some View {
+        return self
+            .rotationEffect(.radians(.pi))
+            .scaleEffect(x: -1, y: 1, anchor: .center)
     }
 }

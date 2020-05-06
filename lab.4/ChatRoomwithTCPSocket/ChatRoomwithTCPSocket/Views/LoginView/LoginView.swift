@@ -48,6 +48,8 @@ struct LoginView: View {
                             self.user = User(name: self.username, avatar: self.image, isCurrentUser: true)
                             
                             self.showChatRoom.toggle()
+                            self.username = ""
+                            self.image = UIImage(systemName: "person.crop.circle.badge.plus")
                         } else {
                             self.showingAlert.toggle()
                         }

@@ -14,7 +14,7 @@ struct UserImageView : View {
     
     var body: some View {
         VStack {
-            if self.image != nil {
+            if self.image != nil && self.image != UIImage(systemName: "person.crop.circle.badge.plus") {
                 Image(uiImage: self.image!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

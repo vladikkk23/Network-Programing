@@ -79,6 +79,14 @@ func (c *Conns) broadcast(messages chan *MSG) {
 		msg := <-messages
 		//If user left, remove from conn pool
 		if msg.isLast {
+			msg := &MSG{
+				username: msg.username,
+				msg:      fmt.Sprintf("%s Left\n", msg.username),
+				conn:     msg.conn,
+				isLast:   false,
+			}
+			messages <- msg
+
 			c.Delete(msg.conn.RemoteAddr().String())
 			continue
 		}
@@ -110,8 +118,8 @@ func initUser(conn *net.TCPConn) *User {
 		return nil
 	}
 
-	info := strings.Split(data, ":")
-	if len(info) < 2 || info[0] != "iam" {
+	info := strings.Split(data, "=")
+	if len(info) < 2 || info[0] != "username" {
 		return nil
 	}
 
@@ -161,7 +169,7 @@ func handleRequest(conn *net.TCPConn, messages chan *MSG) {
 
 	msg := &MSG{
 		username: user.Username,
-		msg:      fmt.Sprintf("%s has joined\n", user.Username),
+		msg:      fmt.Sprintf("%s Joined\n", user.Username),
 		conn:     conn,
 		isLast:   false,
 	}
@@ -193,8 +201,8 @@ func handleRequest(conn *net.TCPConn, messages chan *MSG) {
 			continue
 		}
 
-		info := strings.Split(content, ":")
-		if len(info) < 2 || info[0] != "msg" {
+		info := strings.Split(content, "=")
+		if len(info) < 2 || info[0] != "message" {
 			continue
 		}
 

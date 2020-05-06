@@ -49,8 +49,9 @@ class ChatRoom: NSObject {
         self.outputStream.open()
     }
     
+    // MARK: Client-Server Communication Protocol -> 'Joining Server'
     func joinChat(user: User) {        
-        let data = "iam:\(user.name)".data(using: .utf8)!
+        let data = "username=\(user.name)".data(using: .utf8)!
         
         self.username = user.name
         
@@ -62,14 +63,20 @@ class ChatRoom: NSObject {
             
             outputStream.write(pointer, maxLength: data.count)
             
-            ImageUploader.shared.uploadImageToImgur(image: user.avatar!)
+            if user.avatar != nil {
+                ImageUploader.shared.uploadImageToImgur(image: user.avatar!)
+            } else {
+                let userAvatar = UIImage(systemName: "person.crop.circle")
+                ImageUploader.shared.uploadImageToImgur(image: userAvatar!)
+            }
             
             self.dataHolder.newUserJoined(user: user)
         }
     }
     
+    // MARK: Client-Server Communication Protocol -> 'Sending a Message'
     func sendMessage(message: String) {
-        let data = "msg:\(message)".data(using: .utf8)!
+        let data = "message=\(message)".data(using: .utf8)!
         
         _ = data.withUnsafeBytes {
             guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
@@ -89,6 +96,8 @@ class ChatRoom: NSObject {
 
 // Conform to stream delegate
 extension ChatRoom: StreamDelegate {
+    
+    // MARK: Client-Server Communication Protocol -> 'Handling Message Types'
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case .hasBytesAvailable:
@@ -99,6 +108,7 @@ extension ChatRoom: StreamDelegate {
             self.stopChatSession()
         case .errorOccurred:
             NSLog("Error occurred")
+            self.stopChatSession()
         case .hasSpaceAvailable:
             NSLog("Has space available")
         default:
@@ -106,6 +116,7 @@ extension ChatRoom: StreamDelegate {
         }
     }
     
+    // MARK: Client-Server Communication Protocol -> 'Receiving a Message'
     private func readAvailableBytes(stream: InputStream) {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: self.maxReadLength)
         
