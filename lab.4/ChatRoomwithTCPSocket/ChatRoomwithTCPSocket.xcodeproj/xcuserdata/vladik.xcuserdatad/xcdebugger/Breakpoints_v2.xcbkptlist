@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B9B2452A-3E46-40FB-B060-E3E99A2B7FC3"
+            uuid = "0D75F0EE-EAD8-4D45-B6DF-603C2E5C6CC8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChatRoomwithTCPSocket/ChatRoomServices/ChatRoom.swift"
+            filePath = "ChatRoomwithTCPSocket/Helpers/Image_Loader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "joinChat(user:)"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "load(imageFromURL:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

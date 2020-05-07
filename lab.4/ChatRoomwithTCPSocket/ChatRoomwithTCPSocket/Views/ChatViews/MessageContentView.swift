@@ -18,6 +18,7 @@ struct MessageContentView: View {
             if !isCurrentUser {
                 VStack(alignment: .leading) {
                     Text(senderName.withoutWhitespace())
+                        .font(.subheadline)
                         .foregroundColor(Color.gray)
 
                     Text(contentMessage.withoutWhitespace())

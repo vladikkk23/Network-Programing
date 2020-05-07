@@ -12,6 +12,7 @@ class ChatRoom: NSObject {
     
     // MARK: Properties
     static let shared = ChatRoom()
+    
     private let dataHolder = Data_Holder.shared
     
     // Set connection config
@@ -19,14 +20,15 @@ class ChatRoom: NSObject {
     private var port: UInt32 = 8080
     
     // Streams
-    var inputStream: InputStream!
-    var outputStream: OutputStream!
+    private var inputStream: InputStream!
+    private var outputStream: OutputStream!
     
     // Current username
-    var username = ""
+    private var username = ""
+    private var avatarURL = ""
     
     // How much data can be sent in a single message
-    var maxReadLength = 4096
+    private var maxReadLength = 4096
     
     private override init() {}
     
@@ -50,8 +52,9 @@ class ChatRoom: NSObject {
     }
     
     // MARK: Client-Server Communication Protocol -> 'Joining Server'
-    func joinChat(user: User) {        
-        let data = "username=\(user.name)".data(using: .utf8)!
+    func joinChat(user: User) {
+        // Connect to server
+        let data = "username>\(user.name)".data(using: .utf8)!
         
         self.username = user.name
         
@@ -62,21 +65,13 @@ class ChatRoom: NSObject {
             }
             
             outputStream.write(pointer, maxLength: data.count)
-            
-            if user.avatar != nil {
-                ImageUploader.shared.uploadImageToImgur(image: user.avatar!)
-            } else {
-                let userAvatar = UIImage(systemName: "person.crop.circle")
-                ImageUploader.shared.uploadImageToImgur(image: userAvatar!)
-            }
-            
-            self.dataHolder.newUserJoined(user: user)
+            self.dataHolder.userJoined(user: user)
         }
     }
     
     // MARK: Client-Server Communication Protocol -> 'Sending a Message'
     func sendMessage(message: String) {
-        let data = "message=\(message)".data(using: .utf8)!
+        let data = "message>\(message)".data(using: .utf8)!
         
         _ = data.withUnsafeBytes {
             guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
@@ -137,10 +132,19 @@ extension ChatRoom: StreamDelegate {
     }
     
     private func getMessageAsString(buffer: UnsafeMutablePointer<UInt8>, length: Int) -> Message? {
-        guard let stringArray = String(bytesNoCopy: buffer, length: length, encoding: .utf8, freeWhenDone: true)?.components(separatedBy: ":") else { return nil }
+        guard let stringArray = String(bytesNoCopy: buffer, length: length, encoding: .utf8, freeWhenDone: true)?.components(separatedBy: "|") else { return nil }
         
         guard let senderName = stringArray.first?.components(separatedBy: " ").first else { return nil }
-        guard let messageContent = stringArray.last else { return nil }
+        guard var messageContent = stringArray.last?.withoutWhitespace() else { return nil }
+        
+        if stringArray.first!.contains("Joined") {
+            if messageContent == " " {
+                messageContent = "\(senderName) Joined"
+            } else if messageContent.contains("http") {
+                messageContent.removeFirst()
+                self.avatarURL = messageContent
+            }
+        }
         
         if senderName.isEmpty || messageContent.isEmpty {
             return nil
@@ -154,7 +158,7 @@ extension ChatRoom: StreamDelegate {
             
             return message
         } else {
-            let sender = User(name: senderName, avatar: UIImage(systemName: "person.crop.circle.badge.plus"), isCurrentUser: (senderName == self.username ? true : false))
+            let sender = User(name: senderName, avatarLink: self.avatarURL, isCurrentUser: (senderName == self.username ? true : false))
             
             let message = Message(content: messageContent, user: sender)
             

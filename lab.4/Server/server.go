@@ -10,7 +10,7 @@ import (
 	"sync"
 )
 
-//UGHHHHH ...
+//Config
 var (
 	CHOST = "127.0.0.1"
 	CPORT = "8080"
@@ -34,7 +34,8 @@ type Conns struct {
 
 //User contains username
 type User struct {
-	Username string
+	Username   string
+	AvatarLink string
 }
 
 //New ...
@@ -118,12 +119,14 @@ func initUser(conn *net.TCPConn) *User {
 		return nil
 	}
 
-	info := strings.Split(data, "=")
-	if len(info) < 2 || info[0] != "username" {
-		return nil
+	info := strings.Split(data, ">")
+	if len(info) == 2 && info[0] == "username" {
+		return &User{Username: info[1]}
+	} else if len(info) == 4 && info[0] == "username" && info[2] == "avatarURL" {
+		return &User{Username: info[1], AvatarLink: info[3]}
 	}
 
-	return &User{Username: info[1]}
+	return nil
 }
 
 func main() {
@@ -169,10 +172,11 @@ func handleRequest(conn *net.TCPConn, messages chan *MSG) {
 
 	msg := &MSG{
 		username: user.Username,
-		msg:      fmt.Sprintf("%s Joined\n", user.Username),
+		msg:      fmt.Sprintf("%s Joined | %s\n", user.Username, user.AvatarLink),
 		conn:     conn,
 		isLast:   false,
 	}
+
 	messages <- msg
 
 	for {
@@ -201,14 +205,14 @@ func handleRequest(conn *net.TCPConn, messages chan *MSG) {
 			continue
 		}
 
-		info := strings.Split(content, "=")
+		info := strings.Split(content, ">")
 		if len(info) < 2 || info[0] != "message" {
 			continue
 		}
 
 		msg := &MSG{
 			username: user.Username,
-			msg:      user.Username + ":" + info[1],
+			msg:      user.Username + "|" + info[1],
 			conn:     conn,
 
 			isLast: false,

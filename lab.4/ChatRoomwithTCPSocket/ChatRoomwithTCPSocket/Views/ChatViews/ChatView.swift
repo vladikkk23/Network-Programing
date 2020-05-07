@@ -16,13 +16,6 @@ struct ChatView: View {
     
     let chatRoom = ChatRoom.shared
     
-    var mockMessages = [
-        Message(content: "Cat has joined", user: User(name: "Cat", avatar: UIImage(named: "Cat"), avatarLink: "", isCurrentUser: false)),
-        Message(content: "Pug has joined", user: User(name: "Pug", avatar: UIImage(named: "Pug"), avatarLink: "", isCurrentUser: true)),
-        Message(content: "I want работать в Yandex!", user: User(name: "Cat", avatar: UIImage(named: "Cat"), avatarLink: "", isCurrentUser: false)),
-        Message(content: "Go нахуй, Cat!", user: User(name: "Dog", avatar: UIImage(named: "Pug"), avatarLink: "", isCurrentUser: true))
-    ]
-    
     var body: some View {
         VStack {
             TopBarView(presentationMode: self.presentationMode, typingMessage: self.$typingMessage)
