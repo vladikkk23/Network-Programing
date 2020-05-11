@@ -39,7 +39,7 @@ struct ChatView: View {
         .onAppear {
             ChatRoom.shared.setupNetworkConnection()
             // Join ChatRoom
-            ChatRoom.shared.joinChat(user: self.user!)
+            ImageUploader.shared.joinChat(user: self.user!)
         }
         .onDisappear {
             self.chatRoom.stopChatSession()

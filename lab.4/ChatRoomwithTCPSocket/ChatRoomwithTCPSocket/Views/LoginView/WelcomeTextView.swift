@@ -12,7 +12,7 @@ struct WelcomeTextView : View {
     var body: some View {
         VStack {
             Text("Welcome to Animal Chat!")
-            .font(Font(UIFont(name: "AvenirNext-DemiBold", size: 30)!))
+            .font(Font(UIFont(name: "AvenirNext-DemiBold", size: 25)!))
             .padding(.bottom, 20)
             
             Text("Unleash your inner animal!")

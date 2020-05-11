@@ -70,6 +70,9 @@ struct LoginView: View {
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
+            .onAppear {
+                self.image = UIImage(named: "noImage")
+            }
         }
     }
 }

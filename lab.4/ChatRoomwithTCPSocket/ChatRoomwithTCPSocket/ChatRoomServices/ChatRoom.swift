@@ -42,19 +42,20 @@ class ChatRoom: NSObject {
         self.inputStream = readStream?.takeRetainedValue()
         self.outputStream = writeStream?.takeRetainedValue()
         
-        inputStream.delegate = self
+        self.inputStream?.delegate = self
+        self.outputStream?.delegate = self
         
         self.inputStream.schedule(in: .current, forMode: .common)
         self.outputStream.schedule(in: .current, forMode: .common)
         
-        self.inputStream.open()
-        self.outputStream.open()
+        self.inputStream?.open()
+        self.outputStream?.open()
     }
     
     // MARK: Client-Server Communication Protocol -> 'Joining Server'
     func joinChat(user: User) {
         // Connect to server
-        let data = "username>\(user.name)".data(using: .utf8)!
+        let data = "username>\(user.name)>avatarURL>\(user.avatarLink)".data(using: .utf8)!
         
         self.username = user.name
         
@@ -84,8 +85,18 @@ class ChatRoom: NSObject {
     }
     
     func stopChatSession() {
-        inputStream.close()
-        outputStream.close()
+        if let stream = self.inputStream {
+            stream.close();
+            stream.remove(from: .current, forMode: .common);
+        }
+        
+        if let stream = self.outputStream {
+            stream.close();
+            stream.remove(from: .current, forMode: .common);
+        }
+        
+        self.inputStream = nil;
+        self.outputStream = nil;
     }
 }
 
