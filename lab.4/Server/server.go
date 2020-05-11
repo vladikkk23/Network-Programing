@@ -6,6 +6,7 @@ import (
 	"log"
 	"net"
 	"os"
+	"strconv"
 	"strings"
 	"sync"
 )
@@ -147,7 +148,7 @@ func main() {
 	}
 	go c.broadcast(broadcaster)
 
-	fmt.Println("Listening on " + CHOST + ":" + CPORT)
+	fmt.Println("Listening on " + addr.IP.String() + ":" + strconv.Itoa(addr.Port))
 	for {
 		// Listen for an incoming connection.
 		conn, err := tcpListener.AcceptTCP()
