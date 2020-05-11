@@ -9,20 +9,21 @@
 import SwiftUI
 
 struct UserJoinedNotificationView: View {
-    var user: User
+    var message: Message
     
     var body: some View {
-        VStack(alignment: .center) {
-            Text("\(self.user.name) Joined")
+        HStack(alignment: .center) {
+            Text(self.message.content.withoutWhitespace())
+                .font(.subheadline)
                 .padding(10)
-                .foregroundColor(self.user.isCurrentUser ? .white : .black)
-                .background(self.user.isCurrentUser ? Color.blue : Color.clear)
+                .foregroundColor(self.message.user.isCurrentUser ? .blue : .gray)
                 .cornerRadius(10)
         }
+        .frame(width: 400)
     }
 }
 struct UserJoinedNotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        UserJoinedNotificationView(user: User(name: "Cat"))
+        UserJoinedNotificationView(message: Message(content: "Cat has joined", user: User(name: "Cat", avatar: UIImage(named: "Cat"), avatarLink: "", isCurrentUser: false)))
     }
 }

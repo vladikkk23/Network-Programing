@@ -6,7 +6,7 @@
 //  Copyright © 2020 PR. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Data_Holder: ObservableObject {
     
@@ -23,22 +23,33 @@ class Data_Holder: ObservableObject {
     private init() {}
     
     // MARK: Methods
-    func newUserJoined(user: User) {
+    func userJoined(user: User) {
         if !self.users.contains(user) {
-            // Save new user
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                var newUser = user
+            var newUser = user
+            // Load user avatar if not current user
+            if !user.isCurrentUser {
+                let userImage = UIImageView(image: nil)
+                userImage.load(imageFromURL: newUser.avatarLink)
                 
-                newUser.avatarLink = ImageUploader.shared.imageURL
-                self.users.append(newUser)
-                //                self.saveUserInfo(user: newUser)
+                newUser.avatar = userImage.image
             }
+            
+            // Save new user
+            self.users.append(newUser)
+            
             NSLog("New user joined: \(user.name)")
         } else {
-            // Update user
             guard let index = (self.users.firstIndex { (usr) -> Bool in usr.name == user.name }) else { return }
             
-            self.users[index].avatarLink = user.avatarLink
+            // Update user's avatar
+            if self.users[index].avatarLink != user.avatarLink {
+                self.users[index].avatarLink = user.avatarLink
+                
+                let userImage = UIImageView(image: nil)
+                userImage.load(imageFromURL: self.users[index].avatarLink)
+                
+                self.users[index].avatar = userImage.image
+            }
             
             NSLog("User joined: \(user.name)")
         }
@@ -47,25 +58,36 @@ class Data_Holder: ObservableObject {
     func messageReceived(newMessage message: Message) {
         NSLog("New message: \(message.content) From: \(message.user.name)")
         
-        let user = message.user
-        
-        if !self.users.contains(user) {
-            self.users.append(user)
+        if !message.user.isCurrentUser {
+            var newMessage = message
+            
+            guard let url = URL(string: newMessage.user.avatarLink) else { return }
+            
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: url) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            newMessage.user.avatar = image
+                            
+                            if !newMessage.content.contains("http") {
+                                self.messages.append(newMessage)
+                            } else {
+                                newMessage.content = "\(newMessage.user.name) Joined"
+                                self.messages.append(newMessage)
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            if !message.content.contains("http") {
+                self.messages.append(message)
+            } else {
+                var newMessage = message
+                
+                newMessage.content = "\(newMessage.user.name) Joined"
+                self.messages.append(newMessage)
+            }
         }
-        
-        self.messages.append(message)
-    }
-    
-    private func saveUserInfo(user: User) {
-        self.saveUserType(user: user)
-        self.saveUserAvatar(user: user)
-    }
-    
-    private func saveUserAvatar(user: User) {
-        self.userAvatars["\(user.name)-Avatar"] = user.avatarLink
-    }
-    
-    private func saveUserType(user: User) {
-        self.userTypes["\(user.name)-Type"] = user.isCurrentUser
     }
 }

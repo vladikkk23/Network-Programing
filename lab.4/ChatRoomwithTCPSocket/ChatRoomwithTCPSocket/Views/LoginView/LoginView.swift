@@ -44,18 +44,22 @@ struct LoginView: View {
                     
                     Button(action: {
                         // Show chat room if access is granted.
-                        if !self.username.isEmpty {
+                        if self.username.isEmpty || self.image == nil {
+                            self.showingAlert.toggle()
+                        } else {
                             self.user = User(name: self.username, avatar: self.image, isCurrentUser: true)
                             
                             self.showChatRoom.toggle()
-                        } else {
-                            self.showingAlert.toggle()
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.username = ""
+                            }
                         }
                     }) {
                         LoginButtonView()
                     }
                     .alert(isPresented: self.$showingAlert) {
-                        Alert(title: Text("Don't be an animal!"), message: Text("Enter your username."), dismissButton: .default(Text("Got it!")))
+                        Alert(title: Text("Don't be an animal!"), message: Text("Enter your username and choose an image."), dismissButton: .default(Text("Got it!")))
                     }
                 }
                 .padding()
@@ -66,6 +70,9 @@ struct LoginView: View {
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
+            .onAppear {
+                self.image = UIImage(named: "noImage")
+            }
         }
     }
 }

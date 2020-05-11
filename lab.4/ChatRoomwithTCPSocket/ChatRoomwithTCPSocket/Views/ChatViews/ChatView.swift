@@ -23,7 +23,7 @@ struct ChatView: View {
             Divider()
                 .offset(y: -20)
             
-            List {
+            CustomScrollView(scrollToEnd: true) {
                 ForEach(self.dataHolder.messages, id: \.self) { message in
                     MessageView(currentMessage: message)
                 }
@@ -39,7 +39,7 @@ struct ChatView: View {
         .onAppear {
             ChatRoom.shared.setupNetworkConnection()
             // Join ChatRoom
-            ChatRoom.shared.joinChat(user: self.user!)
+            ImageUploader.shared.joinChat(user: self.user!)
         }
         .onDisappear {
             self.chatRoom.stopChatSession()
@@ -50,5 +50,13 @@ struct ChatView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ChatView(user: .constant(User(name: "Cat")))
+    }
+}
+
+extension View {
+    public func flip() -> some View {
+        return self
+            .rotationEffect(.radians(.pi))
+            .scaleEffect(x: -1, y: 1, anchor: .center)
     }
 }

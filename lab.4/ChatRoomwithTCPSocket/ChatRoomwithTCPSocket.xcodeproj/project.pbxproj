@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		610519D82462E2FF00F07DFC /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610519D72462E2FF00F07DFC /* CustomScrollView.swift */; };
 		6110E6812461CCE8003492FA /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6110E6802461CCE8003492FA /* ImageUploader.swift */; };
 		6110E6852461CEBC003492FA /* Image_Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6110E6842461CEBC003492FA /* Image_Loader.swift */; };
 		6110E6872461E79B003492FA /* UserJoinedNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6110E6862461E79B003492FA /* UserJoinedNotificationView.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		610519D72462E2FF00F07DFC /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		6110E6802461CCE8003492FA /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		6110E6842461CEBC003492FA /* Image_Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image_Loader.swift; sourceTree = "<group>"; };
 		6110E6862461E79B003492FA /* UserJoinedNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJoinedNotificationView.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				61C5DD5B2460694D0030346A /* TopBarView.swift */,
 				6158444D24606A7E001BB601 /* BottomBarView.swift */,
 				6110E6862461E79B003492FA /* UserJoinedNotificationView.swift */,
+				610519D72462E2FF00F07DFC /* CustomScrollView.swift */,
 			);
 			path = ChatViews;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				6158445124606E34001BB601 /* KeyboardAdapt.swift in Sources */,
 				6110E6872461E79B003492FA /* UserJoinedNotificationView.swift in Sources */,
 				6119912B246062980012AFA5 /* LoginButtonView.swift in Sources */,
+				610519D82462E2FF00F07DFC /* CustomScrollView.swift in Sources */,
 				619DD5172460AF64002785F0 /* String_Extensions.swift in Sources */,
 				6119911D24605E100012AFA5 /* LoginView.swift in Sources */,
 				61E258822460443100B1689D /* ChatView.swift in Sources */,

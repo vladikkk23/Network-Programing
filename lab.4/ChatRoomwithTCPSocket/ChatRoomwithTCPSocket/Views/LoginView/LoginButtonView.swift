@@ -11,7 +11,7 @@ import SwiftUI
 struct LoginButtonView : View {
     var body: some View {
         VStack {
-            Text("LOGIN")
+            Text("Join ChatRoom")
                 .font(.headline)
                 .foregroundColor(.white)
                 .padding()

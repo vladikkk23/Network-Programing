@@ -17,10 +17,11 @@ struct MessageContentView: View {
         HStack {
             if !isCurrentUser {
                 VStack(alignment: .leading) {
-                    Text(senderName)
+                    Text(senderName.withoutWhitespace())
+                        .font(.subheadline)
                         .foregroundColor(Color.gray)
 
-                    Text(contentMessage)
+                    Text(contentMessage.withoutWhitespace())
                         .padding(10)
                         .foregroundColor(.white)
                         .background(Color(UIColor(red: 96/255, green: 96/255, blue: 96/255, alpha: 1.0)))
@@ -28,7 +29,7 @@ struct MessageContentView: View {
                 }
             } else {
                 VStack(alignment: .trailing) {
-                    Text(contentMessage)
+                    Text(contentMessage.withoutWhitespace())
                         .padding(10)
                         .foregroundColor(.white)
                         .background(Color.blue)
