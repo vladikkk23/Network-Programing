@@ -103,7 +103,7 @@ class ChatRoom: NSObject {
 // Conform to stream delegate
 extension ChatRoom: StreamDelegate {
     
-    // MARK: Client-Server Communication Protocol -> 'Handling Message Types'
+    // MARK: Server-Client Communication Protocol -> 'Handling Message Types'
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case .hasBytesAvailable:
@@ -122,7 +122,7 @@ extension ChatRoom: StreamDelegate {
         }
     }
     
-    // MARK: Client-Server Communication Protocol -> 'Receiving a Message'
+    // MARK: Server-Client Communication Protocol -> 'Receiving a Message'
     private func readAvailableBytes(stream: InputStream) {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: self.maxReadLength)
         
