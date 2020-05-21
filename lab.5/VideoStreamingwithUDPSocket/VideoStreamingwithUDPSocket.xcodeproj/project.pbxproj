@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6143F0F92476A87500662A40 /* StreamingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6143F0F82476A87500662A40 /* StreamingService.swift */; };
 		61C203E72476A1D30016744B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C203E62476A1D30016744B /* AppDelegate.swift */; };
 		61C203E92476A1D30016744B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C203E82476A1D30016744B /* SceneDelegate.swift */; };
 		61C203EC2476A1D30016744B /* VideoStreamingwithUDPSocket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61C203EA2476A1D30016744B /* VideoStreamingwithUDPSocket.xcdatamodeld */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6143F0F82476A87500662A40 /* StreamingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingService.swift; sourceTree = "<group>"; };
 		61C203E32476A1D30016744B /* VideoStreamingwithUDPSocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoStreamingwithUDPSocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61C203E62476A1D30016744B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61C203E82476A1D30016744B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		61C2040C2476A20E0016744B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				6143F0F82476A87500662A40 /* StreamingService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				61C203EC2476A1D30016744B /* VideoStreamingwithUDPSocket.xcdatamodeld in Sources */,
 				61C203E72476A1D30016744B /* AppDelegate.swift in Sources */,
 				61C203EE2476A1D30016744B /* ContentView.swift in Sources */,
+				6143F0F92476A87500662A40 /* StreamingService.swift in Sources */,
 				61C203E92476A1D30016744B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
