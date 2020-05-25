@@ -16,7 +16,7 @@ class ChatRoom: NSObject {
     private let dataHolder = Data_Holder.shared
     
     // Set connection config
-    private var hostname = "localhost" as CFString
+    private var hostname = "192.168.0.47" as CFString
     private var port: UInt32 = 8080
     
     // Streams
@@ -84,15 +84,16 @@ class ChatRoom: NSObject {
         }
     }
     
+    // Close session
     func stopChatSession() {
         if let stream = self.inputStream {
             stream.close();
-            stream.remove(from: .current, forMode: .common);
+            stream.remove(from: .current, forMode: .common)
         }
         
         if let stream = self.outputStream {
             stream.close();
-            stream.remove(from: .current, forMode: .common);
+            stream.remove(from: .current, forMode: .common)
         }
         
         self.inputStream = nil;
@@ -103,7 +104,7 @@ class ChatRoom: NSObject {
 // Conform to stream delegate
 extension ChatRoom: StreamDelegate {
     
-    // MARK: Client-Server Communication Protocol -> 'Handling Message Types'
+    // MARK: Server-Client Communication Protocol -> 'Handling Message Types'
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case .hasBytesAvailable:
@@ -122,7 +123,7 @@ extension ChatRoom: StreamDelegate {
         }
     }
     
-    // MARK: Client-Server Communication Protocol -> 'Receiving a Message'
+    // MARK: Server-Client Communication Protocol -> 'Receiving a Message'
     private func readAvailableBytes(stream: InputStream) {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: self.maxReadLength)
         
