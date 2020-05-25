@@ -6,11 +6,20 @@ import (
 )
 
 func main() {
-	ServerConn, _ := net.ListenUDP("udp", &net.UDPAddr{IP: []byte{0, 0, 0, 0}, Port: 1001, Zone: ""})
+	// Bind the port.
+	ServerAddr, err := net.ResolveUDPAddr("udp", ":10001")
+	if err != nil {
+		fmt.Println("Error binding port!")
+	}
+
+	ServerConn, _ := net.ListenUDP("udp", ServerAddr)
 	defer ServerConn.Close()
+
+	fmt.Println("Listening on : 10001 port")
+
 	buf := make([]byte, 1024)
 	for {
-		n, addr, _ := ServerConn.ReadFromUDP(buf)
-		fmt.Println("Received ", string(buf[0:n]), " from ", addr)
+		n, _, _ := ServerConn.ReadFromUDP(buf)
+		fmt.Println(string(buf[0:n]))
 	}
 }

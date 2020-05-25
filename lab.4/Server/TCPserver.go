@@ -132,7 +132,7 @@ func initUser(conn *net.TCPConn) *User {
 
 func main() {
 	//Create addr
-	addr, err := net.ResolveTCPAddr(CNET, CHOST+":"+CPORT)
+	addr, err := net.ResolveTCPAddr(CNET, ":"+CPORT)
 	handleError(err)
 
 	//Create listener
@@ -148,7 +148,7 @@ func main() {
 	}
 	go c.broadcast(broadcaster)
 
-	fmt.Println("Listening on " + addr.IP.String() + ":" + strconv.Itoa(addr.Port))
+	fmt.Println("Listening on : " + strconv.Itoa(addr.Port) + " port")
 	for {
 		// Listen for an incoming connection.
 		conn, err := tcpListener.AcceptTCP()

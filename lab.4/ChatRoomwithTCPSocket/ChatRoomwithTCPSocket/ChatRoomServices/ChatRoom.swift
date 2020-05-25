@@ -16,7 +16,7 @@ class ChatRoom: NSObject {
     private let dataHolder = Data_Holder.shared
     
     // Set connection config
-    private var hostname = "localhost" as CFString
+    private var hostname = "192.168.0.47" as CFString
     private var port: UInt32 = 8080
     
     // Streams
@@ -84,15 +84,16 @@ class ChatRoom: NSObject {
         }
     }
     
+    // Close session
     func stopChatSession() {
         if let stream = self.inputStream {
             stream.close();
-            stream.remove(from: .current, forMode: .common);
+            stream.remove(from: .current, forMode: .common)
         }
         
         if let stream = self.outputStream {
             stream.close();
-            stream.remove(from: .current, forMode: .common);
+            stream.remove(from: .current, forMode: .common)
         }
         
         self.inputStream = nil;
