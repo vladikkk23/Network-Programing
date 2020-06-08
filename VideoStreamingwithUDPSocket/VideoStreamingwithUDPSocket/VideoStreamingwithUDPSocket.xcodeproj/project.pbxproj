@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6143F0F92476A87500662A40 /* StreamingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6143F0F82476A87500662A40 /* StreamingService.swift */; };
+		61C203E72476A1D30016744B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C203E62476A1D30016744B /* AppDelegate.swift */; };
+		61C203E92476A1D30016744B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C203E82476A1D30016744B /* SceneDelegate.swift */; };
+		61C203EC2476A1D30016744B /* VideoStreamingwithUDPSocket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61C203EA2476A1D30016744B /* VideoStreamingwithUDPSocket.xcdatamodeld */; };
+		61C203EE2476A1D30016744B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C203ED2476A1D30016744B /* ContentView.swift */; };
+		61C203F02476A1D40016744B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61C203EF2476A1D40016744B /* Assets.xcassets */; };
+		61C203F32476A1D40016744B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61C203F22476A1D40016744B /* Preview Assets.xcassets */; };
+		61C203F62476A1D40016744B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61C203F42476A1D40016744B /* LaunchScreen.storyboard */; };
+		61C204012476A1D40016744B /* VideoStreamingwithUDPSocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C204002476A1D40016744B /* VideoStreamingwithUDPSocketTests.swift */; };
+		61CF2284247855110078BBF3 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF2283247855110078BBF3 /* CameraView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		61C203FD2476A1D40016744B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61C203DB2476A1D30016744B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61C203E22476A1D30016744B;
+			remoteInfo = VideoStreamingwithUDPSocket;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6143F0F82476A87500662A40 /* StreamingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingService.swift; sourceTree = "<group>"; };
+		61C203E32476A1D30016744B /* VideoStreamingwithUDPSocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoStreamingwithUDPSocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		61C203E62476A1D30016744B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		61C203E82476A1D30016744B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		61C203EB2476A1D30016744B /* VideoStreamingwithUDPSocket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VideoStreamingwithUDPSocket.xcdatamodel; sourceTree = "<group>"; };
+		61C203ED2476A1D30016744B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		61C203EF2476A1D40016744B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		61C203F22476A1D40016744B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		61C203F52476A1D40016744B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		61C203F72476A1D40016744B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61C203FC2476A1D40016744B /* VideoStreamingwithUDPSocketTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoStreamingwithUDPSocketTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		61C204002476A1D40016744B /* VideoStreamingwithUDPSocketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoStreamingwithUDPSocketTests.swift; sourceTree = "<group>"; };
+		61C204022476A1D40016744B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61CF2283247855110078BBF3 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61C203E02476A1D30016744B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61C203F92476A1D40016744B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		61C203DA2476A1D30016744B = {
+			isa = PBXGroup;
+			children = (
+				61C203E52476A1D30016744B /* VideoStreamingwithUDPSocket */,
+				61C203FF2476A1D40016744B /* VideoStreamingwithUDPSocketTests */,
+				61C203E42476A1D30016744B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		61C203E42476A1D30016744B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61C203E32476A1D30016744B /* VideoStreamingwithUDPSocket.app */,
+				61C203FC2476A1D40016744B /* VideoStreamingwithUDPSocketTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61C203E52476A1D30016744B /* VideoStreamingwithUDPSocket */ = {
+			isa = PBXGroup;
+			children = (
+				61C2040D2476A2190016744B /* Delegates */,
+				61C2040C2476A20E0016744B /* Services */,
+				61C2040B2476A2080016744B /* Views */,
+				61C203EF2476A1D40016744B /* Assets.xcassets */,
+				61C203F42476A1D40016744B /* LaunchScreen.storyboard */,
+				61C203F72476A1D40016744B /* Info.plist */,
+				61C203EA2476A1D30016744B /* VideoStreamingwithUDPSocket.xcdatamodeld */,
+				61C203F12476A1D40016744B /* Preview Content */,
+			);
+			path = VideoStreamingwithUDPSocket;
+			sourceTree = "<group>";
+		};
+		61C203F12476A1D40016744B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				61C203F22476A1D40016744B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		61C203FF2476A1D40016744B /* VideoStreamingwithUDPSocketTests */ = {
+			isa = PBXGroup;
+			children = (
+				61C204002476A1D40016744B /* VideoStreamingwithUDPSocketTests.swift */,
+				61C204022476A1D40016744B /* Info.plist */,
+			);
+			path = VideoStreamingwithUDPSocketTests;
+			sourceTree = "<group>";
+		};
+		61C2040B2476A2080016744B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				61CF2282247853E70078BBF3 /* Camera View */,
+				61C203ED2476A1D30016744B /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		61C2040C2476A20E0016744B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6143F0F82476A87500662A40 /* StreamingService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		61C2040D2476A2190016744B /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				61C203E62476A1D30016744B /* AppDelegate.swift */,
+				61C203E82476A1D30016744B /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		61CF2282247853E70078BBF3 /* Camera View */ = {
+			isa = PBXGroup;
+			children = (
+				61CF2283247855110078BBF3 /* CameraView.swift */,
+			);
+			path = "Camera View";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		61C203E22476A1D30016744B /* VideoStreamingwithUDPSocket */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61C204052476A1D40016744B /* Build configuration list for PBXNativeTarget "VideoStreamingwithUDPSocket" */;
+			buildPhases = (
+				61C203DF2476A1D30016744B /* Sources */,
+				61C203E02476A1D30016744B /* Frameworks */,
+				61C203E12476A1D30016744B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VideoStreamingwithUDPSocket;
+			productName = VideoStreamingwithUDPSocket;
+			productReference = 61C203E32476A1D30016744B /* VideoStreamingwithUDPSocket.app */;
+			productType = "com.apple.product-type.application";
+		};
+		61C203FB2476A1D40016744B /* VideoStreamingwithUDPSocketTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61C204082476A1D40016744B /* Build configuration list for PBXNativeTarget "VideoStreamingwithUDPSocketTests" */;
+			buildPhases = (
+				61C203F82476A1D40016744B /* Sources */,
+				61C203F92476A1D40016744B /* Frameworks */,
+				61C203FA2476A1D40016744B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				61C203FE2476A1D40016744B /* PBXTargetDependency */,
+			);
+			name = VideoStreamingwithUDPSocketTests;
+			productName = VideoStreamingwithUDPSocketTests;
+			productReference = 61C203FC2476A1D40016744B /* VideoStreamingwithUDPSocketTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61C203DB2476A1D30016744B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = PR;
+				TargetAttributes = {
+					61C203E22476A1D30016744B = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					61C203FB2476A1D40016744B = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 61C203E22476A1D30016744B;
+					};
+				};
+			};
+			buildConfigurationList = 61C203DE2476A1D30016744B /* Build configuration list for PBXProject "VideoStreamingwithUDPSocket" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 61C203DA2476A1D30016744B;
+			productRefGroup = 61C203E42476A1D30016744B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				61C203E22476A1D30016744B /* VideoStreamingwithUDPSocket */,
+				61C203FB2476A1D40016744B /* VideoStreamingwithUDPSocketTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		61C203E12476A1D30016744B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61C203F62476A1D40016744B /* LaunchScreen.storyboard in Resources */,
+				61C203F32476A1D40016744B /* Preview Assets.xcassets in Resources */,
+				61C203F02476A1D40016744B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61C203FA2476A1D40016744B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		61C203DF2476A1D30016744B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61C203EC2476A1D30016744B /* VideoStreamingwithUDPSocket.xcdatamodeld in Sources */,
+				61C203E72476A1D30016744B /* AppDelegate.swift in Sources */,
+				61C203EE2476A1D30016744B /* ContentView.swift in Sources */,
+				61CF2284247855110078BBF3 /* CameraView.swift in Sources */,
+				6143F0F92476A87500662A40 /* StreamingService.swift in Sources */,
+				61C203E92476A1D30016744B /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61C203F82476A1D40016744B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61C204012476A1D40016744B /* VideoStreamingwithUDPSocketTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		61C203FE2476A1D40016744B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61C203E22476A1D30016744B /* VideoStreamingwithUDPSocket */;
+			targetProxy = 61C203FD2476A1D40016744B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		61C203F42476A1D40016744B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61C203F52476A1D40016744B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		61C204032476A1D40016744B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		61C204042476A1D40016744B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		61C204062476A1D40016744B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"VideoStreamingwithUDPSocket/Preview Content\"";
+				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = VideoStreamingwithUDPSocket/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MOV.VideoStreamingwithUDPSocket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		61C204072476A1D40016744B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"VideoStreamingwithUDPSocket/Preview Content\"";
+				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = VideoStreamingwithUDPSocket/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MOV.VideoStreamingwithUDPSocket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		61C204092476A1D40016744B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
+				INFOPLIST_FILE = VideoStreamingwithUDPSocketTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MOV.VideoStreamingwithUDPSocketTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VideoStreamingwithUDPSocket.app/VideoStreamingwithUDPSocket";
+			};
+			name = Debug;
+		};
+		61C2040A2476A1D40016744B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5ZFBRS23ZM;
+				INFOPLIST_FILE = VideoStreamingwithUDPSocketTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MOV.VideoStreamingwithUDPSocketTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VideoStreamingwithUDPSocket.app/VideoStreamingwithUDPSocket";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		61C203DE2476A1D30016744B /* Build configuration list for PBXProject "VideoStreamingwithUDPSocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61C204032476A1D40016744B /* Debug */,
+				61C204042476A1D40016744B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61C204052476A1D40016744B /* Build configuration list for PBXNativeTarget "VideoStreamingwithUDPSocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61C204062476A1D40016744B /* Debug */,
+				61C204072476A1D40016744B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61C204082476A1D40016744B /* Build configuration list for PBXNativeTarget "VideoStreamingwithUDPSocketTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61C204092476A1D40016744B /* Debug */,
+				61C2040A2476A1D40016744B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		61C203EA2476A1D30016744B /* VideoStreamingwithUDPSocket.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				61C203EB2476A1D30016744B /* VideoStreamingwithUDPSocket.xcdatamodel */,
+			);
+			currentVersion = 61C203EB2476A1D30016744B /* VideoStreamingwithUDPSocket.xcdatamodel */;
+			path = VideoStreamingwithUDPSocket.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 61C203DB2476A1D30016744B /* Project object */;
+}
